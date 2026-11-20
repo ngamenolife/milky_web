@@ -220,10 +220,11 @@ export default function AboutPageClient({
         </div>
 
         {current && (
-          <div className="grid gap-6 lg:grid-cols-5">
+          <div className="grid min-w-0 gap-6 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
+                referrerPolicy="no-referrer"
                   key={current.id + "-" + current.bvid}
                   src={buildBiliEmbedUrl(current.bvid, 0, current.page ?? 1)}
                   title={current.title}
@@ -351,7 +352,7 @@ export default function AboutPageClient({
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-xl bg-stone-50 px-3.5 py-2.5 text-xs transition hover:bg-milky-50"
+              className="flex min-w-0 items-center justify-between rounded-xl bg-stone-50 px-3.5 py-2.5 text-xs transition hover:bg-milky-50"
             >
               <div>
                 <p className="font-bold text-stone-800">{item.name}</p>
@@ -371,7 +372,7 @@ export default function AboutPageClient({
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex min-w-0 items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">
                 {editingId ? t.jbEditBtn : t.abVideoAdd}
               </h4>

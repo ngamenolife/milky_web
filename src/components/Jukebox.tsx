@@ -360,11 +360,12 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
       </div>
 
       {tab === "songs" && current ? (
-        <div className="grid gap-6 lg:grid-cols-5">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-5">
           <div className="lg:col-span-3">
             {hasBvid ? (
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
+                referrerPolicy="no-referrer"
                   key={current.id + "-" + current.bvid + "-" + current.startTime}
                   data-testid="jukebox-iframe"
                   src={embedUrl}
@@ -591,7 +592,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
               className="flex flex-col justify-between rounded-2xl bg-stone-50 p-4 ring-1 ring-stone-200/80"
             >
               <div>
-                <div className="mb-1.5 flex items-center justify-between text-xs text-stone-500">
+                <div className="mb-1.5 flex min-w-0 items-center justify-between text-xs text-stone-500">
                   <span className="font-mono">{st.bvid}</span>
                   <span>{st.date}</span>
                 </div>
@@ -626,7 +627,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex min-w-0 items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">
                 {editingId ? t.jbModalEdit : t.jbModalCreate}
               </h4>
