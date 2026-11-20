@@ -365,7 +365,6 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
             {hasBvid ? (
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
-                referrerPolicy="no-referrer"
                   key={current.id + "-" + current.bvid + "-" + current.startTime}
                   data-testid="jukebox-iframe"
                   src={embedUrl}

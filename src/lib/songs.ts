@@ -56,7 +56,7 @@ export function buildBiliEmbedUrl(bvid: string, startSec: number, page = 1): str
   const safeT = Math.max(0, Math.floor(startSec));
   const safeP = Math.max(1, Math.floor(page));
   return (
-    "https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=" +
+    "https://player.bilibili.com/player.html?bvid=" +
     cleanBvid +
     "&p=" +
     safeP +

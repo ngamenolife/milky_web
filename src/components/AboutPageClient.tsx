@@ -224,7 +224,6 @@ export default function AboutPageClient({
             <div className="min-w-0 lg:col-span-3">
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
-                referrerPolicy="no-referrer"
                   key={current.id + "-" + current.bvid}
                   src={buildBiliEmbedUrl(current.bvid, 0, current.page ?? 1)}
                   title={current.title}
