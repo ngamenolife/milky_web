@@ -373,6 +373,9 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
                   className="h-full w-full border-0"
                 />
               </div>
+          <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-amber-800 ring-1 ring-amber-200 sm:hidden">
+            📱 手机端易触发 B 站风控，如无法播放请点下方「B站原片」跳 App，或开启浏览器「桌面版网站」即可站内播放
+          </p>
             ) : (
               /* 无 BV 号的纯点歌单卡片 */
               <div className="flex aspect-video w-full flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-milky-50 to-orange-100/70 p-6 text-center ring-1 ring-orange-200">
