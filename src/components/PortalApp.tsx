@@ -141,12 +141,12 @@ export default function PortalApp({
         <h2 className="mb-2 text-3xl font-extrabold">MilkyTube / みるきぃ</h2>
         <p className="mb-6 max-w-2xl text-sm text-orange-50">{t.heroDesc}</p>
         <div className="flex flex-wrap gap-3">
-          <a
-            href="#jukebox"
+          <Link
+            href="/about"
             className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-milky-600 shadow-sm hover:bg-orange-50"
           >
-            🎵 {t.btnJukebox}
-          </a>
+            🐾 {t.navAbout}
+          </Link>
           <Link
             href="/schedule"
             className="inline-flex items-center gap-2 rounded-xl bg-stone-900/20 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-stone-900/30"
@@ -154,15 +154,6 @@ export default function PortalApp({
             <Calendar className="h-4 w-4" />
             {t.btnSchedule}
           </Link>
-          <button
-            type="button"
-            data-testid="ics-download"
-            onClick={() => downloadScheduleIcs(schedule)}
-            className="inline-flex items-center gap-2 rounded-xl bg-stone-900/20 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-stone-900/30"
-          >
-            <Download className="h-4 w-4" />
-            {t.btnIcs}
-          </button>
           <a
             href="https://space.bilibili.com/410741448"
             target="_blank"

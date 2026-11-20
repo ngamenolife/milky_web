@@ -109,3 +109,50 @@ export async function saveCloudSchedule(item: ScheduleItem): Promise<ScheduleIte
 export async function deleteCloudSchedule(id: string): Promise<void> {
   await sbFetch("schedules", "DELETE", `?id=eq.${encodeURIComponent(id)}`);
 }
+
+export interface GameEntry {
+  id: string;
+  name: string;
+  firstDate: string;
+  year: number;
+  category: string;
+  videoTitle: string;
+  episodes?: number;
+}
+
+export async function fetchCloudGames(): Promise<GameEntry[]> {
+  if (!isSupabaseReady) return [];
+  const rows = (await sbFetch("games", "GET", "?order=first_date.desc")) as Array<Record<string, unknown>>;
+  return rows.map((r) => ({
+    id: String(r.id),
+    name: String(r.name || ""),
+    firstDate: String(r.first_date || ""),
+    year: Number(r.year) || new Date().getFullYear(),
+    category: String(r.category || "模拟/休闲"),
+    videoTitle: String(r.video_title || ""),
+    episodes: r.episodes ? Number(r.episodes) : undefined,
+  }));
+}
+
+export async function saveCloudGame(game: GameEntry): Promise<GameEntry> {
+  await sbFetch(
+    "games",
+    "POST",
+    "?on_conflict=id",
+    {
+      id: game.id,
+      name: game.name,
+      first_date: game.firstDate,
+      year: game.year,
+      category: game.category,
+      video_title: game.videoTitle,
+      episodes: game.episodes ?? null,
+    },
+    { Prefer: "resolution=merge-duplicates,return=representation" }
+  );
+  return game;
+}
+
+export async function deleteCloudGame(id: string): Promise<void> {
+  await sbFetch("games", "DELETE", `?id=eq.${encodeURIComponent(id)}`);
+}
