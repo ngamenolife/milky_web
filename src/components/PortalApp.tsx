@@ -175,7 +175,7 @@ export default function PortalApp({
             </a>
           ) : (
             <a
-              href="https://live.bilibili.com/21448966"
+              href="https://live.bilibili.com/21399689"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="live-badge"
