@@ -1,0 +1,47 @@
+[
+  {
+    "id": "evt-sun-amapra",
+    "title": "【惯例】Amazon Prime 同时视听 (アマプラ)",
+    "category": "watchalong",
+    "platform": "Twitch",
+    "startIso": "2026-11-22T12:00:00.000Z",
+    "endIso": "2026-11-22T14:00:00.000Z",
+    "sourceUrl": "https://x.com/MilkyVtuber"
+  },
+  {
+    "id": "evt-mon-morning",
+    "title": "【おはみる】早起二游日课/周课（原神/鸣潮/绝区零等）",
+    "category": "game",
+    "platform": "三台同播",
+    "startIso": "2026-11-22T22:30:00.000Z",
+    "endIso": "2026-11-23T00:30:00.000Z",
+    "sourceUrl": "https://x.com/MilkyVtuber"
+  },
+  {
+    "id": "evt-tue-morning",
+    "title": "【おはみる】早起二游日课/周课",
+    "category": "game",
+    "platform": "三台同播",
+    "startIso": "2026-11-23T22:30:00.000Z",
+    "endIso": "2026-11-24T00:30:00.000Z",
+    "sourceUrl": "https://x.com/MilkyVtuber"
+  },
+  {
+    "id": "evt-tue-ff14",
+    "title": "【惯例】FF14 随机本/ルレ（视推文调整）",
+    "category": "game",
+    "platform": "Twitch",
+    "startIso": "2026-11-24T13:00:00.000Z",
+    "endIso": "2026-11-24T15:00:00.000Z",
+    "sourceUrl": "https://x.com/MilkyVtuber"
+  },
+  {
+    "id": "evt-wed-morning",
+    "title": "【おはみる】早起二游日课/周课",
+    "category": "game",
+    "platform": "三台同播",
+    "startIso": "2026-11-24T22:30:00.000Z",
+    "endIso": "2026-11-25T00:30:00.000Z",
+    "sourceUrl": "https://x.com/MilkyVtuber"
+  }
+]
