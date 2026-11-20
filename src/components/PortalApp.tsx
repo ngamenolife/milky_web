@@ -30,7 +30,26 @@ export default function PortalApp({
   const [platform, setPlatform] = useState<"all" | "Bilibili" | "YouTube">("all");
   const [query, setQuery] = useState("");
   const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
-  const [live, setLive] = useState<LiveStatus | null>(null);
+  const [liveRadar, setLiveRadar] = useState<{
+    bilibili: { isLive: boolean; title: string; url: string };
+    twitch: { isLive: boolean; uptime: string; url: string };
+    youtube: { isLive: boolean; url: string };
+  } | null>(null);
+
+  useEffect(() => {
+    const sbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const sbKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (sbUrl) {
+      fetch(sbUrl + "/functions/v1/live-status", {
+        headers: sbKey ? { apikey: sbKey, Authorization: "Bearer " + sbKey } : {},
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d?.bilibili || d?.twitch) setLiveRadar(d);
+        })
+        .catch(() => {});
+    }
+  }, []);
 
   const [schedModal, setSchedModal] = useState(false);
   const [schedForm, setSchedForm] = useState({
@@ -95,7 +114,7 @@ export default function PortalApp({
 
   const visibleSchedule =
     category === "all" ? schedule : schedule.filter((s) => s.category === category);
-  const isAnyLive = Boolean(live?.youtube.isLive || live?.bilibili.isLive);
+  
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6">
@@ -120,16 +139,52 @@ export default function PortalApp({
             </Link>
           </nav>
 
-          <a
-            href="https://www.twitch.tv/milkytube0411"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="live-badge"
-            className="inline-flex items-center gap-1.5 rounded-full bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 ring-1 ring-purple-200 hover:bg-purple-100"
-          >
-            <Radio className="h-3.5 w-3.5" />
-            Twitch Live
-          </a>
+          {liveRadar?.bilibili?.isLive ? (
+            <a
+              href={liveRadar.bilibili.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="live-badge"
+              className="inline-flex items-center gap-1.5 rounded-full bg-rose-500 px-3 py-1 text-xs font-bold text-white shadow-sm animate-pulse"
+              title={liveRadar.bilibili.title}
+            >
+              <Radio className="h-3.5 w-3.5" />
+              🔴 B站直播中
+            </a>
+          ) : liveRadar?.twitch?.isLive ? (
+            <a
+              href={liveRadar.twitch.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="live-badge"
+              className="inline-flex items-center gap-1.5 rounded-full bg-purple-600 px-3 py-1 text-xs font-bold text-white shadow-sm animate-pulse"
+            >
+              <Radio className="h-3.5 w-3.5" />
+              🔴 Twitch 直播中
+            </a>
+          ) : liveRadar?.youtube?.isLive ? (
+            <a
+              href={liveRadar.youtube.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="live-badge"
+              className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-sm animate-pulse"
+            >
+              <Radio className="h-3.5 w-3.5" />
+              🔴 YouTube 直播中
+            </a>
+          ) : (
+            <a
+              href="https://live.bilibili.com/21448966"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="live-badge"
+              className="inline-flex items-center gap-1.5 rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-600 hover:bg-orange-100 hover:text-milky-600"
+            >
+              <Radio className="h-3.5 w-3.5" />
+              {t.liveOffline}
+            </a>
+          )}
 
           <button
             type="button"
