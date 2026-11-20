@@ -363,7 +363,8 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
         <div className="grid min-w-0 gap-6 lg:grid-cols-5">
           <div className="min-w-0 lg:col-span-3">
             {hasBvid ? (
-              <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
+              <>
+                <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
                   key={current.id + "-" + current.bvid + "-" + current.startTime}
                   data-testid="jukebox-iframe"
@@ -373,6 +374,10 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
                   className="h-full w-full border-0"
                 />
               </div>
+                <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-amber-800 ring-1 ring-amber-200 sm:hidden">
+                  📱 手机端易触发 B 站风控，如无法播放请点下方「B站原片」跳 App，或开启浏览器「桌面版网站」即可站内播放
+                </p>
+              </>
           <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-amber-800 ring-1 ring-amber-200 sm:hidden">
             📱 手机端易触发 B 站风控，如无法播放请点下方「B站原片」跳 App，或开启浏览器「桌面版网站」即可站内播放
           </p>
