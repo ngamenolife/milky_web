@@ -9,7 +9,7 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "npm run start",
+    command: "npx serve@latest out -l 3000",
     port: 3000,
     reuseExistingServer: !process.env.CI,
     timeout: 60000,
