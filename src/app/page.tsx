@@ -4,7 +4,6 @@ import { fetchYouTubeRss, SEED_VIDEOS } from "@/lib/data";
 import { mergeVideosIdempotent } from "@/lib/ics";
 import { readScheduleStore, readSongsStore } from "@/lib/store";
 
-export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const [biliRes, ytVideos] = await Promise.all([

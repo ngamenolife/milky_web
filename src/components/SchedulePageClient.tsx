@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { useLocale } from "@/components/LocaleProvider";
+import { downloadScheduleIcs } from "@/lib/downloadIcs";
 import TopNav from "@/components/TopNav";
 import type { ScheduleCategory, ScheduleItem, SchedulePlatform } from "@/lib/types";
 
@@ -329,13 +330,14 @@ export default function SchedulePageClient({
               <Plus className="h-3.5 w-3.5" />
               {t.calAddBtn}
             </button>
-            <a
-              href="/api/schedule/ics"
+            <button
+              type="button"
+              onClick={() => downloadScheduleIcs(items)}
               className="inline-flex items-center gap-1 rounded-xl border border-orange-200 bg-milky-50 px-3.5 py-2 text-xs font-semibold text-milky-600 hover:bg-milky-100"
             >
               <Download className="h-3.5 w-3.5" />
               {t.btnIcs}
-            </a>
+            </button>
           </div>
         </div>
 

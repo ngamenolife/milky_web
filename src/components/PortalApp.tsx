@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Calendar, Download, Globe, Plus, Radio, Search, Tv, X, Youtube } from "lucide-react";
 import Jukebox from "@/components/Jukebox";
 import { useLocale } from "@/components/LocaleProvider";
+import { downloadScheduleIcs } from "@/lib/downloadIcs";
 import type { SongItem, UnindexedStream } from "@/lib/songs";
 import type { LiveStatus, ScheduleCategory, ScheduleItem, SchedulePlatform, VideoItem } from "@/lib/types";
 
@@ -40,24 +41,18 @@ export default function PortalApp({
   });
   const [schedMsg, setSchedMsg] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetch("/api/live-status")
-      .then((r) => r.json())
-      .then((d: LiveStatus) => setLive(d))
-      .catch(() => {});
-  }, []);
+  // GitHub Pages 静态模式：跳过后端实时检测
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const qs =
-        "?q=" + encodeURIComponent(query) + "&platform=" + encodeURIComponent(platform);
-      fetch("/api/archive" + qs)
-        .then((r) => r.json())
-        .then((d: { items: VideoItem[] }) => setVideos(d.items))
-        .catch(() => {});
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [query, platform]);
+    const q = query.trim().toLowerCase();
+    setVideos(
+      initialVideos.filter((v) => {
+        const okP = platform === "all" || v.platform === platform;
+        const okQ = !q || v.title.toLowerCase().includes(q);
+        return okP && okQ;
+      })
+    );
+  }, [query, platform, initialVideos]);
 
   const handleAddSchedule = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,14 +153,15 @@ export default function PortalApp({
             <Calendar className="h-4 w-4" />
             {t.btnSchedule}
           </Link>
-          <a
-            href="/api/schedule/ics"
+          <button
+            type="button"
             data-testid="ics-download"
+            onClick={() => downloadScheduleIcs(schedule)}
             className="inline-flex items-center gap-2 rounded-xl bg-stone-900/20 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-stone-900/30"
           >
             <Download className="h-4 w-4" />
             {t.btnIcs}
-          </a>
+          </button>
           <a
             href="https://space.bilibili.com/410741448"
             target="_blank"

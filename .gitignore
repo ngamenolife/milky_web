@@ -1,5 +1,7 @@
 node_modules/
 .next/
+out/
+_api_backup/
 .env.local
 .env
 playwright-report/
