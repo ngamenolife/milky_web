@@ -97,7 +97,7 @@ export default function AboutPageClient({
     setMsg(null);
     const bvid = form.bvid.trim();
     if (!/^BV[a-zA-Z0-9]{8,14}$/.test(bvid)) {
-      setMsg("❌ BV 号格式不正确（应以 BV 开头）");
+      setMsg(locale === "ja" ? "❌ BV番号の形式が正しくありません（BVで始まる必要があります）" : "❌ BV 号格式不正确（应以 BV 开头）");
       setSaving(false);
       return;
     }
@@ -119,7 +119,7 @@ export default function AboutPageClient({
         setVideos((prev) => [...prev, item]);
       }
       setCurrent(item);
-      setMsg("✅ 已同步保存至云端！");
+      setMsg(locale === "ja" ? "✅ クラウドに保存しました！" : "✅ 已同步保存至云端！");
       setTimeout(() => setModalOpen(false), 600);
     } catch (err) {
       setMsg("❌ " + (err instanceof Error ? err.message : "保存失败"));
@@ -222,7 +222,8 @@ export default function AboutPageClient({
         {current && (
           <div className="grid min-w-0 gap-6 lg:grid-cols-5">
             <div className="min-w-0 lg:col-span-3">
-              <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
+              <>
+                <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
                   key={current.id + "-" + current.bvid}
                   src={buildBiliEmbedUrl(current.bvid, 0, current.page ?? 1)}
@@ -231,6 +232,12 @@ export default function AboutPageClient({
                   className="h-full w-full border-0"
                 />
               </div>
+                <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-center text-[11px] font-medium leading-relaxed text-amber-800 ring-1 ring-amber-200 sm:hidden">
+                  {locale === "ja"
+                    ? "📱 スマホではBilibiliの制限で再生できない場合があります。下のリンクからアプリで開くか、ブラウザの「PC版サイト」を有効にしてください"
+                    : "📱 手机端易触发 B 站风控，如无法播放请点下方链接跳 App，或开启浏览器「桌面版网站」即可站内播放"}
+                </p>
+              </>
               <div className="mt-3 flex flex-wrap items-start justify-between gap-2 rounded-2xl bg-milky-50 p-4">
                 <div>
                   <p className="text-sm font-bold text-stone-900">{current.title}</p>

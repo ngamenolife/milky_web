@@ -24,6 +24,17 @@ const CAT_STYLE: Record<string, string> = {
 };
 
 const INITIAL_GAMES = (gamesData.games || []) as GameEntry[];
+const CAT_JA: Record<string, string> = {
+  "动作/魂类": "アクション/ソウル系",
+  "JRPG/RPG": "JRPG/RPG",
+  "任系/平台": "任天堂/アクション",
+  "恐怖/悬疑": "ホラー/サスペンス",
+  "推理/文字": "推理/ノベル",
+  "独立/剧情": "インディー/ストーリー",
+  "二游/抽卡": "ソシャゲ/ガチャ",
+  "模拟/休闲": "シム/カジュアル",
+};
+
 const CATS = ["all", "动作/魂类", "JRPG/RPG", "任系/平台", "恐怖/悬疑", "推理/文字", "独立/剧情", "二游/抽卡", "模拟/休闲"];
 
 export default function GameShowcase() {
@@ -232,7 +243,7 @@ export default function GameShowcase() {
                 : "border-stone-200 bg-white text-stone-600 hover:bg-stone-50")
             }
           >
-            {c === "all" ? (locale === "ja" ? "すべて" : "全部分类") : c}
+            {c === "all" ? (locale === "ja" ? "すべて" : "全部分类") : (locale === "ja" ? (CAT_JA[c] || c) : c)}
           </button>
         ))}
       </div>
@@ -240,7 +251,7 @@ export default function GameShowcase() {
       {/* 游戏卡片网格 */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((g) => {
-          const searchUrl = "https://search.bilibili.com/all?keyword=" + encodeURIComponent("Milky " + g.name);
+          const searchUrl = "https://space.bilibili.com/410741448/search?keyword=" + encodeURIComponent(g.name);
           const badge = CAT_STYLE[g.category] || "bg-stone-100 text-stone-700 border-stone-200";
           return (
             <div
@@ -250,7 +261,7 @@ export default function GameShowcase() {
               <div>
                 <div className="mb-2 flex items-center justify-between gap-2 text-[11px]">
                   <span className={"rounded-full border px-2 py-0.5 font-semibold " + badge}>
-                    {g.category}
+                    {locale === "ja" ? (CAT_JA[g.category] || g.category) : g.category}
                   </span>
                   <div className="flex items-center gap-1.5">
                     {g.episodes && (
@@ -336,7 +347,7 @@ export default function GameShowcase() {
                   className="rounded-xl border border-stone-200 px-2 py-2"
                 >
                   {CATS.filter((c) => c !== "all").map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c}>{locale === "ja" ? (CAT_JA[c] || c) : c}</option>
                   ))}
                 </select>
                 <input

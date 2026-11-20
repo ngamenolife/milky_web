@@ -24,7 +24,7 @@ export default function PortalApp({
   initialSongs,
   initialUnindexed,
 }: Props) {
-  const { t, toggleLocale } = useLocale();
+  const { locale, t, toggleLocale } = useLocale();
   const [schedule, setSchedule] = useState<ScheduleItem[]>(initialSchedule);
   const [category, setCategory] = useState<"all" | ScheduleCategory>("all");
   const [platform, setPlatform] = useState<"all" | "Bilibili" | "YouTube">("all");
@@ -102,7 +102,7 @@ export default function PortalApp({
     try {
       await saveCloudSchedule(item);
       setSchedule((prev) => [item, ...prev]);
-      setSchedMsg("✅ 已同步保存至云端！");
+      setSchedMsg(locale === "ja" ? "✅ クラウドに保存しました！" : "✅ 已同步保存至云端！");
       setTimeout(() => {
         setSchedModal(false);
         setSchedMsg(null);
@@ -149,7 +149,7 @@ export default function PortalApp({
               title={liveRadar.bilibili.title}
             >
               <Radio className="h-3.5 w-3.5" />
-              🔴 B站直播中
+              {locale === "ja" ? "🔴 Bilibili 配信中" : "🔴 B站直播中"}
             </a>
           ) : liveRadar?.twitch?.isLive ? (
             <a
@@ -160,7 +160,7 @@ export default function PortalApp({
               className="inline-flex items-center gap-1.5 rounded-full bg-purple-600 px-3 py-1 text-xs font-bold text-white shadow-sm animate-pulse"
             >
               <Radio className="h-3.5 w-3.5" />
-              🔴 Twitch 直播中
+              {locale === "ja" ? "🔴 Twitch 配信中" : "🔴 Twitch 直播中"}
             </a>
           ) : liveRadar?.youtube?.isLive ? (
             <a
@@ -171,7 +171,7 @@ export default function PortalApp({
               className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-sm animate-pulse"
             >
               <Radio className="h-3.5 w-3.5" />
-              🔴 YouTube 直播中
+              {locale === "ja" ? "🔴 YouTube 配信中" : "🔴 YouTube 直播中"}
             </a>
           ) : (
             <a

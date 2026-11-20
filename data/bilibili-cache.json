@@ -1,5 +1,14 @@
 [
   {
+    "id": "bili-BV1vrysz4EAq",
+    "title": "【直播回放】塞尔达时之笛【中日英字幕】 2026年11月20日19点场",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-20T15:48:01.000Z",
+    "url": "https://www.bilibili.com/video/BV1vrysz4EAq",
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/451b03953b60a595ed398ba2426e860bb2f63322.jpg"
+  },
+  {
     "id": "bili-BV1B3sa6HEdD",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～　12【中日英字幕】 2026年11月19日20点场",
     "platform": "Bilibili",
@@ -150,15 +159,6 @@
     "tag": "game",
     "publishedAt": "2026-11-10T14:47:10.000Z",
     "url": "https://www.bilibili.com/video/BV1sVW36iEUa",
-    "thumbnail": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png"
-  },
-  {
-    "id": "bili-BV1ueWN6ZEh3",
-    "title": "【直播回放】鳴潮【中日英字幕】 2026年11月10日07点场",
-    "platform": "Bilibili",
-    "tag": "game",
-    "publishedAt": "2026-11-10T02:01:29.000Z",
-    "url": "https://www.bilibili.com/video/BV1ueWN6ZEh3",
     "thumbnail": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png"
   }
 ]
