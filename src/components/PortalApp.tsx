@@ -198,7 +198,7 @@ export default function PortalApp({
         </div>
       </header>
 
-      <section className="mb-10 rounded-3xl bg-gradient-to-br from-orange-400 to-amber-500 p-8 text-white shadow-md">
+      <section className="mb-10 rounded-3xl bg-gradient-to-br from-orange-400 to-amber-500 p-8 text-white shadow-md overflow-hidden">
         <h2 className="mb-2 text-3xl font-extrabold">MilkyTube / みるきぃ</h2>
         <p className="mb-6 max-w-2xl text-sm text-orange-50">{t.heroDesc}</p>
         <div className="flex flex-wrap gap-3">
@@ -409,7 +409,7 @@ export default function PortalApp({
 
       {schedModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl overflow-hidden">
             <div className="mb-4 flex items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">{t.calModalCreate}</h4>
               <button type="button" onClick={() => setSchedModal(false)} className="text-stone-400 hover:text-stone-700">

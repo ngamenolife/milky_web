@@ -148,7 +148,7 @@ export default function AboutPageClient({
     <div className="mx-auto max-w-5xl px-4 py-6">
       <TopNav />
 
-      <section className="mb-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 md:p-8">
+      <section className="mb-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 md:p-8 overflow-hidden">
         <div className="mb-6 flex flex-wrap items-start justify-between gap-4 border-b border-orange-100 pb-6">
           <div>
             <p className="mb-1 text-xs font-bold uppercase tracking-wider text-milky-500">
@@ -198,7 +198,7 @@ export default function AboutPageClient({
         </div>
       </section>
 
-      <section className="mb-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+      <section className="mb-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-milky-100 text-milky-600">
@@ -221,7 +221,7 @@ export default function AboutPageClient({
 
         {current && (
           <div className="grid min-w-0 gap-6 lg:grid-cols-5">
-            <div className="lg:col-span-3">
+            <div className="min-w-0 lg:col-span-3">
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
                 referrerPolicy="no-referrer"
@@ -263,7 +263,7 @@ export default function AboutPageClient({
               </div>
             </div>
 
-            <div className="max-h-96 space-y-2 overflow-y-auto pr-1 lg:col-span-2">
+            <div className="min-w-0 max-h-96 space-y-2 overflow-y-auto pr-1 lg:col-span-2">
               {videos.map((v) => {
                 const active = v.id === current.id;
                 return (
@@ -295,7 +295,7 @@ export default function AboutPageClient({
       </section>
 
       <section className="mb-8 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-stone-900">
             <Sparkles className="h-5 w-5 text-milky-500" />
             {t.abLoreTitle}
@@ -317,7 +317,7 @@ export default function AboutPageClient({
           </div>
         </div>
 
-        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-stone-900">
             <ShieldCheck className="h-5 w-5 text-emerald-600" />
             {t.abGuideTitle}
@@ -343,7 +343,7 @@ export default function AboutPageClient({
         </div>
       </section>
 
-      <section className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+      <section className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
         <h2 className="mb-4 text-lg font-bold text-stone-900">{t.abLinksTitle}</h2>
         <div className="mb-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {OFFICIAL_LINKS.map((item) => (
@@ -371,7 +371,7 @@ export default function AboutPageClient({
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl overflow-hidden">
             <div className="mb-4 flex min-w-0 items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">
                 {editingId ? t.jbEditBtn : t.abVideoAdd}

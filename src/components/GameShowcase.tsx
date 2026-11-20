@@ -151,7 +151,7 @@ export default function GameShowcase() {
   };
 
   return (
-    <section id="games" className="mb-10 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+    <section id="games" className="mb-10 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 text-white shadow-sm">
@@ -310,7 +310,7 @@ export default function GameShowcase() {
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl overflow-hidden">
             <div className="mb-4 flex items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">
                 {editingId

@@ -296,7 +296,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
   };
 
   return (
-    <section id="jukebox" className="mb-10 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100">
+    <section id="jukebox" className="mb-10 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-orange-100 overflow-hidden">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-milky-100 text-milky-600">
@@ -361,7 +361,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
 
       {tab === "songs" && current ? (
         <div className="grid min-w-0 gap-6 lg:grid-cols-5">
-          <div className="lg:col-span-3">
+          <div className="min-w-0 lg:col-span-3">
             {hasBvid ? (
               <div className="aspect-video w-full overflow-hidden rounded-2xl bg-stone-900 shadow-inner">
                 <iframe
@@ -496,7 +496,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 lg:col-span-2">
+          <div className="min-w-0 flex flex-col gap-3 lg:col-span-2">
             <div className="relative">
               <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-stone-400" />
               <input
@@ -626,7 +626,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl overflow-hidden">
             <div className="mb-4 flex min-w-0 items-center justify-between">
               <h4 className="text-lg font-bold text-stone-900">
                 {editingId ? t.jbModalEdit : t.jbModalCreate}
