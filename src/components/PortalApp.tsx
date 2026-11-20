@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Calendar, Download, Globe, Plus, Radio, Search, Tv, X, Youtube } from "lucide-react";
 import Jukebox from "@/components/Jukebox";
+import GameShowcase from "@/components/GameShowcase";
 import { useLocale } from "@/components/LocaleProvider";
 import { downloadScheduleIcs } from "@/lib/downloadIcs";
 import type { SongItem, UnindexedStream } from "@/lib/songs";
@@ -180,10 +181,36 @@ export default function PortalApp({
             <Youtube className="h-4 w-4" />
             YouTube
           </a>
+          <a
+            href="https://www.twitch.tv/milkytube0411"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700"
+          >
+            🎮 Twitch
+          </a>
+          <a
+            href="https://x.com/MilkyVtuber"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-stone-900 px-4 py-2 text-sm font-semibold text-white hover:bg-stone-800"
+          >
+            𝕏 X
+          </a>
+          <a
+            href="https://www.pixiv.net/fanbox/creator/38159795"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700"
+          >
+            💛 FANBOX
+          </a>
         </div>
       </section>
 
       <Jukebox initialSongs={initialSongs} initialUnindexed={initialUnindexed} />
+
+      <GameShowcase />
 
       <section id="schedule" className="mb-10">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">

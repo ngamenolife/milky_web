@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Calendar as CalendarIcon,
   ChevronLeft,
@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { useLocale } from "@/components/LocaleProvider";
+import { deleteCloudSchedule, fetchCloudSchedules, isSupabaseReady, saveCloudSchedule } from "@/lib/supabaseClient";
 import { downloadScheduleIcs } from "@/lib/downloadIcs";
 import TopNav from "@/components/TopNav";
 import type { ScheduleCategory, ScheduleItem, SchedulePlatform } from "@/lib/types";
@@ -50,6 +51,20 @@ export default function SchedulePageClient({
 }) {
   const { locale, t } = useLocale();
   const [items, setItems] = useState<ScheduleItem[]>(initialSchedule);
+
+  useEffect(() => {
+    if (!isSupabaseReady) return;
+    fetchCloudSchedules()
+      .then((cloud) => {
+        if (cloud.length === 0) return;
+        setItems((prev) => {
+          const map = new Map(prev.map((x) => [x.id, x]));
+          for (const c of cloud) map.set(c.id, c);
+          return Array.from(map.values());
+        });
+      })
+      .catch(() => {});
+  }, []);
   const [view, setView] = useState<"month" | "list">("month");
   const [category, setCategory] = useState<"all" | ScheduleCategory>("all");
 
@@ -217,39 +232,30 @@ export default function SchedulePageClient({
     e.preventDefault();
     setSaving(true);
     setMsg(null);
+    const item: ScheduleItem = {
+      id: editingId || "evt-" + Date.now(),
+      title: form.title.trim(),
+      category: form.category,
+      platform: form.platform,
+      startIso: new Date(form.startLocal).toISOString(),
+      endIso: new Date(form.endLocal).toISOString(),
+      sourceUrl: form.sourceUrl.trim() || undefined,
+    };
     try {
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-      const res = await fetch("/api/schedule", {
-        method: editingId ? "PATCH" : "POST",
-        headers,
-        body: JSON.stringify({
-          ...(editingId ? { id: editingId } : {}),
-          title: form.title,
-          category: form.category,
-          platform: form.platform,
-          startIso: new Date(form.startLocal).toISOString(),
-          endIso: new Date(form.endLocal).toISOString(),
-          sourceUrl: form.sourceUrl,
-        }),
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        setNeedSecret(true);
-        setMsg("🔒 " + (data.error || "Unauthorized"));
-        return;
-      }
-      if (!res.ok) {
-        setMsg("❌ " + (data.error || "Error"));
-        return;
+      if (isSupabaseReady) {
+        await saveCloudSchedule(item);
+      } else {
+        throw new Error("请先在 GitHub Secrets 配置 Supabase");
       }
       if (editingId) {
-        setItems((prev) => prev.map((x) => (x.id === editingId ? data.item : x)));
+        setItems((prev) => prev.map((x) => (x.id === editingId ? item : x)));
       } else {
-        setItems((prev) => [data.item, ...prev]);
+        setItems((prev) => [item, ...prev]);
       }
-      setMsg("✅ OK!");
+      setMsg("✅ 已同步保存至云端！");
       setTimeout(() => setModalOpen(false), 600);
+    } catch (err) {
+      setMsg("❌ " + (err instanceof Error ? err.message : "保存失败"));
     } finally {
       setSaving(false);
     }
@@ -259,21 +265,11 @@ export default function SchedulePageClient({
     if (!editingId || !window.confirm(locale === "ja" ? "この予定を削除しますか？" : "确定要删除这条日程吗？")) return;
     setSaving(true);
     try {
-      const headers: Record<string, string> = {};
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-      const res = await fetch("/api/schedule?id=" + encodeURIComponent(editingId), {
-        method: "DELETE",
-        headers,
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        setNeedSecret(true);
-        setMsg("🔒 " + (data.error || "Unauthorized"));
-        return;
-      }
-      if (!res.ok) return;
+      if (isSupabaseReady) await deleteCloudSchedule(editingId);
       setItems((prev) => prev.filter((x) => x.id !== editingId));
       setModalOpen(false);
+    } catch (err) {
+      setMsg("❌ " + (err instanceof Error ? err.message : "删除失败"));
     } finally {
       setSaving(false);
     }

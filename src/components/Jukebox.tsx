@@ -19,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { useLocale } from "@/components/LocaleProvider";
+import { deleteCloudSong, fetchCloudSongs, isSupabaseReady, saveCloudSong } from "@/lib/supabaseClient";
 import {
   buildBiliEmbedUrl,
   groupSongsByTitle,
@@ -96,6 +97,20 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
   });
   const [submitMsg, setSubmitMsg] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!isSupabaseReady) return;
+    fetchCloudSongs()
+      .then((cloud) => {
+        if (cloud.length === 0) return;
+        setSongs((prev) => {
+          const map = new Map(prev.map((x) => [x.id, x]));
+          for (const c of cloud) map.set(c.id, c);
+          return Array.from(map.values());
+        });
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     try {
@@ -203,54 +218,41 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
     e.preventDefault();
     setSubmitting(true);
     setSubmitMsg(null);
-    const tags = form.tagsText
-      .split(/[,，]/)
-      .map((s) => s.trim())
-      .filter(Boolean);
+    const bvid = form.bvid.trim();
+    const tags = form.tagsText.split(/[,，]/).map((s) => s.trim()).filter(Boolean);
+    if (!bvid && !tags.includes("歌单")) tags.push("歌单");
+
+    const item: SongItem = {
+      id: editingId || "song-" + Date.now(),
+      title: form.title.trim(),
+      artist: form.artist.trim() || "待补充",
+      language: form.language,
+      genre: form.genre.trim() || "歌单",
+      tags,
+      bvid: bvid || undefined,
+      page: Number(form.page) > 0 ? Number(form.page) : 1,
+      startTime: form.startTime.trim() || (bvid ? "00:00" : ""),
+      date: form.date || new Date().toISOString().slice(0, 10),
+      streamTitle: form.streamTitle.trim() || (bvid ? "粉丝贡献时间轴" : "点歌单收录"),
+      contributor: form.contributor.trim() || "匿名粉丝",
+    };
 
     try {
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-
-      const res = await fetch("/api/songs", {
-        method: editingId ? "PATCH" : "POST",
-        headers,
-        body: JSON.stringify({
-          ...(editingId ? { id: editingId } : {}),
-          title: form.title,
-          artist: form.artist,
-          language: form.language,
-          genre: form.genre,
-          tags,
-          bvid: form.bvid,
-          page: form.page,
-          startTime: form.startTime,
-          date: form.date,
-          streamTitle: form.streamTitle,
-          contributor: form.contributor,
-        }),
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        setNeedSecretPrompt(true);
-        setSubmitMsg("🔒 " + (data.error || "需要管理员口令"));
-        return;
-      }
-      if (!res.ok) {
-        setSubmitMsg("❌ " + (data.error || "保存失败"));
-        return;
-      }
-
-      if (editingId) {
-        setSongs((prev) => prev.map((s) => (s.id === editingId ? data.item : s)));
+      if (isSupabaseReady) {
+        await saveCloudSong(item);
       } else {
-        setSongs((prev) => [data.item, ...prev]);
+        throw new Error("请先在 GitHub Secrets 配置 Supabase");
       }
-      setCurrent(data.item);
-      setSubmitMsg("✅ OK!");
+      if (editingId) {
+        setSongs((prev) => prev.map((s) => (s.id === editingId ? item : s)));
+      } else {
+        setSongs((prev) => [item, ...prev]);
+      }
+      setCurrent(item);
+      setSubmitMsg("✅ 已同步保存至云端！");
       setTimeout(() => setModalOpen(false), 600);
-    } catch {
-      setSubmitMsg("❌ Error");
+    } catch (err) {
+      setSubmitMsg("❌ " + (err instanceof Error ? err.message : "保存失败"));
     } finally {
       setSubmitting(false);
     }
@@ -260,26 +262,13 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
     if (!editingId || !window.confirm(locale === "ja" ? "この曲を削除しますか？" : "确定要从歌台删除这首歌吗？")) return;
     setSubmitting(true);
     try {
-      const headers: Record<string, string> = {};
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-      const res = await fetch("/api/songs?id=" + encodeURIComponent(editingId), {
-        method: "DELETE",
-        headers,
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        setNeedSecretPrompt(true);
-        setSubmitMsg("🔒 " + (data.error || "需要管理员口令"));
-        return;
-      }
-      if (!res.ok) {
-        setSubmitMsg("❌ " + (data.error || "删除失败"));
-        return;
-      }
+      if (isSupabaseReady) await deleteCloudSong(editingId);
       const remaining = songs.filter((s) => s.id !== editingId);
       setSongs(remaining);
       if (current?.id === editingId) setCurrent(remaining[0] ?? null);
       setModalOpen(false);
+    } catch (err) {
+      setSubmitMsg("❌ " + (err instanceof Error ? err.message : "删除失败"));
     } finally {
       setSubmitting(false);
     }
