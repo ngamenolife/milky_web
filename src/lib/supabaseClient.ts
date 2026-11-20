@@ -156,3 +156,52 @@ export async function saveCloudGame(game: GameEntry): Promise<GameEntry> {
 export async function deleteCloudGame(id: string): Promise<void> {
   await sbFetch("games", "DELETE", `?id=eq.${encodeURIComponent(id)}`);
 }
+
+export interface CloudFeaturedVideo {
+  id: string;
+  title: string;
+  bvid: string;
+  page?: number;
+  tag: string;
+  reason: string;
+  contributor: string;
+  addedAt: string;
+}
+
+export async function fetchCloudFeaturedVideos(): Promise<CloudFeaturedVideo[]> {
+  if (!isSupabaseReady) return [];
+  const rows = (await sbFetch("featured_videos", "GET", "?order=created_at.asc")) as Array<Record<string, unknown>>;
+  return rows.map((r) => ({
+    id: String(r.id),
+    title: String(r.title || ""),
+    bvid: String(r.bvid || ""),
+    page: Number(r.page) || 1,
+    tag: String(r.tag || "粉丝安利"),
+    reason: String(r.reason || ""),
+    contributor: String(r.contributor || "匿名粉丝"),
+    addedAt: String(r.created_at || "").slice(0, 10) || new Date().toISOString().slice(0, 10),
+  }));
+}
+
+export async function saveCloudFeaturedVideo(v: CloudFeaturedVideo): Promise<CloudFeaturedVideo> {
+  await sbFetch(
+    "featured_videos",
+    "POST",
+    "?on_conflict=id",
+    {
+      id: v.id,
+      title: v.title,
+      bvid: v.bvid,
+      page: v.page || 1,
+      tag: v.tag || "粉丝安利",
+      reason: v.reason || "",
+      contributor: v.contributor || "匿名粉丝",
+    },
+    { Prefer: "resolution=merge-duplicates,return=representation" }
+  );
+  return v;
+}
+
+export async function deleteCloudFeaturedVideo(id: string): Promise<void> {
+  await sbFetch("featured_videos", "DELETE", `?id=eq.${encodeURIComponent(id)}`);
+}

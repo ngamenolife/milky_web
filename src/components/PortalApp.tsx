@@ -6,6 +6,7 @@ import { Calendar, Download, Globe, Plus, Radio, Search, Tv, X, Youtube } from "
 import Jukebox from "@/components/Jukebox";
 import GameShowcase from "@/components/GameShowcase";
 import { useLocale } from "@/components/LocaleProvider";
+import { fetchCloudSchedules, isSupabaseReady, saveCloudSchedule } from "@/lib/supabaseClient";
 import { downloadScheduleIcs } from "@/lib/downloadIcs";
 import type { SongItem, UnindexedStream } from "@/lib/songs";
 import type { LiveStatus, ScheduleCategory, ScheduleItem, SchedulePlatform, VideoItem } from "@/lib/types";
@@ -42,7 +43,19 @@ export default function PortalApp({
   });
   const [schedMsg, setSchedMsg] = useState<string | null>(null);
 
-  // GitHub Pages 静态模式：跳过后端实时检测
+  useEffect(() => {
+    if (!isSupabaseReady) return;
+    fetchCloudSchedules()
+      .then((cloud) => {
+        if (cloud.length === 0) return;
+        setSchedule((prev) => {
+          const map = new Map(prev.map((x) => [x.id, x]));
+          for (const c of cloud) map.set(c.id, c);
+          return Array.from(map.values());
+        });
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const q = query.trim().toLowerCase();
@@ -58,32 +71,25 @@ export default function PortalApp({
   const handleAddSchedule = async (e: React.FormEvent) => {
     e.preventDefault();
     setSchedMsg(null);
+    const item: ScheduleItem = {
+      id: "evt-" + Date.now(),
+      title: schedForm.title.trim(),
+      category: schedForm.category,
+      platform: schedForm.platform,
+      startIso: new Date(schedForm.startLocal).toISOString(),
+      endIso: new Date(schedForm.endLocal).toISOString(),
+      sourceUrl: schedForm.sourceUrl.trim() || undefined,
+    };
     try {
-      const res = await fetch("/api/schedule", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: schedForm.title,
-          category: schedForm.category,
-          platform: schedForm.platform,
-          startIso: new Date(schedForm.startLocal).toISOString(),
-          endIso: new Date(schedForm.endLocal).toISOString(),
-          sourceUrl: schedForm.sourceUrl,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setSchedMsg("❌ " + (data.error || "Error"));
-      } else {
-        setSchedule((prev) => [data.item, ...prev]);
-        setSchedMsg("✅ OK!");
-        setTimeout(() => {
-          setSchedModal(false);
-          setSchedMsg(null);
-        }, 700);
-      }
-    } catch {
-      setSchedMsg("❌ Network Error");
+      await saveCloudSchedule(item);
+      setSchedule((prev) => [item, ...prev]);
+      setSchedMsg("✅ 已同步保存至云端！");
+      setTimeout(() => {
+        setSchedModal(false);
+        setSchedMsg(null);
+      }, 600);
+    } catch (err) {
+      setSchedMsg("❌ " + (err instanceof Error ? err.message : "保存失败"));
     }
   };
 
@@ -114,16 +120,16 @@ export default function PortalApp({
             </Link>
           </nav>
 
-          <span
+          <a
+            href="https://www.twitch.tv/milkytube0411"
+            target="_blank"
+            rel="noopener noreferrer"
             data-testid="live-badge"
-            className={
-              "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium " +
-              (isAnyLive ? "bg-red-100 text-red-700" : "bg-stone-100 text-stone-600")
-            }
+            className="inline-flex items-center gap-1.5 rounded-full bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 ring-1 ring-purple-200 hover:bg-purple-100"
           >
             <Radio className="h-3.5 w-3.5" />
-            {isAnyLive ? t.liveOnline : t.liveOffline}
-          </span>
+            Twitch Live
+          </a>
 
           <button
             type="button"

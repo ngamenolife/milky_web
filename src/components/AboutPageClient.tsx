@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ExternalLink,
   Film,
@@ -18,9 +18,11 @@ import { useLocale } from "@/components/LocaleProvider";
 import TopNav from "@/components/TopNav";
 import type { FeaturedVideo } from "@/lib/featured";
 import { buildBiliEmbedUrl } from "@/lib/songs";
+import { deleteCloudFeaturedVideo, fetchCloudFeaturedVideos, isSupabaseReady, saveCloudFeaturedVideo } from "@/lib/supabaseClient";
 
 const OFFICIAL_LINKS = [
   { name: "Bilibili", url: "https://space.bilibili.com/410741448", desc: "space.bilibili.com/410741448" },
+  { name: "Twitch", url: "https://www.twitch.tv/milkytube0411", desc: "twitch.tv/milkytube0411" },
   { name: "YouTube", url: "https://www.youtube.com/channel/UCBJPNd_nAzGkXdL4Wy87ADg", desc: "@milkytube0411" },
   { name: "X (Twitter)", url: "https://x.com/MilkyVtuber", desc: "@MilkyVtuber" },
   { name: "OPENREC.tv", url: "https://www.openrec.tv/user/milky0411", desc: "openrec.tv/user/milky0411" },
@@ -35,6 +37,20 @@ export default function AboutPageClient({
 }) {
   const { locale, t } = useLocale();
   const [videos, setVideos] = useState<FeaturedVideo[]>(initialVideos);
+
+  useEffect(() => {
+    if (!isSupabaseReady) return;
+    fetchCloudFeaturedVideos()
+      .then((cloud) => {
+        if (cloud.length === 0) return;
+        setVideos((prev) => {
+          const map = new Map(prev.map((x) => [x.id, x]));
+          for (const c of cloud) map.set(c.id, c);
+          return Array.from(map.values());
+        });
+      })
+      .catch(() => {});
+  }, []);
   const [current, setCurrent] = useState<FeaturedVideo | null>(initialVideos[0] ?? null);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,32 +95,34 @@ export default function AboutPageClient({
     e.preventDefault();
     setSaving(true);
     setMsg(null);
+    const bvid = form.bvid.trim();
+    if (!/^BV[a-zA-Z0-9]{8,14}$/.test(bvid)) {
+      setMsg("❌ BV 号格式不正确（应以 BV 开头）");
+      setSaving(false);
+      return;
+    }
+    const item: FeaturedVideo = {
+      id: editingId || "fv-" + Date.now(),
+      title: form.title.trim(),
+      bvid,
+      page: Number(form.page) || 1,
+      tag: form.tag.trim() || "粉丝安利",
+      reason: form.reason.trim() || "粉丝推荐必看",
+      contributor: form.contributor.trim() || "匿名粉丝",
+      addedAt: new Date().toISOString().slice(0, 10),
+    };
     try {
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-      const res = await fetch("/api/featured-videos", {
-        method: editingId ? "PATCH" : "POST",
-        headers,
-        body: JSON.stringify(editingId ? { id: editingId, ...form } : form),
-      });
-      const data = await res.json();
-      if (res.status === 401) {
-        setNeedSecret(true);
-        setMsg("🔒 " + (data.error || "Unauthorized"));
-        return;
-      }
-      if (!res.ok) {
-        setMsg("❌ " + (data.error || "Error"));
-        return;
-      }
+      await saveCloudFeaturedVideo(item);
       if (editingId) {
-        setVideos((prev) => prev.map((x) => (x.id === editingId ? data.item : x)));
+        setVideos((prev) => prev.map((x) => (x.id === editingId ? item : x)));
       } else {
-        setVideos((prev) => [...prev, data.item]);
+        setVideos((prev) => [...prev, item]);
       }
-      setCurrent(data.item);
-      setMsg("✅ OK!");
+      setCurrent(item);
+      setMsg("✅ 已同步保存至云端！");
       setTimeout(() => setModalOpen(false), 600);
+    } catch (err) {
+      setMsg("❌ " + (err instanceof Error ? err.message : "保存失败"));
     } finally {
       setSaving(false);
     }
@@ -114,21 +132,13 @@ export default function AboutPageClient({
     if (!editingId || !window.confirm(locale === "ja" ? "この動画を削除しますか？" : "确定移除这个视频吗？")) return;
     setSaving(true);
     try {
-      const headers: Record<string, string> = {};
-      if (adminSecret.trim()) headers["x-admin-secret"] = adminSecret.trim();
-      const res = await fetch("/api/featured-videos?id=" + encodeURIComponent(editingId), {
-        method: "DELETE",
-        headers,
-      });
-      if (res.status === 401) {
-        setNeedSecret(true);
-        return;
-      }
-      if (!res.ok) return;
+      await deleteCloudFeaturedVideo(editingId);
       const next = videos.filter((x) => x.id !== editingId);
       setVideos(next);
       if (current?.id === editingId) setCurrent(next[0] ?? null);
       setModalOpen(false);
+    } catch (err) {
+      setMsg("❌ " + (err instanceof Error ? err.message : "删除失败"));
     } finally {
       setSaving(false);
     }
