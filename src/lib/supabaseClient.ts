@@ -15,8 +15,8 @@ function getEditPasscode(): string {
     const isJa = window.localStorage.getItem("milky-locale") === "ja";
     const input = window.prompt(
       isJa
-        ? "🔑 編集・追加するにはファン暗号を入力してください（1回入力すれば保存されます）："
-        : "🔑 请输入粉丝群编辑暗号（输对一次后自动记住，防路人捣乱）："
+        ? "🔑 みるきぃのニックネームは？（1回入力すれば保存されます）："
+        : "🔑 milky的昵称是啥？（输对一次后自动记住）："
     );
     if (!input || !input.trim()) {
       throw new Error(isJa ? "暗号の入力がキャンセルされました" : "已取消提交（未输入暗号）");
@@ -44,7 +44,7 @@ async function sbFetch(
     ...extraHeaders,
   };
   if (method !== "GET") {
-    headers["x-client-info"] = getEditPasscode();
+    headers["x-client-info"] = encodeURIComponent(getEditPasscode());
   }
   const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL || ""}/rest/v1/${table}${query}`, {
     method,
