@@ -6,22 +6,63 @@ const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
 export const isSupabaseReady = Boolean(URL && KEY);
 
-async function sbFetch(table: string, method: string, query = "", body?: unknown, extraHeaders?: Record<string, string>) {
-  if (!isSupabaseReady) throw new Error("尚未配置 Supabase Secrets");
-  const res = await fetch(`${URL}/rest/v1/${table}${query}`, {
+const PASSCODE_KEY = "milky_edit_passcode";
+
+function getEditPasscode(): string {
+  if (typeof window === "undefined") return "";
+  let code = window.localStorage.getItem(PASSCODE_KEY) || "";
+  if (!code) {
+    const isJa = window.localStorage.getItem("milky-locale") === "ja";
+    const input = window.prompt(
+      isJa
+        ? "🔑 編集・追加するにはファン暗号を入力してください（1回入力すれば保存されます）："
+        : "🔑 请输入粉丝群编辑暗号（输对一次后自动记住，防路人捣乱）："
+    );
+    if (!input || !input.trim()) {
+      throw new Error(isJa ? "暗号の入力がキャンセルされました" : "已取消提交（未输入暗号）");
+    }
+    code = input.trim();
+    window.localStorage.setItem(PASSCODE_KEY, code);
+  }
+  return code;
+}
+
+async function sbFetch(
+  table: string,
+  method: string,
+  query = "",
+  body?: unknown,
+  extraHeaders: Record<string, string> = {}
+) {
+  if (!isSupabaseReady) {
+    throw new Error("请先在 GitHub Secrets 配置 Supabase");
+  }
+  const headers: Record<string, string> = {
+    apikey: (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""),
+    Authorization: `Bearer ${(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "")}`,
+    "Content-Type": "application/json",
+    ...extraHeaders,
+  };
+  if (method !== "GET") {
+    headers["x-client-info"] = getEditPasscode();
+  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL || ""}/rest/v1/${table}${query}`, {
     method,
-    headers: {
-      apikey: KEY,
-      Authorization: `Bearer ${KEY}`,
-      "Content-Type": "application/json",
-      Prefer: "return=representation",
-      ...(extraHeaders || {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
+    headers,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
   });
-  if (!res.ok) throw new Error(await res.text());
-  if (res.status === 204) return [];
-  return res.json();
+  if (!res.ok) {
+    const txt = await res.text();
+    if (method !== "GET" && (res.status === 401 || res.status === 403 || txt.includes("42501") || txt.includes("row-level security"))) {
+      if (typeof window !== "undefined") window.localStorage.removeItem(PASSCODE_KEY);
+      const isJa = typeof window !== "undefined" && window.localStorage.getItem("milky-locale") === "ja";
+      throw new Error(isJa ? "暗号が違います。もう一度送信して正しい暗号を入力してください" : "暗号错误！已清除缓存，请重新点提交并输入正确暗号");
+    }
+    throw new Error(txt || `HTTP ${res.status}`);
+  }
+  if (res.status === 204) return null;
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
 }
 
 export async function fetchCloudSongs(): Promise<SongItem[]> {
