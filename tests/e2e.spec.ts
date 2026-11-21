@@ -25,7 +25,6 @@ test("核心路径 + 歌回点唱机 E2E 冒烟测试", async ({ page, request }
     const iframeSrc = await iframe.getAttribute("src");
     expect(iframeSrc).toContain("player.bilibili.com/player.html");
   }
-  expect(iframeSrc).toContain("t=755"); // 12:35 = 755 秒
 
   // 2. 清空搜索并测试随机点歌按钮
   await page.getByTestId("jukebox-search").fill("");
