@@ -1,6 +1,9 @@
 name: Deploy MilkyTube Portal to GitHub Pages
 
 on:
+  workflow_run:
+    workflows: ["Daily Bilibili Archive Sync"]
+    types: [completed]
   push:
     branches: ["main"]
   workflow_dispatch:
