@@ -5,7 +5,7 @@ const nextConfig = {
   output: "export",
   trailingSlash: true,
   basePath,
-  assetPrefix: basePath ? basePath + "/" : undefined,
+  // assetPrefix removed for milkyvtuber.live
   images: {
     unoptimized: true,
   },
