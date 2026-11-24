@@ -151,9 +151,9 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
           : s.genre === genre;
       const okQ =
         !q ||
-        s.title.toLowerCase().includes(q) ||
-        s.artist.toLowerCase().includes(q) ||
-        s.streamTitle.toLowerCase().includes(q);
+        (s.title ?? "").toLowerCase().includes(q) ||
+        (s.artist ?? "").toLowerCase().includes(q) ||
+        (s.streamTitle ?? "").toLowerCase().includes(q);
       return okGenre && okQ;
     });
   }, [songs, query, genre, favorites]);
@@ -537,7 +537,7 @@ export default function Jukebox({ initialSongs, initialUnindexed }: Props) {
             <div className="max-h-80 space-y-1.5 overflow-y-auto pr-1">
               {groups.map((grp) => {
                 const primary = grp.versions[0];
-                const isActive = current.title.toLowerCase() === grp.title.toLowerCase();
+                const isActive = (current.title ?? "").toLowerCase() === (grp.title ?? "").toLowerCase();
                 return (
                   <button
                     key={grp.title}
