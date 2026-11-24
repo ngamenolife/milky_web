@@ -1,3 +1,4 @@
+import LivePreviewStrip from "@/components/LivePreviewStrip";
 import PortalApp from "@/components/PortalApp";
 import { fetchBilibiliVideos } from "@/lib/bilibili";
 import { fetchYouTubeRss, SEED_VIDEOS } from "@/lib/data";
@@ -18,11 +19,14 @@ export default async function HomePage() {
   const initialSchedule = readScheduleStore();
 
   return (
-    <PortalApp
+    <>
+      <LivePreviewStrip />
+      <PortalApp
       initialSchedule={initialSchedule}
       initialVideos={initialVideos}
       initialSongs={songsStore.songs}
       initialUnindexed={songsStore.unindexedStreams}
     />
+    </>
   );
 }
