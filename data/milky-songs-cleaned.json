@@ -2,7 +2,7 @@
   "meta": {
     "schema": "milky-karaoke/v1-cleaned",
     "generatedAt": "2026-11-20T12:18:55.723Z",
-    "cleanedSongs": 101,
+    "cleanedSongs": 175,
     "unindexedStreams": 16,
     "excludedCount": 20
   },
@@ -1641,1631 +1641,1158 @@
     {
       "id": "excel-song-102",
       "title": "Flow",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#2:21:00；歌回②P2#00:37清唱；歌回③P2#1:11:59、#1:13:39清唱",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 8460,
-          "label": "歌回① P2"
-        },
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 37,
-          "label": "歌回② P2"
-        },
-        {
-          "bvid": "BV1BWHQ6PE7f",
-          "page": 2,
-          "startSeconds": 4319,
-          "label": "歌回③ P2"
-        },
-        {
-          "bvid": "BV1BWHQ6PE7f",
-          "page": 2,
-          "startSeconds": 4419,
-          "label": "歌回③ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 8460,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "02:21:00",
+      "startSec": 8460,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-102-v2",
+      "title": "Flow",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV1smJq6eEmu",
+      "page": 2,
+      "startTime": "00:37",
+      "startSec": 37,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-102-v3",
+      "title": "Flow",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV1BWHQ6PE7f",
+      "page": 2,
+      "startTime": "01:11:59",
+      "startSec": 4319,
+      "date": "2026-10-08",
+      "streamTitle": "【直播回放】歌枠【中日英字幕】 2026年10月08日12点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-102-v4",
+      "title": "Flow",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV1BWHQ6PE7f",
+      "page": 2,
+      "startTime": "01:13:39",
+      "startSec": 4419,
+      "date": "2026-10-08",
+      "streamTitle": "【直播回放】歌枠【中日英字幕】 2026年10月08日12点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-103",
       "title": "Alive A life",
-      "tags": [
-        "歌回"
-      ],
-      "note": "历史切片；歌回①P2#2:10:54；歌回⑤#1:45:18",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 7854,
-          "label": "歌回① P2"
-        },
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 6318,
-          "label": "歌回⑤"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 7854,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "02:10:54",
+      "startSec": 7854,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-103-v2",
+      "title": "Alive A life",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV187B5BQECp",
+      "page": 1,
+      "startTime": "01:45:18",
+      "startSec": 6318,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-104",
       "title": "夢をかなえてドラえもん",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#11:44；歌回④P2#19:18清唱",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 704,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 704,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "11:44",
+      "startSec": 704,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-105",
       "title": "津軽海峡冬景色",
+      "artist": "",
+      "language": "",
+      "genre": "",
       "tags": [
         "歌单"
       ],
-      "note": "历史切片；歌回④P2#48:35清唱",
-      "versions": [],
-      "artist": "",
-      "language": "",
-      "genre": "",
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
-    },
-    {
-      "id": "excel-song-106",
-      "title": "新宝岛",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回④P2#1:21:28；歌回⑤#14:18",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 858,
-          "label": "歌回⑤"
-        }
-      ],
-      "artist": "",
-      "language": "",
-      "genre": "",
-      "bvid": "BV187B5BQECp",
-      "page": 1,
-      "startTime": 858,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片；歌回④P2#48:35清唱",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-107",
       "title": "Anything Goes!",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2；歌回⑤P2#59:20",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 3560,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 3560,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "59:20",
+      "startSec": 3560,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-108",
       "title": "ダダダダ天使",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#2:06:26；歌回⑤P2#1:14:48",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 7586,
-          "label": "歌回① P2"
-        },
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 4488,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 7586,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "02:06:26",
+      "startSec": 7586,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-108-v2",
+      "title": "ダダダダ天使",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV187B5BQECp",
+      "page": 2,
+      "startTime": "01:14:48",
+      "startSec": 4488,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-109",
       "title": "ポケットにファンタジー",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:49:20；歌回⑤P2#04:27",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 6560,
-          "label": "歌回② P2"
-        },
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 267,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 6560,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:49:20",
+      "startSec": 6560,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-109-v2",
+      "title": "ポケットにファンタジー",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV187B5BQECp",
+      "page": 2,
+      "startTime": "04:27",
+      "startSec": 267,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-110",
       "title": "oath sign",
-      "tags": [
-        "歌回"
-      ],
-      "note": "历史切片；歌回⑤#1:49:50",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 6590,
-          "label": "歌回⑤"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 1,
-      "startTime": 6590,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:49:50",
+      "startSec": 6590,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-111",
       "title": "お願いマッスル",
-      "tags": [
-        "歌回"
-      ],
-      "note": "历史切片；歌回⑤P2#38:20",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 2300,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 2300,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "38:20",
+      "startSec": 2300,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-112",
       "title": "歌に形はないけれど",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#35:07；歌回②P2#48:14",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 2107,
-          "label": "歌回① P2"
-        },
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 2894,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 2107,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "35:07",
+      "startSec": 2107,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-112-v2",
+      "title": "歌に形はないけれど",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV1smJq6eEmu",
+      "page": 2,
+      "startTime": "48:14",
+      "startSec": 2894,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-113",
       "title": "ライオン",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#00:33",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 33,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 33,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "00:33",
+      "startSec": 33,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-114",
       "title": "あんなに一緒だったのに",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#21:51",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 1311,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 1311,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "21:51",
+      "startSec": 1311,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-115",
       "title": "Lemon",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2#27:38",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2#27:38",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-116",
       "title": "雪之华",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2#32:44",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2#32:44",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-117",
       "title": "Air",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2#44:13清唱",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2#44:13清唱",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-118",
       "title": "You!",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2#44:46、#45:42清唱",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2#44:46、#45:42清唱",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-119",
       "title": "天城越え",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-120",
       "title": "A Whole New World",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-121",
       "title": "Let It Go",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回④P2#1:04:12",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回④P2#1:04:12",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-122",
       "title": "暁の車（晓之车）",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#54:06",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 3246,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 3246,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "54:06",
+      "startSec": 3246,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-123",
       "title": "桜色舞うころ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#1:02:25",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 3745,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 3745,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:02:25",
+      "startSec": 3745,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-124",
       "title": "うっせぇわ（烦死了）",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#1:29:32",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 5372,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 5372,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:29:32",
+      "startSec": 5372,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-125",
       "title": "Catch You Catch Me",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#1:37:52",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 5872,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 5872,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:37:52",
+      "startSec": 5872,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-126",
       "title": "Be The One",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#1:56:55",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 7015,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 7015,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:56:55",
+      "startSec": 7015,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-127",
       "title": "千年の曉～極朱雀征魂戰",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回①P2#2:15:50",
-      "versions": [
-        {
-          "bvid": "BV15hsL6eEJ4",
-          "page": 2,
-          "startSeconds": 8150,
-          "label": "歌回① P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV15hsL6eEJ4",
       "page": 2,
-      "startTime": 8150,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "02:15:50",
+      "startSec": 8150,
+      "date": "2026-11-14",
+      "streamTitle": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-128",
       "title": "歌舞伎町の女王",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#04:14",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 254,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 254,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "04:14",
+      "startSec": 254,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-129",
       "title": "おどるポンポコリン",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#07:48",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 468,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 468,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "07:48",
+      "startSec": 468,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-130",
       "title": "だんご大家族（团子大家族）",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#23:08清唱",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 1388,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 1388,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "23:08",
+      "startSec": 1388,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-131",
       "title": "水の星へ爱をこめて",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#39:12清唱 + #40:02带伴奏",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 2352,
-          "label": "歌回② P2"
-        },
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 2402,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 2352,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "39:12",
+      "startSec": 2352,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
+    },
+    {
+      "id": "excel-song-131-v2",
+      "title": "水の星へ爱をこめて",
+      "artist": "",
+      "language": "",
+      "genre": "",
+      "tags": [],
+      "bvid": "BV1smJq6eEmu",
+      "page": 2,
+      "startTime": "40:02",
+      "startSec": 2402,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-132",
       "title": "The Little Mermaid",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#44:06",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 2646,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 2646,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "44:06",
+      "startSec": 2646,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-133",
       "title": "Love is an open door",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回②P2",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回②P2",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-134",
       "title": "JUST COMMUNICATION",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:06:35",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 3995,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 3995,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:06:35",
+      "startSec": 3995,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-135",
       "title": "魂のエヴォリューション",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:20:33",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 4833,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 4833,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:20:33",
+      "startSec": 4833,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-136",
       "title": "ダブルラリアット",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:25:44",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 5144,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 5144,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:25:44",
+      "startSec": 5144,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-137",
       "title": "Bad Apple!",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:29:32",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 5372,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 5372,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:29:32",
+      "startSec": 5372,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-138",
       "title": "風といっしょに",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:43:16",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 6196,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 6196,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:43:16",
+      "startSec": 6196,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-139",
       "title": "ラプラスにのって",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#1:53:57",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 6837,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 6837,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:53:57",
+      "startSec": 6837,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-140",
       "title": "Twinkle Talk",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回②P2#2:25:38",
-      "versions": [
-        {
-          "bvid": "BV1smJq6eEmu",
-          "page": 2,
-          "startSeconds": 8738,
-          "label": "歌回② P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV1smJq6eEmu",
       "page": 2,
-      "startTime": 8738,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "02:25:38",
+      "startSec": 8738,
+      "date": "2026-10-17",
+      "streamTitle": "【直播回放】【B限】歌枠　karaoke【中日英字幕】 2026年10月17日20点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-141",
       "title": "マトリョシカ（套娃）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-142",
       "title": "もうそう・えくすぷれす（妄想Express）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-143",
       "title": "ノーザンクロス（北十字星）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-144",
       "title": "初めてのチュウ（第一次的吻）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-145",
       "title": "学猫叫（日语版）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-146",
       "title": "MEMORIA",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-147",
       "title": "やさしさに包まれたなら",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-148",
       "title": "君は僕に似ている",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-149",
       "title": "Planetarium",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-150",
       "title": "青空狂想曲",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-151",
       "title": "热爱105℃的你",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片（中文翻唱）",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片（中文翻唱）",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-152",
       "title": "ドラえもんのうた（哆啦A梦之歌）",
-      "tags": [
-        "歌单"
-      ],
-      "note": "历史切片",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "历史切片",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-153",
       "title": "おジャ魔女カーニバル!!",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤#1:40:02",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 6002,
-          "label": "歌回⑤"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 1,
-      "startTime": 6002,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:40:02",
+      "startSec": 6002,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-154",
       "title": "仮面ライダークウガ!",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤#1:54:49",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 6889,
-          "label": "歌回⑤"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 1,
-      "startTime": 6889,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:54:49",
+      "startSec": 6889,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-155",
       "title": "青空のナミダ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤#1:59:10",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 1,
-          "startSeconds": 7150,
-          "label": "歌回⑤"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 1,
-      "startTime": 7150,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:59:10",
+      "startSec": 7150,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-156",
       "title": "バ・ビ・ブ・ベビーストウォーズ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#09:55",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 595,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 595,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "09:55",
+      "startSec": 595,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-157",
       "title": "きっと明日は晴れるから",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#16:27",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 987,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 987,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "16:27",
+      "startSec": 987,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-158",
       "title": "ケロッ!とマーチ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#21:20",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 1280,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 1280,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "21:20",
+      "startSec": 1280,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-159",
       "title": "ねこ日記",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#34:11",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 2051,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 2051,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "34:11",
+      "startSec": 2051,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-160",
       "title": "ハレ晴レユカイ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#42:14",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 2534,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 2534,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "42:14",
+      "startSec": 2534,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-161",
       "title": "バリバリ最強NO.1",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#45:47",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 2747,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 2747,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "45:47",
+      "startSec": 2747,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-162",
       "title": "谜",
-      "tags": [
-        "歌单"
-      ],
-      "note": "歌回⑤P2",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "歌回⑤P2",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-163",
       "title": "EXCITE",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#1:02:55",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 3775,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 3775,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:02:55",
+      "startSec": 3775,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-164",
       "title": "Climax Jump",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#1:06:02",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 3962,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 3962,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:06:02",
+      "startSec": 3962,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-165",
       "title": "PONPONPON",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#1:10:24",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 4224,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 4224,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:10:24",
+      "startSec": 4224,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-166",
       "title": "おちゃめ機能",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#1:18:34",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 4714,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 4714,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:18:34",
+      "startSec": 4714,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-167",
       "title": "いーあるふぁんくらぶ",
-      "tags": [
-        "歌回"
-      ],
-      "note": "歌回⑤P2#1:22:49",
-      "versions": [
-        {
-          "bvid": "BV187B5BQECp",
-          "page": 2,
-          "startSeconds": 4969,
-          "label": "歌回⑤ P2"
-        }
-      ],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [],
       "bvid": "BV187B5BQECp",
       "page": 2,
-      "startTime": 4969,
-      "startSec": 0,
-      "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "startTime": "01:22:49",
+      "startSec": 4969,
+      "date": "2025-12-24",
+      "streamTitle": "【直播回放】B限　Xmas歌枠 2025年12月24日14点场",
+      "contributor": "歌单统计"
     },
     {
       "id": "excel-song-168",
       "title": "カイネ/救済",
-      "tags": [
-        "歌单"
-      ],
-      "note": "手动   【尼尔 人工生命】",
-      "versions": [],
       "artist": "",
       "language": "",
       "genre": "",
+      "tags": [
+        "歌单"
+      ],
       "bvid": "",
-      "page": 0,
+      "page": 1,
       "startTime": "",
       "startSec": 0,
       "date": "",
-      "streamTitle": "",
-      "contributor": ""
+      "streamTitle": "手动   【尼尔 人工生命】",
+      "contributor": "歌单统计"
     }
   ],
   "unindexedStreams": [
