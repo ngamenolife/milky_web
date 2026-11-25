@@ -19,4 +19,6 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          X_RSS_URL: ${{ secrets.X_RSS_URL }}
+          TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
         run: node scripts/sync-social-feed.mjs

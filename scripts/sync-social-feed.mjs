@@ -10,13 +10,13 @@ const SUPABASE_URL = (process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABA
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const BILIBILI_COOKIE = process.env.BILIBILI_COOKIE || "";
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+const X_RSS_URL = (process.env.X_RSS_URL || "").trim();
+const TWITTERAPI_IO_KEY = (process.env.TWITTERAPI_IO_KEY || "").trim();
 
 const DEFAULT_NITTER_HOSTS = [
-  "xcancel.com",
-  "nitter.poast.org",
+  "nitter.jaydenha.uk",
+  "d420.net",
   "nitter.privacyredirect.com",
-  "nitter.tiekoetter.com",
-  "nitter.net",
 ];
 const NITTER_HOSTS = (process.env.NITTER_INSTANCES || "")
   .split(",")
@@ -52,7 +52,7 @@ function normalizeNitterImg(src, host) {
   if (!src) return "";
   let url = decodeEntities(src).trim();
   if (url.startsWith("//")) url = "https:" + url;
-  else if (url.startsWith("/")) url = `https://${host}${url}`;
+  else if (url.startsWith("/") && host) url = `https://${host}${url}`;
 
   const picMatch = url.match(/\/pic\/(.+)$/);
   if (picMatch && picMatch) {
@@ -66,6 +66,47 @@ function normalizeNitterImg(src, host) {
   return url;
 }
 
+function parseRssXmlToTweets(xml, host = "") {
+  const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+  const posts = [];
+  for (const block of items.slice(0, 20)) {
+    const title = decodeEntities((block.match(/<title>([\s\S]*?)<\/title>/) || []) || "");
+    const link = decodeEntities((block.match(/<link>([\s\S]*?)<\/link>/) || []) || "").trim();
+    const guid = decodeEntities((block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/) || []) || "").trim();
+    const pubDate = decodeEntities((block.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || []) || "").trim();
+    const desc = (block.match(/<description>([\s\S]*?)<\/description>/) || []) || "";
+
+    const idMatch = (link + " " + guid).match(/\/status\/(\d+)/);
+    if (!idMatch || !idMatch) continue;
+    const postId = idMatch;
+    const parsedTime = new Date(pubDate);
+    if (Number.isNaN(parsedTime.getTime())) continue;
+
+    const imgMatches = [
+      ...decodeEntities(desc).matchAll(/<img[^>]+src=["']([^"']+)["']/gi),
+      ...block.matchAll(/<media:content[^>]+url=["']([^"']+)["']/gi),
+      ...block.matchAll(/<enclosure[^>]+url=["']([^"']+)["']/gi),
+    ];
+    const images = [...new Set(imgMatches.map((m) => normalizeNitterImg(m, host)).filter(Boolean))].slice(0, 9);
+
+    const isRepost = /^RT\s+(by\s+)?@/i.test(title) || /^RT by\s+/i.test(title);
+    const text = stripHtml(desc) || stripHtml(title);
+
+    posts.push({
+      id: `twitter:${postId}`,
+      platform: "twitter",
+      post_id: postId,
+      published_at: parsedTime.toISOString(),
+      text: text || "（无正文推文）",
+      images,
+      url: `https://x.com/${X_HANDLE}/status/${postId}`,
+      is_repost: isRepost,
+    });
+  }
+  return posts;
+}
+
+// ---------- 1. 抓取 B 站动态 ----------
 async function fetchBilibiliDynamics() {
   const url = `https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid=${BILI_UID}&features=itemOpusStyle`;
   const headers = {
@@ -134,14 +175,116 @@ async function fetchBilibiliDynamics() {
   }
 }
 
-async function fetchTwitterViaNitter() {
+// ---------- 2. 抓取 X (Twitter) 推文（4 层自动通道） ----------
+async function fetchTwitterPosts() {
+  // 通道 1：TwitterAPI.io（配置了 TWITTERAPI_IO_KEY 时优先）
+  if (TWITTERAPI_IO_KEY) {
+    try {
+      const res = await fetch(
+        `https://api.twitterapi.io/twitter/user/last_tweets?userName=${encodeURIComponent(X_HANDLE)}`,
+        { headers: { "X-API-Key": TWITTERAPI_IO_KEY }, signal: AbortSignal.timeout(15000) }
+      );
+      if (res.ok) {
+        const json = await res.json();
+        const list = json?.data?.tweets || json?.tweets || [];
+        const posts = list.slice(0, 20).map((t) => {
+          const postId = String(t.id || "");
+          const media = t.extendedEntities?.media || t.entities?.media || [];
+          const images = media.map((m) => m.media_url_https || m.media_url).filter(Boolean).slice(0, 9);
+          return {
+            id: `twitter:${postId}`,
+            platform: "twitter",
+            post_id: postId,
+            published_at: new Date(t.createdAt || Date.now()).toISOString(),
+            text: String(t.text || "").trim() || "（无正文推文）",
+            images,
+            url: t.url || `https://x.com/${X_HANDLE}/status/${postId}`,
+            is_repost: Boolean(t.retweeted_tweet || /^RT @/i.test(t.text || "")),
+          };
+        }).filter((p) => p.post_id);
+        if (posts.length > 0) {
+          console.log(`✅ X 推文抓取成功（TwitterAPI.io）：${posts.length} 条`);
+          return posts;
+        }
+      }
+    } catch (err) {
+      console.warn("⚠️ TwitterAPI.io 抓取失败：", err.message);
+    }
+  }
+
+  // 通道 2：自定义 RSS（如 RSS.app 免费生成的 @MilkyVtuber RSS 链接）
+  if (X_RSS_URL) {
+    try {
+      const res = await fetch(X_RSS_URL, {
+        headers: { "User-Agent": UA, Accept: "application/rss+xml, application/xml, text/xml" },
+        signal: AbortSignal.timeout(15000),
+      });
+      if (res.ok) {
+        const xml = await res.text();
+        const posts = parseRssXmlToTweets(xml);
+        if (posts.length > 0) {
+          console.log(`✅ X 推文抓取成功（自定义 RSS）：${posts.length} 条`);
+          return posts;
+        }
+      } else {
+        console.warn(`⚠️ 自定义 X_RSS_URL 返回 HTTP ${res.status}`);
+      }
+    } catch (err) {
+      console.warn("⚠️ 自定义 X_RSS_URL 抓取失败：", err.message);
+    }
+  }
+
+  // 通道 3：X 官方免登录 Syndication 接口
+  try {
+    const res = await fetch(
+      `https://syndication.twitter.com/srv/timeline-profile/screen-name/${encodeURIComponent(X_HANDLE)}`,
+      { headers: { "User-Agent": UA, Accept: "text/html" }, signal: AbortSignal.timeout(15000) }
+    );
+    if (res.ok) {
+      const html = await res.text();
+      const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
+      if (match && match) {
+        const nextData = JSON.parse(match);
+        const entries = nextData?.props?.pageProps?.timeline?.entries || [];
+        const posts = [];
+        for (const entry of entries.slice(0, 20)) {
+          const tw = entry?.content?.tweet;
+          if (!tw?.id_str) continue;
+          const postId = String(tw.id_str);
+          const created = new Date(tw.created_at || Date.now());
+          if (Number.isNaN(created.getTime())) continue;
+          const media = tw.extended_entities?.media || tw.entities?.media || [];
+          const images = media.map((m) => m.media_url_https || m.media_url).filter(Boolean).slice(0, 9);
+          posts.push({
+            id: `twitter:${postId}`,
+            platform: "twitter",
+            post_id: postId,
+            published_at: created.toISOString(),
+            text: String(tw.full_text || tw.text || "").trim() || "（无正文推文）",
+            images,
+            url: `https://x.com/${X_HANDLE}/status/${postId}`,
+            is_repost: Boolean(tw.retweeted_status_id_str || /^RT @/i.test(tw.full_text || "")),
+          });
+        }
+        if (posts.length > 0) {
+          console.log(`✅ X 推文抓取成功（官方 Syndication）：${posts.length} 条`);
+          return posts;
+        }
+      }
+    } else {
+      console.warn(`⚠️ X Syndication 返回 HTTP ${res.status}`);
+    }
+  } catch (err) {
+    console.warn("⚠️ X Syndication 抓取失败：", err.message);
+  }
+
+  // 通道 4：残存 Nitter 节点兜底
   const tried = new Set();
   for (const host of NITTER_HOSTS) {
     if (tried.has(host)) continue;
     tried.add(host);
-    const rssUrl = `https://${host}/${X_HANDLE}/rss`;
     try {
-      const res = await fetch(rssUrl, {
+      const res = await fetch(`https://${host}/${X_HANDLE}/rss`, {
         headers: { "User-Agent": UA, Accept: "application/rss+xml, application/xml, text/xml" },
         signal: AbortSignal.timeout(12000),
       });
@@ -150,55 +293,21 @@ async function fetchTwitterViaNitter() {
         continue;
       }
       const xml = await res.text();
-      if (!xml.includes("<item>")) {
-        console.warn(`⚠️ Nitter 节点 ${host} 未返回有效 RSS 条目`);
-        continue;
-      }
-
-      const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
-      const posts = [];
-      for (const block of items.slice(0, 20)) {
-        const title = decodeEntities((block.match(/<title>([\s\S]*?)<\/title>/) || []) || "");
-        const link = decodeEntities((block.match(/<link>([\s\S]*?)<\/link>/) || []) || "").trim();
-        const pubDate = decodeEntities((block.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || []) || "").trim();
-        const desc = (block.match(/<description>([\s\S]*?)<\/description>/) || []) || "";
-
-        const idMatch = link.match(/\/status\/(\d+)/);
-        if (!idMatch || !idMatch) continue;
-        const postId = idMatch;
-        const parsedTime = new Date(pubDate);
-        if (Number.isNaN(parsedTime.getTime())) continue;
-
-        const imgMatches = [...decodeEntities(desc).matchAll(/<img[^>]+src=["']([^"']+)["']/gi)];
-        const images = [...new Set(imgMatches.map((m) => normalizeNitterImg(m, host)).filter(Boolean))].slice(0, 9);
-
-        const isRepost = /^RT by\s+/i.test(title);
-        const text = stripHtml(desc) || stripHtml(title);
-
-        posts.push({
-          id: `twitter:${postId}`,
-          platform: "twitter",
-          post_id: postId,
-          published_at: parsedTime.toISOString(),
-          text: text || "（无正文推文）",
-          images,
-          url: `https://x.com/${X_HANDLE}/status/${postId}`,
-          is_repost: isRepost,
-        });
-      }
-
+      const posts = parseRssXmlToTweets(xml, host);
       if (posts.length > 0) {
-        console.log(`✅ X 推文抓取成功（节点 ${host}）：${posts.length} 条`);
+        console.log(`✅ X 推文抓取成功（Nitter ${host}）：${posts.length} 条`);
         return posts;
       }
     } catch (err) {
       console.warn(`⚠️ Nitter 节点 ${host} 失败：`, err.message);
     }
   }
-  console.warn("⚠️ 所有 Nitter 节点均暂时不可用，本次跳过 X 推文同步");
+
+  console.warn("⚠️ 全部 X 通道暂不可用，建议在 GitHub Secrets 配置免费的 X_RSS_URL（如 RSS.app）");
   return [];
 }
 
+// ---------- 3. Supabase 读写辅助 ----------
 async function sbFetch(path, options = {}) {
   const authHeaders = SUPABASE_SERVICE_KEY.startsWith("sb_secret_")
     ? { apikey: SUPABASE_SERVICE_KEY }
@@ -220,6 +329,7 @@ async function sbFetch(path, options = {}) {
   return ct.includes("application/json") ? res.json() : null;
 }
 
+// ---------- 4. 可选：Gemini AI 自动解析开播预告写入 schedules ----------
 const SCHEDULE_HINT_RE = /(配信|予定|直播|开播|開播|歌枠|歌回|同時視聴|同时视听|FF14|枠|時|点|\d{1,2}[:：]\d{2})/i;
 
 async function extractAndSaveSchedules(newPosts) {
@@ -303,7 +413,7 @@ async function main() {
 
   const [biliPosts, xPosts] = await Promise.all([
     fetchBilibiliDynamics(),
-    fetchTwitterViaNitter(),
+    fetchTwitterPosts(),
   ]);
   const allPosts = [...biliPosts, ...xPosts];
   if (allPosts.length === 0) {
