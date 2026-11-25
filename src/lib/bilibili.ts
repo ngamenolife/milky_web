@@ -104,9 +104,11 @@ export function signWbiParams(
 
 function readLocalCache(): VideoItem[] {
   try {
-    if (!fs.existsSync(CACHE_PATH)) return [];
-    const parsed = JSON.parse(fs.readFileSync(CACHE_PATH, "utf8"));
-    return Array.isArray(parsed) ? parsed : [];
+    const raw = fs.readFileSync(CACHE_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed;
+    if (Array.isArray(parsed?.items)) return parsed.items;
+    return [];
   } catch {
     return [];
   }
