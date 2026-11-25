@@ -94,7 +94,8 @@ function parseFeedXmlToTweets(xml, host = "") {
     ];
     const images = [...new Set(imgMatches.map((m) => normalizeImg(m.at(1), host)).filter(Boolean))].slice(0, 9);
 
-    const isRepost = /^RT\s+(by\s+)?@/i.test(title) || /^RT by\s+/i.test(title);
+    const linkAuthor = (decodeEntities(linkTag) + " " + guid).match(/https?:\/\/[^/]+\/([^/]+)\/status\/\d+/i)?.at(1) || "";
+    const isRepost = (Boolean(linkAuthor) && linkAuthor.toLowerCase() !== X_HANDLE.toLowerCase()) || /^(RT\b|🔁|Retweeted)/i.test(title.trim());
     const text = stripHtml(bodyRaw) || stripHtml(title);
 
     posts.push({
@@ -104,7 +105,7 @@ function parseFeedXmlToTweets(xml, host = "") {
       published_at: parsedTime.toISOString(),
       text: text || "（无正文推文）",
       images,
-      url: `https://x.com/${X_HANDLE}/status/${postId}`,
+      url: `https://x.com/${linkAuthor || X_HANDLE}/status/${postId}`,
       is_repost: isRepost,
     });
   }
@@ -277,7 +278,7 @@ async function sbFetch(path, options = {}) {
 
 async function callGeminiJson(prompt, temperature = 0.2) {
   if (!GEMINI_API_KEY) return null;
-  const models = ["gemini-2.5-flash", "gemini-2.0-flash"];
+  const models = ["gemini-3.8-flash", "gemini-3-flash", "gemini-2.5-flash"];
   for (const model of models) {
     try {
       const res = await fetch(
@@ -415,6 +416,7 @@ ${post.text}
 格式：[{"title":"简短直播标题","start_time":"ISO8601如2026-11-26T21:00:00+09:00","platform":"三台同播"|"Bilibili"|"YouTube"|"Twitch","category":"game"|"watchalong"|"singing"|"bilibili"|"collab","notes":"备注"}]`;
 
       const parsed = await callGeminiJson(prompt, 0.1);
+      if (!Array.isArray(parsed)) continue;
       if (Array.isArray(parsed) && parsed.length > 0) {
         for (let i = 0; i < parsed.length; i++) {
           const ev = parsed.at(i);
