@@ -12,6 +12,7 @@ const SUPABASE_URL = (process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABA
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const BILIBILI_COOKIE = process.env.BILIBILI_COOKIE || "";
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+const GROQ_API_KEY = (process.env.GROQ_API_KEY || "").trim();
 const X_RSS_URL = (process.env.X_RSS_URL || "").trim();
 const TWITTERAPI_IO_KEY = (process.env.TWITTERAPI_IO_KEY || "").trim();
 
@@ -277,8 +278,25 @@ async function sbFetch(path, options = {}) {
 }
 
 async function callGeminiJson(prompt, temperature = 0.2) {
+  if (GROQ_API_KEY) {
+    for (const m of ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "llama-3.3-70b-versatile"]) {
+      try {
+        const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { Authorization: "Bearer " + GROQ_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({ model: m, temperature, messages: [{ role: "user", content: prompt }] }),
+          signal: AbortSignal.timeout(25000),
+        });
+        if (!r.ok) { console.warn("⚠️ Groq (" + m + ") HTTP " + r.status); continue; }
+        const d = await r.json();
+        const txt = (d?.choices?.[0]?.message?.content || "").replace(/<think>[\s\S]*?<\/think>/g, "").trim();
+        const cleaned = txt.replace(/^\`\`\`json|^\`\`\`|\`\`\`$/gm, "").trim();
+        if (cleaned) return JSON.parse(cleaned);
+      } catch (e) { console.warn("⚠️ Groq (" + m + ") 异常：", e.message); }
+    }
+  }
   if (!GEMINI_API_KEY) return null;
-  const models = ["gemini-3.8-flash", "gemini-3-flash", "gemini-2.5-flash"];
+  const models = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.6-flash", "gemini-3.8-flash"];
   for (const model of models) {
     try {
       const res = await fetch(
@@ -340,7 +358,7 @@ async function translatePendingPosts() {
 
   let translated = 0;
 
-  if (GEMINI_API_KEY) {
+  if (GROQ_API_KEY || GEMINI_API_KEY) {
     const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文翻译成自然可爱的简体中文。
 要求：配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定；保留换行和emoji。
 严格返回 JSON 对象：{"帖子id": "中文翻译"}。
@@ -385,8 +403,8 @@ ${JSON.stringify(needTranslate.map((r) => ({ id: r.id, text: r.text })))}`;
 const SCHEDULE_HINT_RE = /(配信|予定|直播|开播|開播|歌枠|歌回|同時視聴|同时视听|FF14|枠|時|点|\d{1,2}[:：]\d{2})/i;
 
 async function parsePendingSchedules() {
-  if (!GEMINI_API_KEY) {
-    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过自动日历解析");
+  if (!GROQ_API_KEY && !GEMINI_API_KEY) {
+    console.warn("⚠️ 未检测到 AI Key，跳过自动日历解析");
     return;
   }
   const pending = await sbFetch(
