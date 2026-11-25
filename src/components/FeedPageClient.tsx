@@ -11,6 +11,7 @@ interface SocialPost {
   post_id: string;
   published_at: string;
   text: string;
+  text_zh?: string | null;
   images: string[];
   url: string;
   is_repost: boolean;
@@ -88,7 +89,7 @@ export default function FeedPageClient() {
     return posts.filter((p) => {
       if (platform !== "all" && p.platform !== platform) return false;
       if (hideRepost && p.is_repost) return false;
-      if (q && !(p.text || "").toLowerCase().includes(q)) return false;
+      if (q && !(p.text || "").toLowerCase().includes(q) && !(p.text_zh || "").toLowerCase().includes(q)) return false;
       return true;
     });
   }, [posts, platform, hideRepost, query]);

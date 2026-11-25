@@ -1,6 +1,6 @@
 /**
  * 定时同步 Milky (UID 410741448 / @MilkyVtuber) 的 B站动态与 X 推文到 Supabase
- * 若配置了 GEMINI_API_KEY，还会自动解析开播预告并写入 schedules 表
+ * 并使用 Gemini 2.5 Flash 自动：1) 将日文动态/推文翻译为自然中文；2) 提取开播预告写入 schedules
  */
 
 const BILI_UID = "410741448";
@@ -54,9 +54,9 @@ function normalizeNitterImg(src, host) {
   if (url.startsWith("//")) url = "https:" + url;
   else if (url.startsWith("/") && host) url = `https://${host}${url}`;
 
-  const picMatch = url.match(/\/pic\/(.+)$/);
-  if (picMatch && picMatch) {
-    const decoded = decodeURIComponent(picMatch);
+  const picPath = url.match(/\/pic\/(.+)$/)?.at(1);
+  if (picPath) {
+    const decoded = decodeURIComponent(picPath);
     if (decoded.startsWith("orig/")) return "https://pbs.twimg.com/" + decoded.slice(5);
     if (decoded.startsWith("media/") || decoded.startsWith("ext_tw_video_thumb/")) {
       return "https://pbs.twimg.com/" + decoded;
@@ -70,15 +70,14 @@ function parseRssXmlToTweets(xml, host = "") {
   const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
   const posts = [];
   for (const block of items.slice(0, 20)) {
-    const title = decodeEntities((block.match(/<title>([\s\S]*?)<\/title>/) || []) || "");
-    const link = decodeEntities((block.match(/<link>([\s\S]*?)<\/link>/) || []) || "").trim();
-    const guid = decodeEntities((block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/) || []) || "").trim();
-    const pubDate = decodeEntities((block.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || []) || "").trim();
-    const desc = (block.match(/<description>([\s\S]*?)<\/description>/) || []) || "";
+    const title = decodeEntities(block.match(/<title>([\s\S]*?)<\/title>/)?.at(1) || "");
+    const link = decodeEntities(block.match(/<link>([\s\S]*?)<\/link>/)?.at(1) || "").trim();
+    const guid = decodeEntities(block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.at(1) || "").trim();
+    const pubDate = decodeEntities(block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.at(1) || "").trim();
+    const desc = block.match(/<description>([\s\S]*?)<\/description>/)?.at(1) || "";
 
-    const idMatch = (link + " " + guid).match(/\/status\/(\d+)/);
-    if (!idMatch || !idMatch) continue;
-    const postId = idMatch;
+    const postId = (link + " " + guid).match(/\/status\/(\d+)/)?.at(1);
+    if (!postId) continue;
     const parsedTime = new Date(pubDate);
     if (Number.isNaN(parsedTime.getTime())) continue;
 
@@ -87,7 +86,7 @@ function parseRssXmlToTweets(xml, host = "") {
       ...block.matchAll(/<media:content[^>]+url=["']([^"']+)["']/gi),
       ...block.matchAll(/<enclosure[^>]+url=["']([^"']+)["']/gi),
     ];
-    const images = [...new Set(imgMatches.map((m) => normalizeNitterImg(m, host)).filter(Boolean))].slice(0, 9);
+    const images = [...new Set(imgMatches.map((m) => normalizeNitterImg(m.at(1), host)).filter(Boolean))].slice(0, 9);
 
     const isRepost = /^RT\s+(by\s+)?@/i.test(title) || /^RT by\s+/i.test(title);
     const text = stripHtml(desc) || stripHtml(title);
@@ -177,7 +176,6 @@ async function fetchBilibiliDynamics() {
 
 // ---------- 2. 抓取 X (Twitter) 推文（4 层自动通道） ----------
 async function fetchTwitterPosts() {
-  // 通道 1：TwitterAPI.io（配置了 TWITTERAPI_IO_KEY 时优先）
   if (TWITTERAPI_IO_KEY) {
     try {
       const res = await fetch(
@@ -187,21 +185,24 @@ async function fetchTwitterPosts() {
       if (res.ok) {
         const json = await res.json();
         const list = json?.data?.tweets || json?.tweets || [];
-        const posts = list.slice(0, 20).map((t) => {
-          const postId = String(t.id || "");
-          const media = t.extendedEntities?.media || t.entities?.media || [];
-          const images = media.map((m) => m.media_url_https || m.media_url).filter(Boolean).slice(0, 9);
-          return {
-            id: `twitter:${postId}`,
-            platform: "twitter",
-            post_id: postId,
-            published_at: new Date(t.createdAt || Date.now()).toISOString(),
-            text: String(t.text || "").trim() || "（无正文推文）",
-            images,
-            url: t.url || `https://x.com/${X_HANDLE}/status/${postId}`,
-            is_repost: Boolean(t.retweeted_tweet || /^RT @/i.test(t.text || "")),
-          };
-        }).filter((p) => p.post_id);
+        const posts = list
+          .slice(0, 20)
+          .map((t) => {
+            const postId = String(t.id || "");
+            const media = t.extendedEntities?.media || t.entities?.media || [];
+            const images = media.map((m) => m.media_url_https || m.media_url).filter(Boolean).slice(0, 9);
+            return {
+              id: `twitter:${postId}`,
+              platform: "twitter",
+              post_id: postId,
+              published_at: new Date(t.createdAt || Date.now()).toISOString(),
+              text: String(t.text || "").trim() || "（无正文推文）",
+              images,
+              url: t.url || `https://x.com/${X_HANDLE}/status/${postId}`,
+              is_repost: Boolean(t.retweeted_tweet || /^RT @/i.test(t.text || "")),
+            };
+          })
+          .filter((p) => p.post_id);
         if (posts.length > 0) {
           console.log(`✅ X 推文抓取成功（TwitterAPI.io）：${posts.length} 条`);
           return posts;
@@ -212,7 +213,6 @@ async function fetchTwitterPosts() {
     }
   }
 
-  // 通道 2：自定义 RSS（如 RSS.app 免费生成的 @MilkyVtuber RSS 链接）
   if (X_RSS_URL) {
     try {
       const res = await fetch(X_RSS_URL, {
@@ -234,7 +234,6 @@ async function fetchTwitterPosts() {
     }
   }
 
-  // 通道 3：X 官方免登录 Syndication 接口
   try {
     const res = await fetch(
       `https://syndication.twitter.com/srv/timeline-profile/screen-name/${encodeURIComponent(X_HANDLE)}`,
@@ -242,9 +241,9 @@ async function fetchTwitterPosts() {
     );
     if (res.ok) {
       const html = await res.text();
-      const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
-      if (match && match) {
-        const nextData = JSON.parse(match);
+      const nextJson = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/)?.at(1);
+      if (nextJson) {
+        const nextData = JSON.parse(nextJson);
         const entries = nextData?.props?.pageProps?.timeline?.entries || [];
         const posts = [];
         for (const entry of entries.slice(0, 20)) {
@@ -278,7 +277,6 @@ async function fetchTwitterPosts() {
     console.warn("⚠️ X Syndication 抓取失败：", err.message);
   }
 
-  // 通道 4：残存 Nitter 节点兜底
   const tried = new Set();
   for (const host of NITTER_HOSTS) {
     if (tried.has(host)) continue;
@@ -303,7 +301,7 @@ async function fetchTwitterPosts() {
     }
   }
 
-  console.warn("⚠️ 全部 X 通道暂不可用，建议在 GitHub Secrets 配置免费的 X_RSS_URL（如 RSS.app）");
+  console.warn("⚠️ 全部 X 通道暂不可用，建议去 rss.app 生成免费 RSS 填入 GitHub Secrets: X_RSS_URL");
   return [];
 }
 
@@ -329,14 +327,84 @@ async function sbFetch(path, options = {}) {
   return ct.includes("application/json") ? res.json() : null;
 }
 
-// ---------- 4. 可选：Gemini AI 自动解析开播预告写入 schedules ----------
+// ---------- 4. Gemini 批量日译中（含历史旧帖自动补翻） ----------
+async function translatePendingPosts() {
+  if (!GEMINI_API_KEY) {
+    console.log("ℹ️ 未配置 GEMINI_API_KEY，跳过自动翻译");
+    return;
+  }
+  const pending = await sbFetch("social_posts?select=id,text&text_zh=is.null&order=published_at.desc&limit=25");
+  if (!Array.isArray(pending) || pending.length === 0) return;
+
+  const needTranslate = [];
+  for (const row of pending) {
+    const t = String(row.text || "").trim();
+    // 含日文假名或纯英文推文才调用翻译，纯中文动态直接标记为空串免重复扫
+    if (t && /[\u3040-\u30ff]/.test(t)) {
+      needTranslate.push({ id: row.id, text: t });
+    } else {
+      await sbFetch(`social_posts?id=eq.${encodeURIComponent(row.id)}`, {
+        method: "PATCH",
+        body: JSON.stringify({ text_zh: "" }),
+      });
+    }
+  }
+  if (needTranslate.length === 0) return;
+
+  for (let i = 0; i < needTranslate.length; i += 10) {
+    const batch = needTranslate.slice(i, i + 10);
+    try {
+      const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文精准翻译成自然、可爱的简体中文。
+要求：
+1. 准确使用二次元/VTuber 圈常用译法（如：配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定、耐久=耐久、おつみる=辛苦啦）。
+2. 保留原有的换行、emoji、游戏名和人名，不要添加多余解释。
+3. 严格返回一个 JSON 对象，key 为输入中的 id，value 为对应的简体中文翻译。
+
+输入数据：
+${JSON.stringify(batch)}`;
+
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 0.2, responseMimeType: "application/json" },
+          }),
+          signal: AbortSignal.timeout(30000),
+        }
+      );
+      if (!res.ok) {
+        console.warn(`⚠️ Gemini 翻译接口返回 HTTP ${res.status}`);
+        continue;
+      }
+      const data = await res.json();
+      const raw = data?.candidates?.at(0)?.content?.parts?.at(0)?.text || "{}";
+      const map = JSON.parse(raw.replace(/^```json|```$/g, "").trim());
+
+      let count = 0;
+      for (const item of batch) {
+        const zh = typeof map[item.id] === "string" ? map[item.id].trim() : "";
+        if (!zh) continue;
+        await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
+          method: "PATCH",
+          body: JSON.stringify({ text_zh: zh }),
+        });
+        count++;
+      }
+      console.log(`🈳 本批已自动翻译 ${count} 条动态/推文为中文`);
+    } catch (err) {
+      console.warn("⚠️ Gemini 批量翻译失败：", err.message);
+    }
+  }
+}
+
+// ---------- 5. Gemini 自动解析开播预告写入 schedules ----------
 const SCHEDULE_HINT_RE = /(配信|予定|直播|开播|開播|歌枠|歌回|同時視聴|同时视听|FF14|枠|時|点|\d{1,2}[:：]\d{2})/i;
 
 async function extractAndSaveSchedules(newPosts) {
-  if (!GEMINI_API_KEY) {
-    console.log("ℹ️ 未配置 GEMINI_API_KEY，跳过 AI 日程自动提取");
-    return;
-  }
+  if (!GEMINI_API_KEY) return;
   const candidates = newPosts.filter((p) => !p.is_repost && SCHEDULE_HINT_RE.test(p.text)).slice(0, 5);
   if (candidates.length === 0) return;
 
@@ -368,12 +436,12 @@ ${post.text}
       );
       if (!res.ok) continue;
       const data = await res.json();
-      const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text || "[]";
+      const raw = data?.candidates?.at(0)?.content?.parts?.at(0)?.text || "[]";
       const parsed = JSON.parse(raw.replace(/^```json|```$/g, "").trim());
       if (!Array.isArray(parsed) || parsed.length === 0) continue;
 
       for (let i = 0; i < parsed.length; i++) {
-        const ev = parsed[i];
+        const ev = parsed.at(i);
         if (!ev?.title || !ev?.start_time) continue;
         const dt = new Date(ev.start_time);
         if (Number.isNaN(dt.getTime())) continue;
@@ -416,26 +484,27 @@ async function main() {
     fetchTwitterPosts(),
   ]);
   const allPosts = [...biliPosts, ...xPosts];
-  if (allPosts.length === 0) {
-    console.log("ℹ️ 本次未抓到任何帖子");
-    return;
+
+  if (allPosts.length > 0) {
+    const existing = await sbFetch("social_posts?select=id&order=published_at.desc&limit=200");
+    const existingSet = new Set((existing || []).map((r) => r.id));
+    const newPosts = allPosts.filter((p) => !existingSet.has(p.id));
+
+    if (newPosts.length > 0) {
+      await sbFetch("social_posts?on_conflict=id", {
+        method: "POST",
+        headers: { Prefer: "resolution=ignore-duplicates" },
+        body: JSON.stringify(newPosts),
+      });
+      console.log(`🎉 新增入库 ${newPosts.length} 条动态/推文`);
+      await extractAndSaveSchedules(newPosts);
+    } else {
+      console.log("✅ 所有抓取到的动态与推文均已是最新");
+    }
   }
 
-  const existing = await sbFetch("social_posts?select=id&order=published_at.desc&limit=200");
-  const existingSet = new Set((existing || []).map((r) => r.id));
-  const newPosts = allPosts.filter((p) => !existingSet.has(p.id));
-
-  if (newPosts.length > 0) {
-    await sbFetch("social_posts?on_conflict=id", {
-      method: "POST",
-      headers: { Prefer: "resolution=ignore-duplicates" },
-      body: JSON.stringify(newPosts),
-    });
-    console.log(`🎉 新增入库 ${newPosts.length} 条动态/推文`);
-    await extractAndSaveSchedules(newPosts);
-  } else {
-    console.log("✅ 所有抓取到的动态与推文均已是最新，无需新增");
-  }
+  // 自动翻译所有还没翻译的日文帖子（含刚入库和之前未翻的旧帖）
+  await translatePendingPosts();
 }
 
 main().catch((err) => {

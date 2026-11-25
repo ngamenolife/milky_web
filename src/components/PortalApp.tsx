@@ -134,6 +134,12 @@ export default function PortalApp({
             <Link href="/schedule" className="rounded-lg px-2.5 py-1 text-stone-600 hover:bg-white hover:text-milky-600">
               {t.navSchedule}
             </Link>
+              <Link
+                href="/feed"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-orange-200 bg-white px-3.5 py-2 text-xs font-semibold text-stone-700 shadow-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-milky-600"
+              >
+                {locale === "ja" ? "📰 タイムライン" : "📰 动态墙"}
+              </Link>
             <Link href="/about" className="rounded-lg px-2.5 py-1 text-stone-600 hover:bg-white hover:text-milky-600">
               {t.navAbout}
             </Link>
