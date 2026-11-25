@@ -11,7 +11,8 @@
       "firstDate": "2026-11-05",
       "year": 2026,
       "category": "任系/平台",
-      "videoTitle": "【直播回放】【ZELDA】【中日英字幕】 2026年11月05日21点场"
+      "videoTitle": "【直播回放】【ZELDA】【中日英字幕】 2026年11月05日21点场",
+      "nameJa": "ゼルダの伝説 時のオカリナ（リメイク版）"
     },
     {
       "id": "game-206",
@@ -19,7 +20,8 @@
       "firstDate": "2026-10-29",
       "year": 2026,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～【中日英字幕】 2026年10月29日10点场"
+      "videoTitle": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～【中日英字幕】 2026年10月29日10点场",
+      "nameJa": "Phantom Blade Zero"
     },
     {
       "id": "game-205",
@@ -27,7 +29,8 @@
       "firstDate": "2026-10-21",
       "year": 2026,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】恶魔城：贝尔蒙特的诅咒【中日英字幕】 2026年10月21日21点场"
+      "videoTitle": "【直播回放】恶魔城：贝尔蒙特的诅咒【中日英字幕】 2026年10月21日21点场",
+      "nameJa": "悪魔城ドラキュラ ベルモンドの呪い"
     },
     {
       "id": "game-204",
@@ -35,7 +38,8 @@
       "firstDate": "2026-10-14",
       "year": 2026,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】鬼泣5【中日英字幕】 2026年10月14日20点场（截止2026年10月15日待更新）"
+      "videoTitle": "【直播回放】鬼泣5【中日英字幕】 2026年10月14日20点场（截止2026年10月15日待更新）",
+      "nameJa": "デビル メイ クライ 5"
     },
     {
       "id": "game-203",
@@ -44,7 +48,8 @@
       "year": 2026,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】鬼泣4【中日英字幕】 2026年10月05日21点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "デビル メイ クライ 4"
     },
     {
       "id": "game-202",
@@ -53,7 +58,8 @@
       "year": 2026,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】鬼泣3　【中日英字幕】 2026年09月24日19点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "デビル メイ クライ 3"
     },
     {
       "id": "game-201",
@@ -62,7 +68,8 @@
       "year": 2026,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】鬼泣2【中日英字幕】 2026年09月19日19点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "デビル メイ クライ 2"
     },
     {
       "id": "game-200",
@@ -71,7 +78,8 @@
       "year": 2026,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】鬼泣【中日英字幕】 2026年09月17日19点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "デビル メイ クライ"
     },
     {
       "id": "game-199",
@@ -80,7 +88,8 @@
       "year": 2026,
       "category": "推理/文字",
       "videoTitle": "【直播回放】Ghost Trick 2026年09月07日20点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "ゴースト トリック"
     },
     {
       "id": "game-198",
@@ -88,7 +97,8 @@
       "firstDate": "2026-09-01",
       "year": 2026,
       "category": "JRPG/RPG",
-      "videoTitle": "【直播回放】PokémonPokopia 2026年09月01日07点场（截止到目前还在玩：2026年10月15日）"
+      "videoTitle": "【直播回放】PokémonPokopia 2026年09月01日07点场（截止到目前还在玩：2026年10月15日）",
+      "nameJa": "Pokémon Pokopia"
     },
     {
       "id": "game-196",
@@ -97,7 +107,8 @@
       "year": 2026,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】Planetzoo 2026年08月19日06点场（共15p）",
-      "episodes": 15
+      "episodes": 15,
+      "nameJa": "プラネット ズー"
     },
     {
       "id": "game-197",
@@ -106,7 +117,8 @@
       "year": 2026,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】PARANORMASAIGHT 2026年08月19日20点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "パラノマサイト FILE23 本所七不思議"
     },
     {
       "id": "game-195",
@@ -115,7 +127,8 @@
       "year": 2026,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】DAVETEHDIVER 2026年08月13日09点场（共7p）",
-      "episodes": 7
+      "episodes": 7,
+      "nameJa": "デイヴ・ザ・ダイバー"
     },
     {
       "id": "game-194",
@@ -124,7 +137,8 @@
       "year": 2026,
       "category": "推理/文字",
       "videoTitle": "【直播回放】Staffercase 2026年08月07日20点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "ステッパーケース：超能力推理アドベンチャー"
     },
     {
       "id": "game-193",
@@ -133,7 +147,8 @@
       "year": 2026,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】蜡笔小新煤炭镇的小白 2026年08月01日07点场（共10p）",
-      "episodes": 10
+      "episodes": 10,
+      "nameJa": "クレヨンしんちゃん『炭の町のシロ』"
     },
     {
       "id": "game-192",
@@ -142,7 +157,8 @@
       "year": 2026,
       "category": "推理/文字",
       "videoTitle": "【直播回放】428 ～被封锁的涩谷～ 2026年07月13日20点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "428 〜封鎖された渋谷で〜"
     },
     {
       "id": "game-190",
@@ -151,7 +167,8 @@
       "year": 2026,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】Vampire Survivors 2026年07月09日07点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "Vampire Survivors"
     },
     {
       "id": "game-191",
@@ -159,7 +176,8 @@
       "firstDate": "2026-07-09",
       "year": 2026,
       "category": "推理/文字",
-      "videoTitle": "【直播回放】和阶堂真的案件簿3 2026年07月09日20点场"
+      "videoTitle": "【直播回放】和阶堂真的案件簿3 2026年07月09日20点场",
+      "nameJa": "和階堂真の事件簿3"
     },
     {
       "id": "game-189",
@@ -167,7 +185,8 @@
       "firstDate": "2026-07-05",
       "year": 2026,
       "category": "推理/文字",
-      "videoTitle": "【直播回放】和阶堂真的案件簿 2026年07月04日19点场"
+      "videoTitle": "【直播回放】和阶堂真的案件簿 2026年07月04日19点场",
+      "nameJa": "和階堂真の事件簿"
     },
     {
       "id": "game-188",
@@ -175,7 +194,8 @@
       "firstDate": "2026-06-28",
       "year": 2026,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】终末地 2026年06月28日11点场"
+      "videoTitle": "【直播回放】终末地 2026年06月28日11点场",
+      "nameJa": "アークナイツ：エンドフィールド"
     },
     {
       "id": "game-187",
@@ -184,7 +204,8 @@
       "year": 2026,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】冒险家艾略特的千年奇谭 2026年06月18日19点场（共7p）",
-      "episodes": 7
+      "episodes": 7,
+      "nameJa": "冒険家エリオットの千年物語"
     },
     {
       "id": "game-186",
@@ -193,7 +214,8 @@
       "year": 2026,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】镰鼬之夜 2026年06月10日19点场（共7p）",
-      "episodes": 7
+      "episodes": 7,
+      "nameJa": "かまいたちの夜×3"
     },
     {
       "id": "game-185",
@@ -202,7 +224,8 @@
       "year": 2026,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】都市伝説解体センター 2026年04月27日13点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "都市伝説解体センター"
     },
     {
       "id": "game-184",
@@ -211,7 +234,8 @@
       "year": 2026,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】Metaphor 2026年04月20日19点场（共19p）",
-      "episodes": 19
+      "episodes": 19,
+      "nameJa": "メタファー：リファンタジオ"
     },
     {
       "id": "game-183",
@@ -220,7 +244,8 @@
       "year": 2026,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】TOS 2026年04月17日14点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "テイルズ オブ シンフォニア"
     },
     {
       "id": "game-182",
@@ -229,7 +254,8 @@
       "year": 2026,
       "category": "任系/平台",
       "videoTitle": "【直播回放】マリオ&ルイージ 2026年04月02日20点场（共10p）",
-      "episodes": 10
+      "episodes": 10,
+      "nameJa": "マリオ＆ルイージRPG ブラザーシップ！"
     },
     {
       "id": "game-181",
@@ -238,7 +264,8 @@
       "year": 2026,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】SEKIRO 2026年03月27日17点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "SEKIRO: SHADOWS DIE TWICE"
     },
     {
       "id": "game-180",
@@ -247,7 +274,8 @@
       "year": 2026,
       "category": "推理/文字",
       "videoTitle": "【直播回放】ダンガンロンパ2 2026年03月07日23点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "スーパーダンガンロンパ2 さよなら絶望学園"
     },
     {
       "id": "game-179",
@@ -256,7 +284,8 @@
       "year": 2026,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】Biohazard: Requiem 2026年02月27日00点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "バイオハザード レクイエム"
     },
     {
       "id": "game-178",
@@ -265,7 +294,8 @@
       "year": 2026,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】DQ7R 2026年02月09日20点场（共8p）",
-      "episodes": 8
+      "episodes": 8,
+      "nameJa": "ドラゴンクエストVII Reimagined"
     },
     {
       "id": "game-176",
@@ -273,7 +303,8 @@
       "firstDate": "2026-01-29",
       "year": 2026,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】ROCKMAN 2026年01月28日20点场"
+      "videoTitle": "【直播回放】ROCKMAN 2026年01月28日20点场",
+      "nameJa": "ロックマンX アニバーサリー コレクション 2"
     },
     {
       "id": "game-177",
@@ -281,7 +312,8 @@
       "firstDate": "2026-01-29",
       "year": 2026,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】カオスゼロ 2026年01月29日11点场"
+      "videoTitle": "【直播回放】カオスゼロ 2026年01月29日11点场",
+      "nameJa": "カオスゼロナイトメア"
     },
     {
       "id": "game-175",
@@ -289,7 +321,8 @@
       "firstDate": "2026-01-04",
       "year": 2026,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】テニプリドキサバ 2026年01月03日20点场"
+      "videoTitle": "【直播回放】テニプリドキサバ 2026年01月03日20点场",
+      "nameJa": "テニスの王子様 ドキドキサバイバル"
     },
     {
       "id": "game-174",
@@ -298,7 +331,8 @@
       "year": 2026,
       "category": "任系/平台",
       "videoTitle": "【直播回放】耐久　BANANZA 2026年01月01日00点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "ドンキーコング バナンザ"
     },
     {
       "id": "game-173",
@@ -307,7 +341,8 @@
       "year": 2025,
       "category": "推理/文字",
       "videoTitle": "【直播回放】DANGANRONPA2 2025年12月26日19点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "スーパーダンガンロンパ2 さよなら絶望学園"
     },
     {
       "id": "game-172",
@@ -315,7 +350,8 @@
       "firstDate": "2025-12-25",
       "year": 2025,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】My Little Puppy 2025年12月24日20点场"
+      "videoTitle": "【直播回放】My Little Puppy 2025年12月24日20点场",
+      "nameJa": "My Little Puppy"
     },
     {
       "id": "game-171",
@@ -324,7 +360,8 @@
       "year": 2025,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】B限　雑談 2025年12月17日14点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "PowerWash Simulator"
     },
     {
       "id": "game-170",
@@ -332,7 +369,8 @@
       "firstDate": "2025-12-16",
       "year": 2025,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】B限　雑談 2025年12月16日14点场"
+      "videoTitle": "【直播回放】B限　雑談 2025年12月16日14点场",
+      "nameJa": "Unpacking"
     },
     {
       "id": "game-169",
@@ -341,7 +379,8 @@
       "year": 2025,
       "category": "推理/文字",
       "videoTitle": "【直播回放】DANGANRONPA 2025年12月01日21点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "ダンガンロンパ 希望の学園と絶望の高校生"
     },
     {
       "id": "game-168",
@@ -349,7 +388,8 @@
       "firstDate": "2025-11-29",
       "year": 2025,
       "category": "任系/平台",
-      "videoTitle": "【直播回放】カービィ！ 2025年11月28日21点场"
+      "videoTitle": "【直播回放】カービィ！ 2025年11月28日21点场",
+      "nameJa": "星のカービィ ディスカバリー"
     },
     {
       "id": "game-167",
@@ -357,7 +397,8 @@
       "firstDate": "2025-11-04",
       "year": 2025,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】B限　雑談 2025年11月04日14点场"
+      "videoTitle": "【直播回放】B限　雑談 2025年11月04日14点场",
+      "nameJa": "Unpacking"
     },
     {
       "id": "game-166",
@@ -366,7 +407,8 @@
       "year": 2025,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】SILENT HILL f 2025年09月25日19点场（共7p）",
-      "episodes": 7
+      "episodes": 7,
+      "nameJa": "SILENT HILL f"
     },
     {
       "id": "game-165",
@@ -375,7 +417,8 @@
       "year": 2025,
       "category": "任系/平台",
       "videoTitle": "【直播回放】ZELDA 2025年09月19日19点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "ゼルダの伝説 風のタクト"
     },
     {
       "id": "game-164",
@@ -384,7 +427,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】Persona4 2025年09月18日19点场（共25个）",
-      "episodes": 25
+      "episodes": 25,
+      "nameJa": "ペルソナ4 ザ・ゴールデン"
     },
     {
       "id": "game-163",
@@ -393,7 +437,8 @@
       "year": 2025,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】B限 宇宙猫空洞骑士丝之歌 2025年09月05日13点场（共14p）",
-      "episodes": 14
+      "episodes": 14,
+      "nameJa": "Hollow Knight: Silksong"
     },
     {
       "id": "game-162",
@@ -402,7 +447,8 @@
       "year": 2025,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】《なつもん》 2025年08月01日06点场（共29p）",
-      "episodes": 29
+      "episodes": 29,
+      "nameJa": "なつもん！ 20世紀の夏休み"
     },
     {
       "id": "game-161",
@@ -410,7 +456,8 @@
       "firstDate": "2025-07-13",
       "year": 2025,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】《Persona5X》 2025年07月13日14点场"
+      "videoTitle": "【直播回放】《Persona5X》 2025年07月13日14点场",
+      "nameJa": "ペルソナ5: The Phantom X"
     },
     {
       "id": "game-160",
@@ -419,7 +466,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】《Persona5R》 2025年07月05日19点场（共72p）",
-      "episodes": 72
+      "episodes": 72,
+      "nameJa": "ペルソナ5 ザ・ロイヤル"
     },
     {
       "id": "game-159",
@@ -428,7 +476,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】《B限》二ノ国 2025年06月28日12点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "二ノ国 白き聖灰の女王 REMASTERED"
     },
     {
       "id": "game-158",
@@ -437,7 +486,8 @@
       "year": 2025,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】《TONIC》 2025年06月03日13点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "TUNIC"
     },
     {
       "id": "game-157",
@@ -446,7 +496,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】《persona3R》 2025年05月24日19点场（共18p）",
-      "episodes": 18
+      "episodes": 18,
+      "nameJa": "ペルソナ3 リロード"
     },
     {
       "id": "game-156",
@@ -455,7 +506,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【MOTHER2】 2025年05月03日08点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "MOTHER2 ギーグの逆襲"
     },
     {
       "id": "game-155",
@@ -464,7 +516,8 @@
       "year": 2025,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【三国無双ORIGINS】 2025年04月21日19点场（共18p）",
-      "episodes": 18
+      "episodes": 18,
+      "nameJa": "真・三國無双 ORIGINS"
     },
     {
       "id": "game-154",
@@ -472,7 +525,8 @@
       "firstDate": "2025-04-01",
       "year": 2025,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【Project TACHYON】 2025年04月01日13点场"
+      "videoTitle": "【直播回放】【Project TACHYON】 2025年04月01日13点场",
+      "nameJa": "Project TACHYON"
     },
     {
       "id": "game-153",
@@ -481,7 +535,8 @@
       "year": 2025,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【モンハン】 2025年02月27日22点场(共12p)",
-      "episodes": 12
+      "episodes": 12,
+      "nameJa": "モンスターハンターワイルズ"
     },
     {
       "id": "game-152",
@@ -489,7 +544,8 @@
       "firstDate": "2025-01-29",
       "year": 2025,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】《B限》雀魂 2025年01月29日13点场"
+      "videoTitle": "【直播回放】《B限》雀魂 2025年01月29日13点场",
+      "nameJa": "雀魂 -じゃんたま-"
     },
     {
       "id": "game-151",
@@ -498,7 +554,8 @@
       "year": 2025,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【ENDER MAGNOLIA】 2025年01月24日19点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "エンダーマグノリア: ブルームインザミスト"
     },
     {
       "id": "game-150",
@@ -506,7 +563,8 @@
       "firstDate": "2025-01-07",
       "year": 2025,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】《鳴潮》 2025年01月06日18点场"
+      "videoTitle": "【直播回放】《鳴潮》 2025年01月06日18点场",
+      "nameJa": "鳴潮"
     },
     {
       "id": "game-149",
@@ -515,7 +573,8 @@
       "year": 2025,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】《DQ3》 2024年12月31日23点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "ドラゴンクエストIII そして伝説へ…（HD-2D版）"
     },
     {
       "id": "game-148",
@@ -523,7 +582,8 @@
       "firstDate": "2024-11-28",
       "year": 2024,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】【ZZZ】 2024年11月28日13点场"
+      "videoTitle": "【直播回放】【ZZZ】 2024年11月28日13点场",
+      "nameJa": "ゼンレスゾーンゼロ"
     },
     {
       "id": "game-147",
@@ -532,7 +592,8 @@
       "year": 2024,
       "category": "推理/文字",
       "videoTitle": "【直播回放】逆転検事1 2024年11月21日19点场（共14p）",
-      "episodes": 14
+      "episodes": 14,
+      "nameJa": "逆転検事1&2 御剣セレクション"
     },
     {
       "id": "game-146",
@@ -541,7 +602,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】RElink 2024年11月14日14点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "グランブルーファンタジー リリンク"
     },
     {
       "id": "game-145",
@@ -550,7 +612,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】九日Ninesols 2024年10月11日13点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "九日ナインソール"
     },
     {
       "id": "game-144",
@@ -559,7 +622,8 @@
       "year": 2024,
       "category": "任系/平台",
       "videoTitle": "【直播回放】【ZELDA】 2024年09月26日19点场（共8p）",
-      "episodes": 8
+      "episodes": 8,
+      "nameJa": "ゼルダの伝説 知恵のかりもの"
     },
     {
       "id": "game-143",
@@ -568,7 +632,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】猿神&猫猫 2024年08月25日13点场（共10p）",
-      "episodes": 10
+      "episodes": 10,
+      "nameJa": "黒神話：悟空"
     },
     {
       "id": "game-142",
@@ -577,7 +642,8 @@
       "year": 2024,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】《DAVE THE DIVER》 2024年08月10日08点场（共19p）",
-      "episodes": 19
+      "episodes": 19,
+      "nameJa": "デイヴ・ザ・ダイバー"
     },
     {
       "id": "game-141",
@@ -585,7 +651,8 @@
       "firstDate": "2024-08-02",
       "year": 2024,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【溶鉄のマルフーシャ】 2024年08月02日11点场"
+      "videoTitle": "【直播回放】【溶鉄のマルフーシャ】 2024年08月02日11点场",
+      "nameJa": "溶鉄のマルフーシャ"
     },
     {
       "id": "game-140",
@@ -594,7 +661,8 @@
       "year": 2024,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】【夏休み猫】 2024年08月01日06点场（共9p）",
-      "episodes": 9
+      "episodes": 9,
+      "nameJa": "クレヨンしんちゃん『炭の町のシロ』"
     },
     {
       "id": "game-139",
@@ -603,7 +671,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】蟹蟹猫猫 2024年07月23日13点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "Another Crab's Treasure"
     },
     {
       "id": "game-138",
@@ -612,7 +681,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】HADES2 2024年07月10日15点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "Hades II"
     },
     {
       "id": "game-137",
@@ -621,7 +691,8 @@
       "year": 2024,
       "category": "任系/平台",
       "videoTitle": "【直播回放】紙MARIO 2024年6月8日19点场（共12p）",
-      "episodes": 12
+      "episodes": 12,
+      "nameJa": "ペーパーマリオRPG"
     },
     {
       "id": "game-136",
@@ -629,7 +700,8 @@
       "firstDate": "2024-05-12",
       "year": 2024,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】Little kitty big cit 2024年5月11日20点场"
+      "videoTitle": "【直播回放】Little kitty big cit 2024年5月11日20点场",
+      "nameJa": "Little Kitty, Big City"
     },
     {
       "id": "game-135",
@@ -637,7 +709,8 @@
       "firstDate": "2024-05-07",
       "year": 2024,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【熊】 2024年5月6日19点场"
+      "videoTitle": "【直播回放】【熊】 2024年5月6日19点场",
+      "nameJa": "くまのレストラン"
     },
     {
       "id": "game-134",
@@ -645,7 +718,8 @@
       "firstDate": "2024-05-04",
       "year": 2024,
       "category": "JRPG/RPG",
-      "videoTitle": "【直播回放】【MOTHER】 2024年5月2日13点场"
+      "videoTitle": "【直播回放】【MOTHER】 2024年5月2日13点场",
+      "nameJa": "MOTHER"
     },
     {
       "id": "game-133",
@@ -653,7 +727,8 @@
       "firstDate": "2024-05-01",
       "year": 2024,
       "category": "任系/平台",
-      "videoTitle": "【直播回放】【DK3】 2024年4月30日19点场"
+      "videoTitle": "【直播回放】【DK3】 2024年4月30日19点场",
+      "nameJa": "スーパードンキーコング3"
     },
     {
       "id": "game-132",
@@ -662,7 +737,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】DQ8　PS2版 2024年4月19日19点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "ドラゴンクエストVIII 空と海と大地と呪われし姫君（PS2版）"
     },
     {
       "id": "game-131",
@@ -671,7 +747,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】DQ8 2024年4月8日19点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "ドラゴンクエストVIII 空と海と大地と呪われし姫君"
     },
     {
       "id": "game-130",
@@ -680,7 +757,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】《B限　聖剣伝説3》 2024年4月5日14点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "聖剣伝説3"
     },
     {
       "id": "game-129",
@@ -689,7 +767,8 @@
       "year": 2024,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】《SILENTOWN》 2024年4月2日9点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "Children of Silentown"
     },
     {
       "id": "game-128",
@@ -697,7 +776,8 @@
       "firstDate": "2024-03-27",
       "year": 2024,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】【ENDER MAGNOLIA】 2024年3月26日18点场"
+      "videoTitle": "【直播回放】【ENDER MAGNOLIA】 2024年3月26日18点场",
+      "nameJa": "エンダーマグノリア: ブルームインザミスト"
     },
     {
       "id": "game-127",
@@ -706,7 +786,8 @@
       "year": 2024,
       "category": "任系/平台",
       "videoTitle": "【直播回放】【Nice peach】 2024年3月22日18点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "プリンセスピーチ Showtime!"
     },
     {
       "id": "game-126",
@@ -715,7 +796,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【最終幻想7R】 2024年3月1日21点场（共16p）",
-      "episodes": 16
+      "episodes": 16,
+      "nameJa": "ファイナルファンタジーVII リバース"
     },
     {
       "id": "game-125",
@@ -724,7 +806,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【B限】聖剣伝説3 2024年2月19日15点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "聖剣伝説3"
     },
     {
       "id": "game-124",
@@ -733,7 +816,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【風来のシレン6】 2024年1月25日19点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "不思議のダンジョン 風来のシレン6 とぐろ島探検録"
     },
     {
       "id": "game-123",
@@ -742,7 +826,8 @@
       "year": 2024,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【Momodora: 月影のエンドロー】 2024年1月20日19点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "Momodora: 月影のエンドロール"
     },
     {
       "id": "game-122",
@@ -750,7 +835,8 @@
       "firstDate": "2024-01-19",
       "year": 2024,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】HADES】初見！！ 2024年1月18日19点场"
+      "videoTitle": "【直播回放】HADES】初見！！ 2024年1月18日19点场",
+      "nameJa": "Hades"
     },
     {
       "id": "game-121",
@@ -758,7 +844,8 @@
       "firstDate": "2024-01-17",
       "year": 2024,
       "category": "二游/抽卡",
-      "videoTitle": "【直播回放】【崩壊星穹铁道】 2024年1月17日14点场"
+      "videoTitle": "【直播回放】【崩壊星穹铁道】 2024年1月17日14点场",
+      "nameJa": "崩壊：スターレイル"
     },
     {
       "id": "game-120",
@@ -766,7 +853,8 @@
       "firstDate": "2024-01-16",
       "year": 2024,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】【真・三國無双2】 2024年1月15日18点场"
+      "videoTitle": "【直播回放】【真・三國無双2】 2024年1月15日18点场",
+      "nameJa": "真・三國無双2"
     },
     {
       "id": "game-119",
@@ -774,7 +862,8 @@
       "firstDate": "2024-01-07",
       "year": 2024,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【RAIN WORLD】 2024年1月6日19点场"
+      "videoTitle": "【直播回放】【RAIN WORLD】 2024年1月6日19点场",
+      "nameJa": "Rain World"
     },
     {
       "id": "game-118",
@@ -783,7 +872,8 @@
       "year": 2024,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【最終幻想】耐久配信 2024年1月1日0点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "ファイナルファンタジー（ピクセルリマスター）"
     },
     {
       "id": "game-117",
@@ -791,7 +881,8 @@
       "firstDate": "2023-12-30",
       "year": 2023,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】【SEKIRO】剣聖猫 2023年12月29日22点场"
+      "videoTitle": "【直播回放】【SEKIRO】剣聖猫 2023年12月29日22点场",
+      "nameJa": "SEKIRO: SHADOWS DIE TWICE"
     },
     {
       "id": "game-116",
@@ -799,7 +890,8 @@
       "firstDate": "2023-12-29",
       "year": 2023,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【メグとばけもの】 2023年12月28日19点场"
+      "videoTitle": "【直播回放】【メグとばけもの】 2023年12月28日19点场",
+      "nameJa": "メグとばけもの"
     },
     {
       "id": "game-115",
@@ -807,7 +899,8 @@
       "firstDate": "2023-12-26",
       "year": 2023,
       "category": "恐怖/悬疑",
-      "videoTitle": "【直播回放】【8番出口】 2023年12月25日19点场"
+      "videoTitle": "【直播回放】【8番出口】 2023年12月25日19点场",
+      "nameJa": "8番出口"
     },
     {
       "id": "game-114",
@@ -816,7 +909,8 @@
       "year": 2023,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】DARK SOULS REMASTERE 2023年12月9日12点场（共8p）",
-      "episodes": 8
+      "episodes": 8,
+      "nameJa": "DARK SOULS REMASTERED"
     },
     {
       "id": "game-113",
@@ -825,7 +919,8 @@
       "year": 2023,
       "category": "任系/平台",
       "videoTitle": "【直播回放】【Milky】星のカービィディスカバリー 2023年11月23日19点场（共5p）",
-      "episodes": 5
+      "episodes": 5,
+      "nameJa": "星のカービィ ディスカバリー"
     },
     {
       "id": "game-112",
@@ -834,7 +929,8 @@
       "year": 2023,
       "category": "任系/平台",
       "videoTitle": "【直播回放】【マリオRPG】リメイクやるぞ！ 2023年11月17日19点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "スーパーマリオRPG"
     },
     {
       "id": "game-111",
@@ -843,7 +939,8 @@
       "year": 2023,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】AFTERIMAGE 2023年10月9日14点场（共13p）",
-      "episodes": 13
+      "episodes": 13,
+      "nameJa": "アフターイメージ"
     },
     {
       "id": "game-110",
@@ -851,7 +948,8 @@
       "firstDate": "2023-09-20",
       "year": 2023,
       "category": "任系/平台",
-      "videoTitle": "【直播回放】【Milky】ゼルダの伝説 2023年9月20日6点场"
+      "videoTitle": "【直播回放】【Milky】ゼルダの伝説 2023年9月20日6点场",
+      "nameJa": "ゼルダの伝説 ティアーズ オブ ザ キングダム"
     },
     {
       "id": "game-109",
@@ -859,7 +957,8 @@
       "firstDate": "2023-09-06",
       "year": 2023,
       "category": "动作/魂类",
-      "videoTitle": "【直播回放】【Milky】鉄拳7 2023年9月6日6点场"
+      "videoTitle": "【直播回放】【Milky】鉄拳7 2023年9月6日6点场",
+      "nameJa": "鉄拳7"
     },
     {
       "id": "game-108",
@@ -868,7 +967,8 @@
       "year": 2023,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】【Milky】ドラえもんの牧場物語2 2023年8月1日7点场（共23p）",
-      "episodes": 23
+      "episodes": 23,
+      "nameJa": "ドラえもん のび太の牧場物語 大自然の王国とみんなの家"
     },
     {
       "id": "game-107",
@@ -877,7 +977,8 @@
       "year": 2023,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【Milky】最終幻想16 2023年7月12日19点场（共11p）",
-      "episodes": 11
+      "episodes": 11,
+      "nameJa": "ファイナルファンタジーXVI"
     },
     {
       "id": "game-106",
@@ -886,7 +987,8 @@
       "year": 2023,
       "category": "推理/文字",
       "videoTitle": "【直播回放】【Milky】大逆転裁判1 2023年6月15日11点场（共16p）",
-      "episodes": 16
+      "episodes": 16,
+      "nameJa": "大逆転裁判1&2 -成歩堂龍ノ介の冒險と覺悟-"
     },
     {
       "id": "game-105",
@@ -895,7 +997,8 @@
       "year": 2023,
       "category": "独立/剧情",
       "videoTitle": "直播回放】【B限】machinarium 2023年6月12日12点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "マシナリウム"
     },
     {
       "id": "game-104",
@@ -904,7 +1007,8 @@
       "year": 2023,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】THE VAGRANT 2023年6月8日10点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "The Vagrant"
     },
     {
       "id": "game-103",
@@ -913,7 +1017,8 @@
       "year": 2023,
       "category": "任系/平台",
       "videoTitle": "【直播回放】【B限】ゼルダ夢島 2023年3月11日14点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "ゼルダの伝説 夢をみる島"
     },
     {
       "id": "game-102",
@@ -921,7 +1026,8 @@
       "firstDate": "2023-03-04",
       "year": 2023,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】【B限】CAPHEAD&雑談 2023年3月4日13点场"
+      "videoTitle": "【直播回放】【B限】CAPHEAD&雑談 2023年3月4日13点场",
+      "nameJa": "Cuphead"
     },
     {
       "id": "game-101",
@@ -930,7 +1036,8 @@
       "year": 2023,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】【B限】ヒトカラ 2023年2月25日14点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "ヒトカラ"
     },
     {
       "id": "game-100",
@@ -939,7 +1046,8 @@
       "year": 2023,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【B限】薄暮传说 2023年1月30日14点场（共16p）",
-      "episodes": 16
+      "episodes": 16,
+      "nameJa": "テイルズ オブ ヴェスペリア"
     },
     {
       "id": "game-99",
@@ -947,7 +1055,8 @@
       "firstDate": "2023-01-28",
       "year": 2023,
       "category": "恐怖/悬疑",
-      "videoTitle": "【直播回放】【B限】帰り道 2023年1月28日14点场"
+      "videoTitle": "【直播回放】【B限】帰り道 2023年1月28日14点场",
+      "nameJa": "帰り道"
     },
     {
       "id": "game-98",
@@ -956,7 +1065,8 @@
       "year": 2023,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】精灵大姐姐的冒险！ 2023年1月24日14点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "ロードス島戦記-ディードリット・イン・ワンダーラビリンス-"
     },
     {
       "id": "game-97",
@@ -964,7 +1074,8 @@
       "firstDate": "2023-01-22",
       "year": 2023,
       "category": "模拟/休闲",
-      "videoTitle": "【直播回放】【B限】正月到！打麻将！ 2023年1月22日13点场"
+      "videoTitle": "【直播回放】【B限】正月到！打麻将！ 2023年1月22日13点场",
+      "nameJa": "雀魂 -じゃんたま-"
     },
     {
       "id": "game-96",
@@ -973,7 +1084,8 @@
       "year": 2022,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】空洞迷路骑士 2022年12月29日13点场（共14p）",
-      "episodes": 14
+      "episodes": 14,
+      "nameJa": "Hollow Knight"
     },
     {
       "id": "game-95",
@@ -982,7 +1094,8 @@
       "year": 2022,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】修女好！ 2022年12月26日21点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "Minoria"
     },
     {
       "id": "game-94",
@@ -991,7 +1104,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】APLAGELTALE 2022年12月22日20点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "プレイグ テイル -イノセンス-"
     },
     {
       "id": "game-93",
@@ -1000,7 +1114,8 @@
       "year": 2022,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【Milky】FF7CCR 2022年12月12日20点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "クライシス コア -ファイナルファンタジーVII- リユニオン"
     },
     {
       "id": "game-92",
@@ -1009,7 +1124,8 @@
       "year": 2022,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】玩宝可梦紫 2022年11月26日13点场（共13p）",
-      "episodes": 13
+      "episodes": 13,
+      "nameJa": "ポケットモンスター バイオレット"
     },
     {
       "id": "game-91",
@@ -1018,7 +1134,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】Camphre 2022年11月12日13点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "The Last Campfire"
     },
     {
       "id": "game-90",
@@ -1027,7 +1144,8 @@
       "year": 2022,
       "category": "恐怖/悬疑",
       "videoTitle": "【直播回放】【B限】SIGNALIS 2022年11月5日20点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "SIGNALIS"
     },
     {
       "id": "game-89",
@@ -1036,7 +1154,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】電球猫 2022年10月13日20点场（共4p）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "OneShot"
     },
     {
       "id": "game-88",
@@ -1045,7 +1164,8 @@
       "year": 2022,
       "category": "动作/魂类",
       "videoTitle": "【直播回放】【B限】剣聖猫 KATANAZERO 2022年10月9日13点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "Katana ZERO"
     },
     {
       "id": "game-87",
@@ -1054,7 +1174,8 @@
       "year": 2022,
       "category": "推理/文字",
       "videoTitle": "【直播回放】【B限】THESOMUNIUMFILES 2022年9月24日20点场（共6p）",
-      "episodes": 6
+      "episodes": 6,
+      "nameJa": "AI: ソムニウム ファイル"
     },
     {
       "id": "game-86",
@@ -1062,7 +1183,8 @@
       "firstDate": "2022-09-20",
       "year": 2022,
       "category": "推理/文字",
-      "videoTitle": "【直播回放】【B限】LATE SIFT 2022年9月19日20点场"
+      "videoTitle": "【直播回放】【B限】LATE SIFT 2022年9月19日20点场",
+      "nameJa": "Late Shift"
     },
     {
       "id": "game-85",
@@ -1071,7 +1193,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】Spiritfarer 2022年8月27日14点场（共11p）",
-      "episodes": 11
+      "episodes": 11,
+      "nameJa": "Spiritfarer"
     },
     {
       "id": "game-84",
@@ -1080,7 +1203,8 @@
       "year": 2022,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】【Milky】僕的夏休3 2022年8月12日6点场（共18p）",
-      "episodes": 18
+      "episodes": 18,
+      "nameJa": "ぼくのなつやすみ3 -北国篇- 小さなボクの大草原"
     },
     {
       "id": "game-83",
@@ -1089,7 +1213,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】橘猫的大冒険 Stray 2022年7月21日20点场（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "Stray"
     },
     {
       "id": "game-82",
@@ -1098,7 +1223,8 @@
       "year": 2022,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【B限】日本猫猫古剑之旅 2022年7月7日20点场（共10p）",
-      "episodes": 10
+      "episodes": 10,
+      "nameJa": "古剣奇譚三"
     },
     {
       "id": "game-81",
@@ -1107,7 +1233,8 @@
       "year": 2022,
       "category": "模拟/休闲",
       "videoTitle": "【直播回放】【B限】STARDEW VALLEY 2022年7月5日12点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "スターデューバレー"
     },
     {
       "id": "game-80",
@@ -1116,7 +1243,8 @@
       "year": 2022,
       "category": "独立/剧情",
       "videoTitle": "【直播回放】【B限】Alice and Cat 2022年6月30日20点场（共3p）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "アリス マッドネス リターンズ"
     },
     {
       "id": "game-79",
@@ -1125,7 +1253,8 @@
       "year": 2022,
       "category": "JRPG/RPG",
       "videoTitle": "【直播回放】【B限】GRANDIA 2022年5月16日20点场（共13p）",
-      "episodes": 13
+      "episodes": 13,
+      "nameJa": "グランディア"
     },
     {
       "id": "game-78",
@@ -1133,7 +1262,8 @@
       "firstDate": "2022-05-14",
       "year": 2022,
       "category": "独立/剧情",
-      "videoTitle": "【直播回放】【B限】lris fall 2022年5月13日13点场"
+      "videoTitle": "【直播回放】【B限】lris fall 2022年5月13日13点场",
+      "nameJa": "Iris.Fall"
     },
     {
       "id": "game-77",
@@ -1142,7 +1272,8 @@
       "year": 2022,
       "category": "动作/魂类",
       "videoTitle": "【B限】老老头环P1【Milky】（共15p）",
-      "episodes": 15
+      "episodes": 15,
+      "nameJa": "ELDEN RING"
     },
     {
       "id": "game-76",
@@ -1150,7 +1281,8 @@
       "firstDate": "2021-11-28",
       "year": 2021,
       "category": "JRPG/RPG",
-      "videoTitle": "【B限】初见 宝可梦珍珠"
+      "videoTitle": "【B限】初见 宝可梦珍珠",
+      "nameJa": "ポケットモンスター シャイニングパール"
     },
     {
       "id": "game-75",
@@ -1158,7 +1290,8 @@
       "firstDate": "2021-11-02",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】深夜放送絶叫猫"
+      "videoTitle": "【B限】深夜放送絶叫猫",
+      "nameJa": "深夜放送"
     },
     {
       "id": "game-74",
@@ -1166,7 +1299,8 @@
       "firstDate": "2021-10-19",
       "year": 2021,
       "category": "模拟/休闲",
-      "videoTitle": "【B限】贴，都可以贴　10月（第2p）"
+      "videoTitle": "【B限】贴，都可以贴　10月（第2p）",
+      "nameJa": "神巫女 -カミコ-"
     },
     {
       "id": "game-73",
@@ -1174,7 +1308,8 @@
       "firstDate": "2021-10-15",
       "year": 2021,
       "category": "二游/抽卡",
-      "videoTitle": "【B限】贴，都可以贴　9月（第7p）"
+      "videoTitle": "【B限】贴，都可以贴　9月（第7p）",
+      "nameJa": "ウマ娘 プリティーダービー"
     },
     {
       "id": "game-72",
@@ -1182,7 +1317,8 @@
       "firstDate": "2021-09-30",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】勇敢阿克 不怕困难(第二部)"
+      "videoTitle": "【B限】勇敢阿克 不怕困难(第二部)",
+      "nameJa": "バイオハザード リベレーションズ2"
     },
     {
       "id": "game-71",
@@ -1190,7 +1326,8 @@
       "firstDate": "2021-09-07",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】勇敢阿吉 不怕困难【完結】"
+      "videoTitle": "【B限】勇敢阿吉 不怕困难【完結】",
+      "nameJa": "バイオハザード リベレーションズ"
     },
     {
       "id": "game-68",
@@ -1198,7 +1335,8 @@
       "firstDate": "2021-08-15",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【B限】贴，都可以贴　8月（第5p）"
+      "videoTitle": "【B限】贴，都可以贴　8月（第5p）",
+      "nameJa": "To the Moon"
     },
     {
       "id": "game-69",
@@ -1206,7 +1344,8 @@
       "firstDate": "2021-08-15",
       "year": 2021,
       "category": "二游/抽卡",
-      "videoTitle": "【B限】贴，都可以贴　8月（第8p）"
+      "videoTitle": "【B限】贴，都可以贴　8月（第8p）",
+      "nameJa": "原神"
     },
     {
       "id": "game-70",
@@ -1214,7 +1353,8 @@
       "firstDate": "2021-08-15",
       "year": 2021,
       "category": "模拟/休闲",
-      "videoTitle": "【B限】贴，都可以贴　8月（第14p）"
+      "videoTitle": "【B限】贴，都可以贴　8月（第14p）",
+      "nameJa": "Apex Legends（コラボ）"
     },
     {
       "id": "game-67",
@@ -1222,7 +1362,8 @@
       "firstDate": "2021-07-27",
       "year": 2021,
       "category": "动作/魂类",
-      "videoTitle": "【B限】来挑战那个游戏了哦！【生肉更新中】"
+      "videoTitle": "【B限】来挑战那个游戏了哦！【生肉更新中】",
+      "nameJa": "Demon's Souls"
     },
     {
       "id": "game-65",
@@ -1230,7 +1371,8 @@
       "firstDate": "2021-07-16",
       "year": 2021,
       "category": "模拟/休闲",
-      "videoTitle": "【B限】贴，都可以贴　7月（第8p）"
+      "videoTitle": "【B限】贴，都可以贴　7月（第8p）",
+      "nameJa": "Apex Legends"
     },
     {
       "id": "game-66",
@@ -1238,7 +1380,8 @@
       "firstDate": "2021-07-16",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【B限】贴，都可以贴　7月（第10p）"
+      "videoTitle": "【B限】贴，都可以贴　7月（第10p）",
+      "nameJa": "Timelie"
     },
     {
       "id": "game-64",
@@ -1246,7 +1389,8 @@
       "firstDate": "2021-07-14",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【B限】毛糸猫　UNRAVEL【完結】"
+      "videoTitle": "【B限】毛糸猫　UNRAVEL【完結】",
+      "nameJa": "Unravel"
     },
     {
       "id": "game-63",
@@ -1254,7 +1398,8 @@
       "firstDate": "2021-07-01",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】例外配達【生肉完結】"
+      "videoTitle": "【B限】例外配達【生肉完結】",
+      "nameJa": "例外配達"
     },
     {
       "id": "game-62",
@@ -1262,7 +1407,8 @@
       "firstDate": "2021-06-20",
       "year": 2021,
       "category": "动作/魂类",
-      "videoTitle": "【B限】吸血猫【生肉更新中】"
+      "videoTitle": "【B限】吸血猫【生肉更新中】",
+      "nameJa": "Bloodstained: Ritual of the Night"
     },
     {
       "id": "game-61",
@@ -1270,7 +1416,8 @@
       "firstDate": "2021-05-09",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限恐怖】寻找大姐姐8【生肉完結】"
+      "videoTitle": "【B限恐怖】寻找大姐姐8【生肉完結】",
+      "nameJa": "バイオハザード ヴィレッジ"
     },
     {
       "id": "game-60",
@@ -1278,7 +1425,8 @@
       "firstDate": "2021-04-23",
       "year": 2021,
       "category": "JRPG/RPG",
-      "videoTitle": "【B限】遥远的约定——一万年的猫猫　尼尔伪装者RE【生肉更新】"
+      "videoTitle": "【B限】遥远的约定——一万年的猫猫　尼尔伪装者RE【生肉更新】",
+      "nameJa": "NieR Replicant ver.1.22474487139..."
     },
     {
       "id": "game-59",
@@ -1286,7 +1434,8 @@
       "firstDate": "2021-04-21",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【B限】不可思议的森林与迷路猫(LIMBO)【生肉完結】"
+      "videoTitle": "【B限】不可思议的森林与迷路猫(LIMBO)【生肉完結】",
+      "nameJa": "LIMBO"
     },
     {
       "id": "game-58",
@@ -1294,7 +1443,8 @@
       "firstDate": "2021-04-13",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【B限】INSIDE【生肉完結】"
+      "videoTitle": "【B限】INSIDE【生肉完結】",
+      "nameJa": "INSIDE"
     },
     {
       "id": "game-57",
@@ -1302,7 +1452,8 @@
       "firstDate": "2021-04-02",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】校园空荡荡 猫猫在惨叫【生肉完結】"
+      "videoTitle": "【B限】校园空荡荡 猫猫在惨叫【生肉完結】",
+      "nameJa": "コープスパーティー"
     },
     {
       "id": "game-55",
@@ -1310,7 +1461,8 @@
       "firstDate": "2021-03-05",
       "year": 2021,
       "category": "独立/剧情",
-      "videoTitle": "【Milky】 Shady Part of Me【生肉完結】"
+      "videoTitle": "【Milky】 Shady Part of Me【生肉完結】",
+      "nameJa": "Shady Part of Me"
     },
     {
       "id": "game-56",
@@ -1318,7 +1470,8 @@
       "firstDate": "2021-03-05",
       "year": 2021,
       "category": "动作/魂类",
-      "videoTitle": "【Milky】剣聖耐久【生肉完結】"
+      "videoTitle": "【Milky】剣聖耐久【生肉完結】",
+      "nameJa": "SEKIRO: SHADOWS DIE TWICE"
     },
     {
       "id": "game-54",
@@ -1326,7 +1479,8 @@
       "firstDate": "2021-02-24",
       "year": 2021,
       "category": "恐怖/悬疑",
-      "videoTitle": "【Milky】小小梦魇2【生肉　完結】"
+      "videoTitle": "【Milky】小小梦魇2【生肉　完結】",
+      "nameJa": "リトルナイトメア2"
     },
     {
       "id": "game-53",
@@ -1334,7 +1488,8 @@
       "firstDate": "2021-01-22",
       "year": 2021,
       "category": "JRPG/RPG",
-      "videoTitle": "【生肉】FF14【更新中】"
+      "videoTitle": "【生肉】FF14【更新中】",
+      "nameJa": "ファイナルファンタジーXIV"
     },
     {
       "id": "game-52",
@@ -1342,7 +1497,8 @@
       "firstDate": "2020-12-15",
       "year": 2020,
       "category": "任系/平台",
-      "videoTitle": "【生肉】猫的野炊【完結】"
+      "videoTitle": "【生肉】猫的野炊【完結】",
+      "nameJa": "ゼルダの伝説 ブレス オブ ザ ワイルド"
     },
     {
       "id": "game-51",
@@ -1350,7 +1506,8 @@
       "firstDate": "2020-11-25",
       "year": 2020,
       "category": "任系/平台",
-      "videoTitle": "【生肉】剑圣橘猫的海拉鲁无双之旅【更新中】"
+      "videoTitle": "【生肉】剑圣橘猫的海拉鲁无双之旅【更新中】",
+      "nameJa": "ゼルダ無双 厄災の黙示録"
     },
     {
       "id": "game-50",
@@ -1358,7 +1515,8 @@
       "firstDate": "2020-10-30",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【生肉】假面骑士猫骑 橘猫腰带拯救世界（完結）"
+      "videoTitle": "【生肉】假面骑士猫骑 橘猫腰带拯救世界（完結）",
+      "nameJa": "KAMEN RIDER memory of heroez"
     },
     {
       "id": "game-49",
@@ -1366,7 +1524,8 @@
       "firstDate": "2020-10-20",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【生肉】聖剣伝説3R(更新中)"
+      "videoTitle": "【生肉】聖剣伝説3R(更新中)",
+      "nameJa": "聖剣伝説3 TRIALS of MANA"
     },
     {
       "id": "game-48",
@@ -1374,7 +1533,8 @@
       "firstDate": "2020-10-05",
       "year": 2020,
       "category": "独立/剧情",
-      "videoTitle": "【B限生肉】旺达与巨像"
+      "videoTitle": "【B限生肉】旺达与巨像",
+      "nameJa": "ワンダと巨像"
     },
     {
       "id": "game-39",
@@ -1382,7 +1542,8 @@
       "firstDate": "2020-10-01",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p34）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p34）",
+      "nameJa": "日本語検定テスト"
     },
     {
       "id": "game-38",
@@ -1390,7 +1551,8 @@
       "firstDate": "2020-09-15",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p31）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p31）",
+      "nameJa": "チャイニーズ・ペアレンツ"
     },
     {
       "id": "game-47",
@@ -1398,7 +1560,8 @@
       "firstDate": "2020-08-19",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限生肉】死印完成合集"
+      "videoTitle": "【B限生肉】死印完成合集",
+      "nameJa": "死印"
     },
     {
       "id": "game-37",
@@ -1406,7 +1569,8 @@
       "firstDate": "2020-08-13",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p24）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p24）",
+      "nameJa": "Fall Guys"
     },
     {
       "id": "game-46",
@@ -1414,7 +1578,8 @@
       "firstDate": "2020-07-28",
       "year": 2020,
       "category": "动作/魂类",
-      "videoTitle": "【B限生肉】空洞迷路骑士(更新中)"
+      "videoTitle": "【B限生肉】空洞迷路骑士(更新中)",
+      "nameJa": "Hollow Knight"
     },
     {
       "id": "game-36",
@@ -1422,7 +1587,8 @@
       "firstDate": "2020-07-02",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p15）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p15）",
+      "nameJa": "雀魂 -じゃんたま-"
     },
     {
       "id": "game-45",
@@ -1430,7 +1596,8 @@
       "firstDate": "2020-06-24",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【生肉】FF7(完成合集)"
+      "videoTitle": "【生肉】FF7(完成合集)",
+      "nameJa": "ファイナルファンタジーVII"
     },
     {
       "id": "game-44",
@@ -1438,7 +1605,8 @@
       "firstDate": "2020-06-22",
       "year": 2020,
       "category": "动作/魂类",
-      "videoTitle": "【B限生肉】异乡来的猫(更新中)"
+      "videoTitle": "【B限生肉】异乡来的猫(更新中)",
+      "nameJa": "Bloodborne"
     },
     {
       "id": "game-35",
@@ -1446,7 +1614,8 @@
       "firstDate": "2020-06-18",
       "year": 2020,
       "category": "独立/剧情",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p13）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p13）",
+      "nameJa": "Koral"
     },
     {
       "id": "game-43",
@@ -1454,7 +1623,8 @@
       "firstDate": "2020-06-04",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【神回全熟/生日上】anti送来的生日礼物？！气哭橘猫的鬼畜游戏！"
+      "videoTitle": "【神回全熟/生日上】anti送来的生日礼物？！气哭橘猫的鬼畜游戏！",
+      "nameJa": "しょぼんのアクション（ファンメイド版）"
     },
     {
       "id": "game-34",
@@ -1462,7 +1632,8 @@
       "firstDate": "2020-05-23",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p11）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p11）",
+      "nameJa": "純愛ババア学園 ～転校生は100万歳～"
     },
     {
       "id": "game-40",
@@ -1470,7 +1641,8 @@
       "firstDate": "2020-05-11",
       "year": 2020,
       "category": "独立/剧情",
-      "videoTitle": "【B限生肉】ori2完整合集"
+      "videoTitle": "【B限生肉】ori2完整合集",
+      "nameJa": "Ori and the Will of the Wisps"
     },
     {
       "id": "game-41",
@@ -1478,7 +1650,8 @@
       "firstDate": "2020-05-11",
       "year": 2020,
       "category": "动作/魂类",
-      "videoTitle": "【B限生肉】橘猫打铁(更新中)"
+      "videoTitle": "【B限生肉】橘猫打铁(更新中)",
+      "nameJa": "SEKIRO: SHADOWS DIE TWICE"
     },
     {
       "id": "game-42",
@@ -1486,7 +1659,8 @@
       "firstDate": "2020-05-11",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【生肉】FF7RE完成合集"
+      "videoTitle": "【生肉】FF7RE完成合集",
+      "nameJa": "ファイナルファンタジーVII リメイク"
     },
     {
       "id": "game-33",
@@ -1494,7 +1668,8 @@
       "firstDate": "2020-05-03",
       "year": 2020,
       "category": "任系/平台",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p10）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p10）",
+      "nameJa": "スプラトゥーン2"
     },
     {
       "id": "game-25",
@@ -1502,7 +1677,8 @@
       "firstDate": "2020-04-30",
       "year": 2020,
       "category": "独立/剧情",
-      "videoTitle": "【B限生肉】ORI完整合集"
+      "videoTitle": "【B限生肉】ORI完整合集",
+      "nameJa": "Ori and the Blind Forest"
     },
     {
       "id": "game-26",
@@ -1510,7 +1686,8 @@
       "firstDate": "2020-04-30",
       "year": 2020,
       "category": "任系/平台",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p1)"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p1)",
+      "nameJa": "マリオカート8 デラックス"
     },
     {
       "id": "game-24",
@@ -1518,7 +1695,8 @@
       "firstDate": "2020-04-24",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B限】夜勤事件【Milky】"
+      "videoTitle": "【B限】夜勤事件【Milky】",
+      "nameJa": "夜勤事件"
     },
     {
       "id": "game-23",
@@ -1526,7 +1704,8 @@
       "firstDate": "2020-04-22",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【B限生肉】尼尔机械纪元完整合集"
+      "videoTitle": "【B限生肉】尼尔机械纪元完整合集",
+      "nameJa": "NieR:Automata"
     },
     {
       "id": "game-29",
@@ -1534,7 +1713,8 @@
       "firstDate": "2020-04-18",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p5）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p5）",
+      "nameJa": "チャイルド・サイト"
     },
     {
       "id": "game-32",
@@ -1542,7 +1722,8 @@
       "firstDate": "2020-04-17",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p8）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p8）",
+      "nameJa": "カラオケ配信"
     },
     {
       "id": "game-22",
@@ -1550,7 +1731,8 @@
       "firstDate": "2020-04-07",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【Milky】FF7预热 demo试玩"
+      "videoTitle": "【Milky】FF7预热 demo试玩",
+      "nameJa": "ファイナルファンタジーVII リメイク（体験版）"
     },
     {
       "id": "game-28",
@@ -1558,7 +1740,8 @@
       "firstDate": "2020-03-28",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p4)"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p4)",
+      "nameJa": "テトリス99"
     },
     {
       "id": "game-30",
@@ -1566,7 +1749,8 @@
       "firstDate": "2020-03-21",
       "year": 2020,
       "category": "任系/平台",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p6）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p6）",
+      "nameJa": "あつまれ どうぶつの森"
     },
     {
       "id": "game-31",
@@ -1574,7 +1758,8 @@
       "firstDate": "2020-03-19",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p7）"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p7）",
+      "nameJa": "バイオハザード"
     },
     {
       "id": "game-27",
@@ -1582,7 +1767,8 @@
       "firstDate": "2020-03-14",
       "year": 2020,
       "category": "模拟/休闲",
-      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p3)"
+      "videoTitle": "【Milky】橘猫的生肉口粮堆放处(p3)",
+      "nameJa": "夜の森タイピング"
     },
     {
       "id": "game-20",
@@ -1590,7 +1776,8 @@
       "firstDate": "2020-03-12",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【Milky】被吓出白眼也不忘感谢sc的橘猫"
+      "videoTitle": "【Milky】被吓出白眼也不忘感谢sc的橘猫",
+      "nameJa": "夜勤事件"
     },
     {
       "id": "game-21",
@@ -1598,7 +1785,8 @@
       "firstDate": "2020-03-09",
       "year": 2020,
       "category": "JRPG/RPG",
-      "videoTitle": "【Milky熟肉】选择困难症的橘猫"
+      "videoTitle": "【Milky熟肉】选择困难症的橘猫",
+      "nameJa": "ドラゴンクエストIV 導かれし者たち"
     },
     {
       "id": "game-19",
@@ -1607,7 +1795,8 @@
       "year": 2020,
       "category": "JRPG/RPG",
       "videoTitle": "【B限】橘猫玩尼尔伪装者P１（共8p）",
-      "episodes": 8
+      "episodes": 8,
+      "nameJa": "NieR Replicant"
     },
     {
       "id": "game-18",
@@ -1615,7 +1804,8 @@
       "firstDate": "2020-02-01",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【b站限定】惨叫披萨店【Milky】"
+      "videoTitle": "【b站限定】惨叫披萨店【Milky】",
+      "nameJa": "Five Nights at Freddy's"
     },
     {
       "id": "game-17",
@@ -1624,7 +1814,8 @@
       "year": 2020,
       "category": "恐怖/悬疑",
       "videoTitle": "【Milky】惨叫合集（共2p，只是小片段）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "港詭実録"
     },
     {
       "id": "game-16",
@@ -1632,7 +1823,8 @@
       "firstDate": "2020-01-06",
       "year": 2020,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B站限定】玩隔日！要吸受到惊吓的橘猫么？"
+      "videoTitle": "【B站限定】玩隔日！要吸受到惊吓的橘猫么？",
+      "nameJa": "つぐのひ"
     },
     {
       "id": "game-15",
@@ -1641,7 +1833,8 @@
       "year": 2019,
       "category": "JRPG/RPG",
       "videoTitle": "【B站限定】新樱花大战！和橘猫一起为正义　P1（共8P）",
-      "episodes": 8
+      "episodes": 8,
+      "nameJa": "新サクラ大戦"
     },
     {
       "id": "game-14",
@@ -1650,7 +1843,8 @@
       "year": 2019,
       "category": "任系/平台",
       "videoTitle": "【B限】橘猫的健身环大冒险P1【Milky】（共2p）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "リングフィット アドベンチャー"
     },
     {
       "id": "game-13",
@@ -1659,7 +1853,8 @@
       "year": 2019,
       "category": "独立/剧情",
       "videoTitle": "【B限】怪大叔转转乐/The Bridge　P１（共2P）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "The Bridge"
     },
     {
       "id": "game-12",
@@ -1668,7 +1863,8 @@
       "year": 2019,
       "category": "模拟/休闲",
       "videoTitle": "【Milky】星球大战１，【Milky】星球大战P2（共7P）",
-      "episodes": 7
+      "episodes": 7,
+      "nameJa": "Star Wars ジェダイ：フォールン・オーダー"
     },
     {
       "id": "game-11",
@@ -1677,7 +1873,8 @@
       "year": 2019,
       "category": "独立/剧情",
       "videoTitle": "Milky/录像】橘猫快递 开始玩死亡搁浅了哦　P１（共2P）",
-      "episodes": 2
+      "episodes": 2,
+      "nameJa": "DEATH STRANDING"
     },
     {
       "id": "game-10",
@@ -1686,7 +1883,8 @@
       "year": 2019,
       "category": "模拟/休闲",
       "videoTitle": "Milky/Vtuber】打通了这游戏我要吃烤鹅（大鹅模拟器）P1（共3P）",
-      "episodes": 3
+      "episodes": 3,
+      "nameJa": "Untitled Goose Game 〜いたずらガチョウがやって来た！〜"
     },
     {
       "id": "game-9",
@@ -1694,7 +1892,8 @@
       "firstDate": "2019-09-20",
       "year": 2019,
       "category": "JRPG/RPG",
-      "videoTitle": "【Milky】圣剑传说名场面 配音（无合集）"
+      "videoTitle": "【Milky】圣剑传说名场面 配音（无合集）",
+      "nameJa": "聖剣伝説"
     },
     {
       "id": "game-8",
@@ -1702,7 +1901,8 @@
       "firstDate": "2019-08-14",
       "year": 2019,
       "category": "二游/抽卡",
-      "videoTitle": "【FGO】泳装抽卡！爆死！？大胜利！？【Milky】"
+      "videoTitle": "【FGO】泳装抽卡！爆死！？大胜利！？【Milky】",
+      "nameJa": "Fate/Grand Order"
     },
     {
       "id": "game-7",
@@ -1711,7 +1911,8 @@
       "year": 2019,
       "category": "推理/文字",
       "videoTitle": "【Milky】逆转裁判 P1 （熟肉）（共4P）",
-      "episodes": 4
+      "episodes": 4,
+      "nameJa": "逆転裁判"
     },
     {
       "id": "game-6",
@@ -1719,7 +1920,8 @@
       "firstDate": "2019-07-17",
       "year": 2019,
       "category": "恐怖/悬疑",
-      "videoTitle": "【B站限定】生化1RE 直播录像（熟肉）【Milky】"
+      "videoTitle": "【B站限定】生化1RE 直播录像（熟肉）【Milky】",
+      "nameJa": "バイオハザード HDリマスター"
     },
     {
       "id": "game-5",
@@ -1727,7 +1929,8 @@
       "firstDate": "2019-06-04",
       "year": 2019,
       "category": "任系/平台",
-      "videoTitle": "【Milky】试着玩了耀西的手工世界【Vtuber】"
+      "videoTitle": "【Milky】试着玩了耀西的手工世界【Vtuber】",
+      "nameJa": "ヨッシークラフトワールド"
     },
     {
       "id": "game-4",
@@ -1735,7 +1938,8 @@
       "firstDate": "2019-05-31",
       "year": 2019,
       "category": "动作/魂类",
-      "videoTitle": "MONSTER　HUNTER　WORLD【Milky】"
+      "videoTitle": "MONSTER　HUNTER　WORLD【Milky】",
+      "nameJa": "モンスターハンター：ワールド"
     },
     {
       "id": "game-3",
@@ -1743,7 +1947,8 @@
       "firstDate": "2019-05-25",
       "year": 2019,
       "category": "模拟/休闲",
-      "videoTitle": "【B站限定】试着玩mc哦！"
+      "videoTitle": "【B站限定】试着玩mc哦！",
+      "nameJa": "Minecraft"
     },
     {
       "id": "game-2",
@@ -1751,7 +1956,8 @@
       "firstDate": "2019-05-03",
       "year": 2019,
       "category": "任系/平台",
-      "videoTitle": "【Milky】试着给《塞尔达传说旷野之息》的米法配音"
+      "videoTitle": "【Milky】试着给《塞尔达传说旷野之息》的米法配音",
+      "nameJa": "ゼルダの伝説 ブレス オブ ザ ワイルド"
     },
     {
       "id": "game-1",
@@ -1759,7 +1965,8 @@
       "firstDate": "2019-04-29",
       "year": 2019,
       "category": "推理/文字",
-      "videoTitle": "【Milky】逆转裁判 第一回(全程精分配音)【Vtuber】"
+      "videoTitle": "【Milky】逆转裁判 第一回(全程精分配音)【Vtuber】",
+      "nameJa": "逆転裁判"
     }
   ]
 }

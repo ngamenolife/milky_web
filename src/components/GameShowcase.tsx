@@ -24,6 +24,10 @@ const CAT_STYLE: Record<string, string> = {
 };
 
 const INITIAL_GAMES = (gamesData.games || []) as GameEntry[];
+const NAME_JA_BY_ID = new Map(INITIAL_GAMES.map((g) => [g.id, g.nameJa]));
+const NAME_JA_BY_NAME = new Map(INITIAL_GAMES.map((g) => [g.name, g.nameJa]));
+const getDisplayName = (g: GameEntry, locale: string) =>
+  locale === "ja" ? (g.nameJa || NAME_JA_BY_ID.get(g.id) || NAME_JA_BY_NAME.get(g.name) || g.name) : g.name;
 const CAT_JA: Record<string, string> = {
   "动作/魂类": "アクション/ソウル系",
   "JRPG/RPG": "JRPG/RPG",
@@ -81,7 +85,7 @@ export default function GameShowcase() {
     return games.filter((g) => {
       if (year !== "all" && g.year !== year) return false;
       if (cat !== "all" && g.category !== cat) return false;
-      if (kw && !g.name.toLowerCase().includes(kw) && !g.videoTitle.toLowerCase().includes(kw)) return false;
+      if (kw && !(g.name.toLowerCase().includes(kw) || getDisplayName(g, "ja").toLowerCase().includes(kw)) && !g.videoTitle.toLowerCase().includes(kw)) return false;
       return true;
     });
   }, [games, year, cat, q]);
@@ -281,7 +285,7 @@ export default function GameShowcase() {
                   </div>
                 </div>
                 <h4 className="mb-1 line-clamp-1 text-sm font-bold text-stone-900 group-hover:text-milky-600">
-                  {g.name}
+                  {getDisplayName(g, locale)}
                 </h4>
                 <p className="line-clamp-2 text-[11px] leading-relaxed text-stone-500">
                   {g.videoTitle}

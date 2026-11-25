@@ -154,6 +154,7 @@ export async function deleteCloudSchedule(id: string): Promise<void> {
 export interface GameEntry {
   id: string;
   name: string;
+  nameJa?: string;
   firstDate: string;
   year: number;
   category: string;
