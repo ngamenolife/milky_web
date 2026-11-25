@@ -1,6 +1,8 @@
 /**
  * 定时同步 Milky (UID 410741448 / @MilkyVtuber) 的 B站动态与 X 推文到 Supabase
- * 使用 Gemini 自动：1) 将日文动态/推文翻译为自然中文；2) 提取开播预告写入 schedules
+ * 1) X 推文支持：TwitterAPI.io / 自定义 RSS (X_RSS_URL) / FxTwitter / 实测存活 Nitter 节点
+ * 2) 中文翻译：Gemini 2.5 Flash 优先 + Google Translate 免费接口 100% 兜底
+ * 3) 自动解析开播预告写入 schedules 日历表（含历史未解析帖补扫）
  */
 
 const BILI_UID = "410741448";
@@ -13,16 +15,11 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const X_RSS_URL = (process.env.X_RSS_URL || "").trim();
 const TWITTERAPI_IO_KEY = (process.env.TWITTERAPI_IO_KEY || "").trim();
 
-const DEFAULT_NITTER_HOSTS = [
-  "nitter.jaydenha.uk",
-  "d420.net",
-  "nitter.privacyredirect.com",
+const FREE_X_FEEDS = [
+  { name: "FxTwitter", url: `https://fxtwitter.com/${X_HANDLE}/feed.xml`, host: "" },
+  { name: "nitter.mie.foundation", url: `https://nitter.mie.foundation/${X_HANDLE}/rss`, host: "nitter.mie.foundation" },
+  { name: "nitter.mizuki.st", url: `https://nitter.mizuki.st/${X_HANDLE}/rss`, host: "nitter.mizuki.st" },
 ];
-const NITTER_HOSTS = (process.env.NITTER_INSTANCES || "")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean)
-  .concat(DEFAULT_NITTER_HOSTS);
 
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -48,7 +45,7 @@ function stripHtml(html) {
     .trim();
 }
 
-function normalizeNitterImg(src, host) {
+function normalizeImg(src, host) {
   if (!src) return "";
   let url = decodeEntities(src).trim();
   if (url.startsWith("//")) url = "https:" + url;
@@ -66,30 +63,39 @@ function normalizeNitterImg(src, host) {
   return url;
 }
 
-function parseRssXmlToTweets(xml, host = "") {
-  const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+// 兼容 RSS 2.0 (<item>) 和 Atom (<entry>)
+function parseFeedXmlToTweets(xml, host = "") {
+  const blocks = xml.match(/<(?:item|entry)[\s>][\s\S]*?<\/(?:item|entry)>/g) || [];
   const posts = [];
-  for (const block of items.slice(0, 20)) {
-    const title = decodeEntities(block.match(/<title>([\s\S]*?)<\/title>/)?.at(1) || "");
-    const link = decodeEntities(block.match(/<link>([\s\S]*?)<\/link>/)?.at(1) || "").trim();
-    const guid = decodeEntities(block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.at(1) || "").trim();
-    const pubDate = decodeEntities(block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.at(1) || "").trim();
-    const desc = block.match(/<description>([\s\S]*?)<\/description>/)?.at(1) || "";
+  for (const block of blocks.slice(0, 20)) {
+    const title = decodeEntities(block.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.at(1) || "");
+    const linkTag =
+      block.match(/<link[^>]*href=["']([^"']+)["']/)?.at(1) ||
+      block.match(/<link[^>]*>([\s\S]*?)<\/link>/)?.at(1) ||
+      "";
+    const guid = decodeEntities(
+      block.match(/<(?:guid|id)[^>]*>([\s\S]*?)<\/(?:guid|id)>/)?.at(1) || ""
+    ).trim();
+    const pubDate = decodeEntities(
+      block.match(/<(?:pubDate|published|updated)[^>]*>([\s\S]*?)<\/(?:pubDate|published|updated)>/)?.at(1) || ""
+    ).trim();
+    const bodyRaw =
+      block.match(/<(?:description|content|summary)[^>]*>([\s\S]*?)<\/(?:description|content|summary)>/)?.at(1) || "";
 
-    const postId = (link + " " + guid).match(/\/status\/(\d+)/)?.at(1);
+    const postId = (decodeEntities(linkTag) + " " + guid).match(/\/status\/(\d+)/)?.at(1);
     if (!postId) continue;
     const parsedTime = new Date(pubDate);
     if (Number.isNaN(parsedTime.getTime())) continue;
 
     const imgMatches = [
-      ...decodeEntities(desc).matchAll(/<img[^>]+src=["']([^"']+)["']/gi),
+      ...decodeEntities(bodyRaw).matchAll(/<img[^>]+src=["']([^"']+)["']/gi),
       ...block.matchAll(/<media:content[^>]+url=["']([^"']+)["']/gi),
       ...block.matchAll(/<enclosure[^>]+url=["']([^"']+)["']/gi),
     ];
-    const images = [...new Set(imgMatches.map((m) => normalizeNitterImg(m.at(1), host)).filter(Boolean))].slice(0, 9);
+    const images = [...new Set(imgMatches.map((m) => normalizeImg(m.at(1), host)).filter(Boolean))].slice(0, 9);
 
     const isRepost = /^RT\s+(by\s+)?@/i.test(title) || /^RT by\s+/i.test(title);
-    const text = stripHtml(desc) || stripHtml(title);
+    const text = stripHtml(bodyRaw) || stripHtml(title);
 
     posts.push({
       id: `twitter:${postId}`,
@@ -119,7 +125,7 @@ async function fetchBilibiliDynamics() {
     const res = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
     const json = await res.json();
     if (json.code !== 0 || !json.data?.items) {
-      console.warn(`⚠️ B站动态接口返回异常 (code=${json.code}, msg=${json.message || "unknown"})`);
+      console.warn(`⚠️ B站动态接口异常 (code=${json.code}, msg=${json.message || "unknown"})`);
       return [];
     }
 
@@ -174,7 +180,7 @@ async function fetchBilibiliDynamics() {
   }
 }
 
-// ---------- 2. 抓取 X (Twitter) 推文（4 层自动通道） ----------
+// ---------- 2. 抓取 X (Twitter) 推文 ----------
 async function fetchTwitterPosts() {
   if (TWITTERAPI_IO_KEY) {
     try {
@@ -209,103 +215,45 @@ async function fetchTwitterPosts() {
         }
       }
     } catch (err) {
-      console.warn("⚠️ TwitterAPI.io 抓取失败：", err.message);
+      console.warn("⚠️ TwitterAPI.io 失败：", err.message);
     }
   }
 
-  if (X_RSS_URL) {
+  const feedsToTry = [
+    ...(X_RSS_URL ? [{ name: "自定义 X_RSS_URL", url: X_RSS_URL, host: "" }] : []),
+    ...FREE_X_FEEDS,
+  ];
+
+  for (const feed of feedsToTry) {
     try {
-      const res = await fetch(X_RSS_URL, {
-        headers: { "User-Agent": UA, Accept: "application/rss+xml, application/xml, text/xml" },
+      const res = await fetch(feed.url, {
+        headers: {
+          "User-Agent": UA,
+          Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+        },
         signal: AbortSignal.timeout(15000),
       });
-      if (res.ok) {
-        const xml = await res.text();
-        const posts = parseRssXmlToTweets(xml);
-        if (posts.length > 0) {
-          console.log(`✅ X 推文抓取成功（自定义 RSS）：${posts.length} 条`);
-          return posts;
-        }
-      } else {
-        console.warn(`⚠️ 自定义 X_RSS_URL 返回 HTTP ${res.status}`);
-      }
-    } catch (err) {
-      console.warn("⚠️ 自定义 X_RSS_URL 抓取失败：", err.message);
-    }
-  }
-
-  try {
-    const res = await fetch(
-      `https://syndication.twitter.com/srv/timeline-profile/screen-name/${encodeURIComponent(X_HANDLE)}`,
-      { headers: { "User-Agent": UA, Accept: "text/html" }, signal: AbortSignal.timeout(15000) }
-    );
-    if (res.ok) {
-      const html = await res.text();
-      const nextJson = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/)?.at(1);
-      if (nextJson) {
-        const nextData = JSON.parse(nextJson);
-        const entries = nextData?.props?.pageProps?.timeline?.entries || [];
-        const posts = [];
-        for (const entry of entries.slice(0, 20)) {
-          const tw = entry?.content?.tweet;
-          if (!tw?.id_str) continue;
-          const postId = String(tw.id_str);
-          const created = new Date(tw.created_at || Date.now());
-          if (Number.isNaN(created.getTime())) continue;
-          const media = tw.extended_entities?.media || tw.entities?.media || [];
-          const images = media.map((m) => m.media_url_https || m.media_url).filter(Boolean).slice(0, 9);
-          posts.push({
-            id: `twitter:${postId}`,
-            platform: "twitter",
-            post_id: postId,
-            published_at: created.toISOString(),
-            text: String(tw.full_text || tw.text || "").trim() || "（无正文推文）",
-            images,
-            url: `https://x.com/${X_HANDLE}/status/${postId}`,
-            is_repost: Boolean(tw.retweeted_status_id_str || /^RT @/i.test(tw.full_text || "")),
-          });
-        }
-        if (posts.length > 0) {
-          console.log(`✅ X 推文抓取成功（官方 Syndication）：${posts.length} 条`);
-          return posts;
-        }
-      }
-    } else {
-      console.warn(`⚠️ X Syndication 返回 HTTP ${res.status}`);
-    }
-  } catch (err) {
-    console.warn("⚠️ X Syndication 抓取失败：", err.message);
-  }
-
-  const tried = new Set();
-  for (const host of NITTER_HOSTS) {
-    if (tried.has(host)) continue;
-    tried.add(host);
-    try {
-      const res = await fetch(`https://${host}/${X_HANDLE}/rss`, {
-        headers: { "User-Agent": UA, Accept: "application/rss+xml, application/xml, text/xml" },
-        signal: AbortSignal.timeout(12000),
-      });
       if (!res.ok) {
-        console.warn(`⚠️ Nitter 节点 ${host} 返回 HTTP ${res.status}`);
+        console.warn(`⚠️ X 源 [${feed.name}] 返回 HTTP ${res.status}`);
         continue;
       }
       const xml = await res.text();
-      const posts = parseRssXmlToTweets(xml, host);
+      const posts = parseFeedXmlToTweets(xml, feed.host);
       if (posts.length > 0) {
-        console.log(`✅ X 推文抓取成功（Nitter ${host}）：${posts.length} 条`);
+        console.log(`✅ X 推文抓取成功（${feed.name}）：${posts.length} 条`);
         return posts;
       }
+      console.warn(`⚠️ X 源 [${feed.name}] 返回 200 但未解析到推文`);
     } catch (err) {
-      console.warn(`⚠️ Nitter 节点 ${host} 失败：`, err.message);
+      console.warn(`⚠️ X 源 [${feed.name}] 请求失败：`, err.message);
     }
   }
 
-  console.warn("⚠️ 全部 X 通道暂不可用，建议去 rss.app 生成免费 RSS 填入 GitHub Secrets: X_RSS_URL");
+  console.warn("⚠️ 本次所有免费 X 源均未返回推文（可配置 X_RSS_URL 指向 rss.app 或 xgo.ing）");
   return [];
 }
 
-// ---------- 3. Supabase & Gemini 辅助 ----------
+// ---------- 3. Supabase & AI / 免费翻译辅助 ----------
 async function sbFetch(path, options = {}) {
   const authHeaders = SUPABASE_SERVICE_KEY.startsWith("sb_secret_")
     ? { apikey: SUPABASE_SERVICE_KEY }
@@ -328,6 +276,7 @@ async function sbFetch(path, options = {}) {
 }
 
 async function callGeminiJson(prompt, temperature = 0.2) {
+  if (!GEMINI_API_KEY) return null;
   const models = ["gemini-2.5-flash", "gemini-2.0-flash"];
   for (const model of models) {
     try {
@@ -358,65 +307,85 @@ async function callGeminiJson(prompt, temperature = 0.2) {
   return null;
 }
 
-// ---------- 4. Gemini 批量日译中（含历史旧帖自动补翻） ----------
-async function translatePendingPosts() {
-  if (!GEMINI_API_KEY) {
-    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过翻译");
-    return;
-  }
-  const pending = await sbFetch("social_posts?select=id,text&text_zh=is.null&order=published_at.desc&limit=25");
-  console.log(`🔎 待检测翻译的帖子数量：${Array.isArray(pending) ? pending.length : 0}`);
-  if (!Array.isArray(pending) || pending.length === 0) return;
-
-  const needTranslate = [];
-  for (const row of pending) {
-    const t = String(row.text || "").trim();
-    if (t && /[\u3040-\u30ff]/.test(t)) {
-      needTranslate.push({ id: row.id, text: t });
-    } else {
-      await sbFetch(`social_posts?id=eq.${encodeURIComponent(row.id)}`, {
-        method: "PATCH",
-        body: JSON.stringify({ text_zh: "" }),
-      });
-    }
-  }
-  console.log(`🈳 其中含日文需翻译：${needTranslate.length} 条`);
-  if (needTranslate.length === 0) return;
-
-  for (let i = 0; i < needTranslate.length; i += 8) {
-    const batch = needTranslate.slice(i, i + 8);
-    const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文精准翻译成自然、可爱的简体中文。
-要求：
-1. 准确使用 VTuber 圈常用译法（配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定、おつみる=辛苦啦）。
-2. 保留原有换行、emoji 和游戏名，不要添加多余解释。
-3. 严格返回一个 JSON 对象，key 为输入中的 id，value 为对应的简体中文翻译。
-
-输入数据：
-${JSON.stringify(batch)}`;
-
-    const map = await callGeminiJson(prompt, 0.2);
-    if (!map || typeof map !== "object") continue;
-
-    let count = 0;
-    for (const item of batch) {
-      const zh = typeof map[item.id] === "string" ? map[item.id].trim() : "";
-      if (!zh) continue;
-      await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
-        method: "PATCH",
-        body: JSON.stringify({ text_zh: zh }),
-      });
-      count++;
-    }
-    console.log(`✅ 本批已成功翻译并写入 ${count} 条中文译文`);
+// 100% 免费兜底：Google Translate 公开接口
+async function googleTranslateToZh(text) {
+  try {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=zh-CN&dt=t&q=${encodeURIComponent(text.slice(0, 1800))}`;
+    const res = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(12000) });
+    if (!res.ok) return "";
+    const data = await res.json();
+    if (!Array.isArray(data) || !Array.isArray(data.at(0))) return "";
+    return data
+      .at(0)
+      .map((seg) => (Array.isArray(seg) ? seg.at(0) || "" : ""))
+      .join("")
+      .trim();
+  } catch {
+    return "";
   }
 }
 
-// ---------- 5. Gemini 自动解析开播预告写入 schedules（支持历史旧帖补扫） ----------
+// ---------- 4. 全部非中文动态/推文自动翻译（Gemini 优先 + Google Translate 兜底） ----------
+async function translatePendingPosts() {
+  const rows = await sbFetch("social_posts?select=id,text,text_zh&order=published_at.desc&limit=40");
+  if (!Array.isArray(rows) || rows.length === 0) return;
+
+  const needTranslate = rows
+    .filter((r) => !String(r.text_zh || "").trim() && /[\u3040-\u30ff]/.test(String(r.text || "")))
+    .slice(0, 20);
+
+  console.log(`🈳 检测到含日文且未翻译的帖子：${needTranslate.length} 条`);
+  if (needTranslate.length === 0) return;
+
+  let translated = 0;
+
+  if (GEMINI_API_KEY) {
+    const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文翻译成自然可爱的简体中文。
+要求：配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定；保留换行和emoji。
+严格返回 JSON 对象：{"帖子id": "中文翻译"}。
+输入：
+${JSON.stringify(needTranslate.map((r) => ({ id: r.id, text: r.text })))}`;
+
+    const map = await callGeminiJson(prompt, 0.2);
+    if (map && typeof map === "object") {
+      for (const item of needTranslate) {
+        const zh = typeof map[item.id] === "string" ? map[item.id].trim() : "";
+        if (zh) {
+          await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
+            method: "PATCH",
+            body: JSON.stringify({ text_zh: zh }),
+          });
+          item._done = true;
+          translated++;
+        }
+      }
+    }
+  }
+
+  const remaining = needTranslate.filter((r) => !r._done);
+  if (remaining.length > 0) {
+    console.log(`🔄 切换免费 Google Translate 兜底翻译剩余 ${remaining.length} 条...`);
+    for (const item of remaining) {
+      const zh = await googleTranslateToZh(item.text);
+      if (zh) {
+        await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
+          method: "PATCH",
+          body: JSON.stringify({ text_zh: zh }),
+        });
+        translated++;
+      }
+    }
+  }
+
+  console.log(`✅ 本次共成功写入 ${translated} 条中文翻译`);
+}
+
+// ---------- 5. Gemini 自动解析开播预告写入 schedules ----------
 const SCHEDULE_HINT_RE = /(配信|予定|直播|开播|開播|歌枠|歌回|同時視聴|同时视听|FF14|枠|時|点|\d{1,2}[:：]\d{2})/i;
 
 async function parsePendingSchedules() {
   if (!GEMINI_API_KEY) {
-    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过日程解析");
+    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过自动日历解析");
     return;
   }
   const pending = await sbFetch(
@@ -441,11 +410,9 @@ async function parsePendingSchedules() {
 正文:
 ${post.text}
 
-如果正文包含**明确的直播/配信预告日期和时间**，请提取为 JSON 数组（若只是日常闲聊没有明确开播时间，返回空数组 []）。
-注意：日文“21時”默认为日本时间 +09:00，中文“20点”默认为北京时间 +08:00。
-每项格式：
-[{"title":"简短直播标题","start_time":"ISO8601带时区如2026-11-26T21:00:00+09:00","platform":"三台同播"|"Bilibili"|"YouTube"|"Twitch","category":"game"|"watchalong"|"singing"|"bilibili"|"collab","notes":"简短备注"}]
-只输出纯 JSON 数组。`;
+如果正文包含**明确的直播/配信预告日期和时间**，请提取为 JSON 数组（无明确开播时间返回 []）。
+日文“21時”默认日本时间 +09:00，中文“20点”默认北京时间 +08:00。
+格式：[{"title":"简短直播标题","start_time":"ISO8601如2026-11-26T21:00:00+09:00","platform":"三台同播"|"Bilibili"|"YouTube"|"Twitch","category":"game"|"watchalong"|"singing"|"bilibili"|"collab","notes":"备注"}]`;
 
       const parsed = await callGeminiJson(prompt, 0.1);
       if (Array.isArray(parsed) && parsed.length > 0) {
