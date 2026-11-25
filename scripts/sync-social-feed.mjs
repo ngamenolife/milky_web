@@ -1,6 +1,6 @@
 /**
  * 定时同步 Milky (UID 410741448 / @MilkyVtuber) 的 B站动态与 X 推文到 Supabase
- * 并使用 Gemini 2.5 Flash 自动：1) 将日文动态/推文翻译为自然中文；2) 提取开播预告写入 schedules
+ * 使用 Gemini 自动：1) 将日文动态/推文翻译为自然中文；2) 提取开播预告写入 schedules
  */
 
 const BILI_UID = "410741448";
@@ -305,7 +305,7 @@ async function fetchTwitterPosts() {
   return [];
 }
 
-// ---------- 3. Supabase 读写辅助 ----------
+// ---------- 3. Supabase & Gemini 辅助 ----------
 async function sbFetch(path, options = {}) {
   const authHeaders = SUPABASE_SERVICE_KEY.startsWith("sb_secret_")
     ? { apikey: SUPABASE_SERVICE_KEY }
@@ -327,19 +327,50 @@ async function sbFetch(path, options = {}) {
   return ct.includes("application/json") ? res.json() : null;
 }
 
+async function callGeminiJson(prompt, temperature = 0.2) {
+  const models = ["gemini-2.5-flash", "gemini-2.0-flash"];
+  for (const model of models) {
+    try {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature, responseMimeType: "application/json" },
+          }),
+          signal: AbortSignal.timeout(30000),
+        }
+      );
+      if (!res.ok) {
+        const errText = await res.text();
+        console.warn(`⚠️ Gemini (${model}) HTTP ${res.status}: ${errText.slice(0, 180)}`);
+        continue;
+      }
+      const data = await res.json();
+      const raw = data?.candidates?.at(0)?.content?.parts?.at(0)?.text || "";
+      if (raw) return JSON.parse(raw.replace(/^```json|```$/g, "").trim());
+    } catch (err) {
+      console.warn(`⚠️ Gemini (${model}) 调用异常：`, err.message);
+    }
+  }
+  return null;
+}
+
 // ---------- 4. Gemini 批量日译中（含历史旧帖自动补翻） ----------
 async function translatePendingPosts() {
   if (!GEMINI_API_KEY) {
-    console.log("ℹ️ 未配置 GEMINI_API_KEY，跳过自动翻译");
+    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过翻译");
     return;
   }
   const pending = await sbFetch("social_posts?select=id,text&text_zh=is.null&order=published_at.desc&limit=25");
+  console.log(`🔎 待检测翻译的帖子数量：${Array.isArray(pending) ? pending.length : 0}`);
   if (!Array.isArray(pending) || pending.length === 0) return;
 
   const needTranslate = [];
   for (const row of pending) {
     const t = String(row.text || "").trim();
-    // 含日文假名或纯英文推文才调用翻译，纯中文动态直接标记为空串免重复扫
     if (t && /[\u3040-\u30ff]/.test(t)) {
       needTranslate.push({ id: row.id, text: t });
     } else {
@@ -349,118 +380,97 @@ async function translatePendingPosts() {
       });
     }
   }
+  console.log(`🈳 其中含日文需翻译：${needTranslate.length} 条`);
   if (needTranslate.length === 0) return;
 
-  for (let i = 0; i < needTranslate.length; i += 10) {
-    const batch = needTranslate.slice(i, i + 10);
-    try {
-      const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文精准翻译成自然、可爱的简体中文。
+  for (let i = 0; i < needTranslate.length; i += 8) {
+    const batch = needTranslate.slice(i, i + 8);
+    const prompt = `你是 VTuber 字幕组翻译，请将以下 Milky (みるきぃ) 的日文动态/推文精准翻译成自然、可爱的简体中文。
 要求：
-1. 准确使用二次元/VTuber 圈常用译法（如：配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定、耐久=耐久、おつみる=辛苦啦）。
-2. 保留原有的换行、emoji、游戏名和人名，不要添加多余解释。
+1. 准确使用 VTuber 圈常用译法（配信=直播、歌枠=歌回、同時視聴=同时视听、メン限=会员限定、おつみる=辛苦啦）。
+2. 保留原有换行、emoji 和游戏名，不要添加多余解释。
 3. 严格返回一个 JSON 对象，key 为输入中的 id，value 为对应的简体中文翻译。
 
 输入数据：
 ${JSON.stringify(batch)}`;
 
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { temperature: 0.2, responseMimeType: "application/json" },
-          }),
-          signal: AbortSignal.timeout(30000),
-        }
-      );
-      if (!res.ok) {
-        console.warn(`⚠️ Gemini 翻译接口返回 HTTP ${res.status}`);
-        continue;
-      }
-      const data = await res.json();
-      const raw = data?.candidates?.at(0)?.content?.parts?.at(0)?.text || "{}";
-      const map = JSON.parse(raw.replace(/^```json|```$/g, "").trim());
+    const map = await callGeminiJson(prompt, 0.2);
+    if (!map || typeof map !== "object") continue;
 
-      let count = 0;
-      for (const item of batch) {
-        const zh = typeof map[item.id] === "string" ? map[item.id].trim() : "";
-        if (!zh) continue;
-        await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
-          method: "PATCH",
-          body: JSON.stringify({ text_zh: zh }),
-        });
-        count++;
-      }
-      console.log(`🈳 本批已自动翻译 ${count} 条动态/推文为中文`);
-    } catch (err) {
-      console.warn("⚠️ Gemini 批量翻译失败：", err.message);
+    let count = 0;
+    for (const item of batch) {
+      const zh = typeof map[item.id] === "string" ? map[item.id].trim() : "";
+      if (!zh) continue;
+      await sbFetch(`social_posts?id=eq.${encodeURIComponent(item.id)}`, {
+        method: "PATCH",
+        body: JSON.stringify({ text_zh: zh }),
+      });
+      count++;
     }
+    console.log(`✅ 本批已成功翻译并写入 ${count} 条中文译文`);
   }
 }
 
-// ---------- 5. Gemini 自动解析开播预告写入 schedules ----------
+// ---------- 5. Gemini 自动解析开播预告写入 schedules（支持历史旧帖补扫） ----------
 const SCHEDULE_HINT_RE = /(配信|予定|直播|开播|開播|歌枠|歌回|同時視聴|同时视听|FF14|枠|時|点|\d{1,2}[:：]\d{2})/i;
 
-async function extractAndSaveSchedules(newPosts) {
-  if (!GEMINI_API_KEY) return;
-  const candidates = newPosts.filter((p) => !p.is_repost && SCHEDULE_HINT_RE.test(p.text)).slice(0, 5);
-  if (candidates.length === 0) return;
+async function parsePendingSchedules() {
+  if (!GEMINI_API_KEY) {
+    console.warn("⚠️ 未检测到 GEMINI_API_KEY，跳过日程解析");
+    return;
+  }
+  const pending = await sbFetch(
+    "social_posts?select=id,platform,post_id,published_at,text,url,is_repost&schedule_parsed=eq.false&order=published_at.desc&limit=15"
+  );
+  console.log(`📅 待检测日程的帖子数量：${Array.isArray(pending) ? pending.length : 0}`);
+  if (!Array.isArray(pending) || pending.length === 0) return;
 
-  for (const post of candidates) {
+  for (const post of pending) {
     try {
+      if (post.is_repost || !SCHEDULE_HINT_RE.test(post.text || "")) {
+        await sbFetch(`social_posts?id=eq.${encodeURIComponent(post.id)}`, {
+          method: "PATCH",
+          body: JSON.stringify({ schedule_parsed: true }),
+        });
+        continue;
+      }
+
       const prompt = `你是 VTuber MilkyTube (みるきぃ) 的日程提取助手。
 发布时间(UTC): ${post.published_at}
 来源平台: ${post.platform}
 正文:
 ${post.text}
 
-如果正文包含**明确的未来直播/配信预告时间**，请提取为 JSON 数组（若没有明确开播日期和时间，返回空数组 []）。
+如果正文包含**明确的直播/配信预告日期和时间**，请提取为 JSON 数组（若只是日常闲聊没有明确开播时间，返回空数组 []）。
 注意：日文“21時”默认为日本时间 +09:00，中文“20点”默认为北京时间 +08:00。
-每项格式严格如下：
+每项格式：
 [{"title":"简短直播标题","start_time":"ISO8601带时区如2026-11-26T21:00:00+09:00","platform":"三台同播"|"Bilibili"|"YouTube"|"Twitch","category":"game"|"watchalong"|"singing"|"bilibili"|"collab","notes":"简短备注"}]
-只输出纯 JSON 数组，不要任何 Markdown 代码块或解释。`;
+只输出纯 JSON 数组。`;
 
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { temperature: 0.1, responseMimeType: "application/json" },
-          }),
-          signal: AbortSignal.timeout(20000),
+      const parsed = await callGeminiJson(prompt, 0.1);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        for (let i = 0; i < parsed.length; i++) {
+          const ev = parsed.at(i);
+          if (!ev?.title || !ev?.start_time) continue;
+          const dt = new Date(ev.start_time);
+          if (Number.isNaN(dt.getTime())) continue;
+
+          const row = {
+            id: `auto-${post.platform}-${post.post_id}-${i}`,
+            title: String(ev.title).slice(0, 120),
+            start_time: dt.toISOString(),
+            platform: ["三台同播", "Bilibili", "YouTube", "Twitch"].includes(ev.platform) ? ev.platform : "三台同播",
+            category: ["game", "watchalong", "singing", "bilibili", "collab"].includes(ev.category) ? ev.category : "game",
+            notes: String(ev.notes || "").slice(0, 200),
+            source_url: post.url,
+          };
+          await sbFetch("schedules?on_conflict=id", {
+            method: "POST",
+            headers: { Prefer: "resolution=ignore-duplicates" },
+            body: JSON.stringify(row),
+          });
+          console.log(`📅 已自动写入日历：${row.title} (${row.start_time})`);
         }
-      );
-      if (!res.ok) continue;
-      const data = await res.json();
-      const raw = data?.candidates?.at(0)?.content?.parts?.at(0)?.text || "[]";
-      const parsed = JSON.parse(raw.replace(/^```json|```$/g, "").trim());
-      if (!Array.isArray(parsed) || parsed.length === 0) continue;
-
-      for (let i = 0; i < parsed.length; i++) {
-        const ev = parsed.at(i);
-        if (!ev?.title || !ev?.start_time) continue;
-        const dt = new Date(ev.start_time);
-        if (Number.isNaN(dt.getTime())) continue;
-
-        const row = {
-          id: `auto-${post.platform}-${post.post_id}-${i}`,
-          title: String(ev.title).slice(0, 120),
-          start_time: dt.toISOString(),
-          platform: ["三台同播", "Bilibili", "YouTube", "Twitch"].includes(ev.platform) ? ev.platform : "三台同播",
-          category: ["game", "watchalong", "singing", "bilibili", "collab"].includes(ev.category) ? ev.category : "game",
-          notes: String(ev.notes || "").slice(0, 200),
-          source_url: post.url,
-        };
-        await sbFetch("schedules?on_conflict=id", {
-          method: "POST",
-          headers: { Prefer: "resolution=ignore-duplicates" },
-          body: JSON.stringify(row),
-        });
-        console.log(`📅 已自动写入日程：${row.title} (${row.start_time})`);
       }
 
       await sbFetch(`social_posts?id=eq.${encodeURIComponent(post.id)}`, {
@@ -468,7 +478,7 @@ ${post.text}
         body: JSON.stringify({ schedule_parsed: true }),
       });
     } catch (err) {
-      console.warn(`⚠️ AI 日程解析跳过 (${post.id}):`, err.message);
+      console.warn(`⚠️ 日程解析跳过 (${post.id}):`, err.message);
     }
   }
 }
@@ -497,14 +507,13 @@ async function main() {
         body: JSON.stringify(newPosts),
       });
       console.log(`🎉 新增入库 ${newPosts.length} 条动态/推文`);
-      await extractAndSaveSchedules(newPosts);
     } else {
-      console.log("✅ 所有抓取到的动态与推文均已是最新");
+      console.log("✅ 抓取到的动态与推文均已在库中");
     }
   }
 
-  // 自动翻译所有还没翻译的日文帖子（含刚入库和之前未翻的旧帖）
   await translatePendingPosts();
+  await parsePendingSchedules();
 }
 
 main().catch((err) => {
