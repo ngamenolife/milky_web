@@ -226,9 +226,23 @@ export default function FeedPageClient() {
                   </a>
                 </div>
 
-                <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-stone-800">
-                  {post.text}
-                </p>
+                {!isJa && post.text_zh ? (
+                  <div className="space-y-2">
+                    <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-stone-800">
+                      {post.text_zh}
+                    </p>
+                    <div className="whitespace-pre-wrap break-words rounded-2xl bg-stone-50 px-3.5 py-2.5 text-xs leading-relaxed text-stone-500">
+                      <span className="mr-1.5 inline-block rounded bg-stone-200/80 px-1.5 py-0.5 text-[10px] font-semibold text-stone-600">
+                        原文
+                      </span>
+                      {post.text}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-stone-800">
+                    {post.text}
+                  </p>
+                )}
 
                 {imgs.length > 0 && (
                   <div

@@ -76,7 +76,7 @@ export default function Live2DMascot() {
       else setVisible(window.innerWidth >= 768);
       setMuted(localStorage.getItem("milky-mascot-muted") === "1");
       const savedTheme = localStorage.getItem("milky_theme");
-      const isDark = savedTheme ? savedTheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = savedTheme === "dark";
       setDark(isDark);
       document.documentElement.classList.toggle("dark", isDark);
 

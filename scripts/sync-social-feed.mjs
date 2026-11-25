@@ -457,7 +457,7 @@ ${post.text}
             headers: { Prefer: "resolution=ignore-duplicates" },
             body: JSON.stringify(row),
           });
-          console.log(`📅 已自动写入日历：${row.title} (${row.start_time})`);
+          console.log(`📅 已自动写入日历：${row.title} (${row.start_iso})`);
         }
       }
 
