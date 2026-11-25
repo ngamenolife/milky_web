@@ -40,6 +40,8 @@ export default function FeedPageClient() {
 
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState("");
   const [error, setError] = useState("");
   const [platform, setPlatform] = useState<"all" | "bilibili" | "twitter">("all");
   const [hideRepost, setHideRepost] = useState(false);

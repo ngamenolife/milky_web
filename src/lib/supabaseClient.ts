@@ -12,7 +12,7 @@ function getEditPasscode(): string {
   if (typeof window === "undefined") return "";
   let code = window.localStorage.getItem(PASSCODE_KEY) || "";
   if (!code) {
-    const isJa = window.localStorage.getItem("milky-locale") === "ja";
+    const isJa = window.localStorage.getItem("milky_locale") === "ja";
     const input = window.prompt(
       isJa
         ? "🔑 みるきぃのニックネームは？（1回入力すれば保存されます）："
@@ -55,7 +55,7 @@ async function sbFetch(
     const txt = await res.text();
     if (method !== "GET" && (res.status === 401 || res.status === 403 || txt.includes("42501") || txt.includes("row-level security"))) {
       if (typeof window !== "undefined") window.localStorage.removeItem(PASSCODE_KEY);
-      const isJa = typeof window !== "undefined" && window.localStorage.getItem("milky-locale") === "ja";
+      const isJa = typeof window !== "undefined" && window.localStorage.getItem("milky_locale") === "ja";
       throw new Error(isJa ? "暗号が違います。もう一度送信して正しい暗号を入力してください" : "暗号错误！已清除缓存，请重新点提交并输入正确暗号");
     }
     throw new Error(txt || `HTTP ${res.status}`);
