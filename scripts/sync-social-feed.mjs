@@ -442,10 +442,12 @@ ${post.text}
           const dt = new Date(ev.start_time);
           if (Number.isNaN(dt.getTime())) continue;
 
+          const endDt = new Date(dt.getTime() + 2 * 60 * 60 * 1000);
           const row = {
             id: `auto-${post.platform}-${post.post_id}-${i}`,
             title: String(ev.title).slice(0, 120),
-            start_time: dt.toISOString(),
+            start_iso: dt.toISOString(),
+            end_iso: endDt.toISOString(),
             platform: ["三台同播", "Bilibili", "YouTube", "Twitch"].includes(ev.platform) ? ev.platform : "三台同播",
             category: ["game", "watchalong", "singing", "bilibili", "collab"].includes(ev.category) ? ev.category : "game",
             source_url: post.url,

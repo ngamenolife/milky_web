@@ -1,10 +1,12 @@
 [
   {
-    "bvid": "BV11W1czyEoF",
+    "id": "bili-BV11W1czyEoF",
     "title": "【直播回放】B限　雑談　中日英字幕 2026年11月24日19点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
-    "pic": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-24T14:42:03.000Z",
     "url": "https://www.bilibili.com/video/BV11W1czyEoF",
+<<<<<<< Updated upstream
     "date": "2026-11-24",
     "created": 1795531323,
     "pubdate": 1795531323,
@@ -12,13 +14,18 @@
     "length": "194:21",
     "play": 1093,
     "description": ""
+=======
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1eHyZzJEGo",
+    "id": "bili-BV1eHyZzJEGo",
     "title": "【直播回放】鳴潮　中日英字幕 2026年11月24日07点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/11cfdba44fec1aa842bd786afef6190b50e90ad2.jpg",
-    "pic": "https://i0.hdslb.com/bfs/archive/11cfdba44fec1aa842bd786afef6190b50e90ad2.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-24T03:32:26.000Z",
     "url": "https://www.bilibili.com/video/BV1eHyZzJEGo",
+<<<<<<< Updated upstream
     "date": "2026-11-24",
     "created": 1795491146,
     "pubdate": 1795491146,
@@ -26,13 +33,18 @@
     "length": "241:36",
     "play": 693,
     "description": ""
+=======
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/11cfdba44fec1aa842bd786afef6190b50e90ad2.jpg"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1wvyQzjEF8",
+    "id": "bili-BV1wvyQzjEF8",
     "title": "【直播回放】初見　最终幻想：共鸣　2　中日英字幕 2026年11月23日19点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
-    "pic": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-23T16:38:15.000Z",
     "url": "https://www.bilibili.com/video/BV1wvyQzjEF8",
+<<<<<<< Updated upstream
     "date": "2026-11-23",
     "created": 1795451895,
     "pubdate": 1795451895,
@@ -40,13 +52,18 @@
     "length": "310:11",
     "play": 634,
     "description": ""
+=======
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1y7ypzNEB5",
+    "id": "bili-BV1y7ypzNEB5",
     "title": "【直播回放】原神　星穹铁道　绝区零　中日英字幕 2026年11月23日09点场",
-    "cover": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg",
-    "pic": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-23T05:18:30.000Z",
     "url": "https://www.bilibili.com/video/BV1y7ypzNEB5",
+<<<<<<< Updated upstream
     "date": "2026-11-23",
     "created": 1795411110,
     "pubdate": 1795411110,
@@ -54,27 +71,27 @@
     "length": "236:56",
     "play": 603,
     "description": ""
+=======
+    "thumbnail": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1jdyGzbE1g",
+    "id": "bili-BV1jdyGzbE1g",
     "title": "【直播回放】初見　最终幻想：共鸣　①　中日英字幕 2026年11月22日12点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
-    "pic": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-22T08:27:41.000Z",
     "url": "https://www.bilibili.com/video/BV1jdyGzbE1g",
-    "date": "2026-11-22",
-    "created": 1795336061,
-    "pubdate": 1795336061,
-    "duration": "241:10",
-    "length": "241:10",
-    "play": 764,
-    "description": ""
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/5dd9e812da3b1b07e86b0900ed40796290dca6bc.png"
   },
   {
-    "bvid": "BV1DpyYzrEHu",
+    "id": "bili-BV1DpyYzrEHu",
     "title": "【直播回放】【B限】雑談　雀魂　中日英字幕 2026年11月21日20点场",
-    "cover": "https://i2.hdslb.com/bfs/archive/31c10bf7f9dd6fa7a40fd4df3b07a730b17d30ef.jpg",
-    "pic": "https://i2.hdslb.com/bfs/archive/31c10bf7f9dd6fa7a40fd4df3b07a730b17d30ef.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-21T16:12:41.000Z",
     "url": "https://www.bilibili.com/video/BV1DpyYzrEHu",
+<<<<<<< Updated upstream
     "date": "2026-11-21",
     "created": 1795277561,
     "pubdate": 1795277561,
@@ -82,27 +99,27 @@
     "length": "228:45",
     "play": 1067,
     "description": ""
+=======
+    "thumbnail": "https://i2.hdslb.com/bfs/archive/31c10bf7f9dd6fa7a40fd4df3b07a730b17d30ef.jpg"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1npyazXEPV",
+    "id": "bili-BV1npyazXEPV",
     "title": "【直播回放】P5X　中日英字幕 2026年11月21日13点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/9a7b5b62469c1ba03a08e4cfa0b87c39b7588f7b.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/9a7b5b62469c1ba03a08e4cfa0b87c39b7588f7b.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-21T08:45:21.000Z",
     "url": "https://www.bilibili.com/video/BV1npyazXEPV",
-    "date": "2026-11-21",
-    "created": 1795250721,
-    "pubdate": 1795250721,
-    "duration": "198:39",
-    "length": "198:39",
-    "play": 570,
-    "description": ""
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/9a7b5b62469c1ba03a08e4cfa0b87c39b7588f7b.jpg"
   },
   {
-    "bvid": "BV1vrysz4EAq",
+    "id": "bili-BV1vrysz4EAq",
     "title": "【直播回放】塞尔达时之笛【中日英字幕】 2026年11月20日19点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/451b03953b60a595ed398ba2426e860bb2f63322.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/451b03953b60a595ed398ba2426e860bb2f63322.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-20T15:48:01.000Z",
     "url": "https://www.bilibili.com/video/BV1vrysz4EAq",
+<<<<<<< Updated upstream
     "date": "2026-11-20",
     "created": 1795189681,
     "pubdate": 1795189681,
@@ -110,41 +127,36 @@
     "length": "251:25",
     "play": 980,
     "description": ""
+=======
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/451b03953b60a595ed398ba2426e860bb2f63322.jpg"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV1B3sa6HEdD",
+    "id": "bili-BV1B3sa6HEdD",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～　14【中日英字幕】 2026年11月19日20点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-19T18:27:24.000Z",
     "url": "https://www.bilibili.com/video/BV1B3sa6HEdD",
-    "date": "2026-11-19",
-    "created": 1795112844,
-    "pubdate": 1795112844,
-    "duration": "349:27",
-    "length": "349:27",
-    "play": 826,
-    "description": ""
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg"
   },
   {
-    "bvid": "BV1B2sD6gEYC",
+    "id": "bili-BV1B2sD6gEYC",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～　13【中日英字幕】 2026年11月18日19点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-18T16:58:38.000Z",
     "url": "https://www.bilibili.com/video/BV1B2sD6gEYC",
-    "date": "2026-11-18",
-    "created": 1795021118,
-    "pubdate": 1795021118,
-    "duration": "332:46",
-    "length": "332:46",
-    "play": 1197,
-    "description": ""
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg"
   },
   {
-    "bvid": "BV1zzs26bEwe",
+    "id": "bili-BV1zzs26bEwe",
     "title": "【直播回放】終末地【中日英字幕】 2026年11月18日07点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/f3223f8a700fdcdd2917f177ee410403676485ff.jpg",
-    "pic": "https://i0.hdslb.com/bfs/archive/f3223f8a700fdcdd2917f177ee410403676485ff.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-18T02:31:02.000Z",
     "url": "https://www.bilibili.com/video/BV1zzs26bEwe",
+<<<<<<< Updated upstream
     "date": "2026-11-18",
     "created": 1794969062,
     "pubdate": 1794969062,
@@ -152,97 +164,72 @@
     "length": "184:26",
     "play": 779,
     "description": ""
+=======
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/f3223f8a700fdcdd2917f177ee410403676485ff.jpg"
+>>>>>>> Stashed changes
   },
   {
-    "bvid": "BV119s66RECf",
+    "id": "bili-BV119s66RECf",
     "title": "【直播回放】【B限】画画雑談【中日英字幕】 2026年11月17日19点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/e4190de582b5033ecaf603d27db6a79399ad7f1a.jpg",
-    "pic": "https://i0.hdslb.com/bfs/archive/e4190de582b5033ecaf603d27db6a79399ad7f1a.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-17T15:18:13.000Z",
     "url": "https://www.bilibili.com/video/BV119s66RECf",
-    "date": "2026-11-17",
-    "created": 1794928693,
-    "pubdate": 1794928693,
-    "duration": "164:06",
-    "length": "164:06",
-    "play": 1080,
-    "description": ""
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/e4190de582b5033ecaf603d27db6a79399ad7f1a.jpg"
   },
   {
-    "bvid": "BV1bSsM6MEYW",
+    "id": "bili-BV1bSsM6MEYW",
     "title": "【直播回放】鳴潮【中日英字幕】 2026年11月17日06点场",
-    "cover": "https://i0.hdslb.com/bfs/archive/0cb37f1ffdb196654c3672f933dea112b2a01607.jpg",
-    "pic": "https://i0.hdslb.com/bfs/archive/0cb37f1ffdb196654c3672f933dea112b2a01607.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-17T01:34:54.000Z",
     "url": "https://www.bilibili.com/video/BV1bSsM6MEYW",
-    "date": "2026-11-17",
-    "created": 1794879294,
-    "pubdate": 1794879294,
-    "duration": "130:47",
-    "length": "130:47",
-    "play": 773,
-    "description": ""
+    "thumbnail": "https://i0.hdslb.com/bfs/archive/0cb37f1ffdb196654c3672f933dea112b2a01607.jpg"
   },
   {
-    "bvid": "BV1shsN69Eai",
+    "id": "bili-BV1shsN69Eai",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～12【中日英字幕】 2026年11月16日20点场",
-    "cover": "https://i2.hdslb.com/bfs/archive/d1192492300746409dbe246273b40e7bc273318e.jpg",
-    "pic": "https://i2.hdslb.com/bfs/archive/d1192492300746409dbe246273b40e7bc273318e.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-16T16:18:32.000Z",
     "url": "https://www.bilibili.com/video/BV1shsN69Eai",
-    "date": "2026-11-16",
-    "created": 1794845912,
-    "pubdate": 1794845912,
-    "duration": "230:40",
-    "length": "230:40",
-    "play": 1110,
-    "description": ""
+    "thumbnail": "https://i2.hdslb.com/bfs/archive/d1192492300746409dbe246273b40e7bc273318e.jpg"
   },
   {
-    "bvid": "BV1PAsF6BEkq",
+    "id": "bili-BV1PAsF6BEkq",
     "title": "【直播回放】原神　星穹铁道　绝区零【中日英字幕】 2026年11月16日07点场",
-    "cover": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg",
-    "pic": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-16T03:14:14.000Z",
     "url": "https://www.bilibili.com/video/BV1PAsF6BEkq",
-    "date": "2026-11-16",
-    "created": 1794798854,
-    "pubdate": 1794798854,
-    "duration": "232:46",
-    "length": "232:46",
-    "play": 783,
-    "description": ""
+    "thumbnail": "https://i2.hdslb.com/bfs/archive/a30db2fed5004fea9c8c130bb5f4eed3fae3dc6c.jpg"
   },
   {
-    "bvid": "BV1ezsJ6yEtq",
+    "id": "bili-BV1ezsJ6yEtq",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～　11【中日英字幕】 2026年11月15日12点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-15T09:09:11.000Z",
     "url": "https://www.bilibili.com/video/BV1ezsJ6yEtq",
-    "date": "2026-11-15",
-    "created": 1794733751,
-    "pubdate": 1794733751,
-    "duration": "280:55",
-    "length": "280:55",
-    "play": 869,
-    "description": ""
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg"
   },
   {
-    "bvid": "BV15hsL6eEJ4",
+    "id": "bili-BV15hsL6eEJ4",
     "title": "【直播回放】【B限】 是歌回哦，快来玩吧！【中日英字幕】 2026年11月14日20点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/7291ef08321561032cfb9f4770f6246527ad3725.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/7291ef08321561032cfb9f4770f6246527ad3725.jpg",
+    "platform": "Bilibili",
+    "tag": "singing",
+    "publishedAt": "2026-11-14T17:11:29.000Z",
     "url": "https://www.bilibili.com/video/BV15hsL6eEJ4",
-    "date": "2026-11-14",
-    "created": 1794676289,
-    "pubdate": 1794676289,
-    "duration": "277:43",
-    "length": "277:43",
-    "play": 1388,
-    "description": ""
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/7291ef08321561032cfb9f4770f6246527ad3725.jpg"
   },
   {
-    "bvid": "BV1wDs36NEM4",
+    "id": "bili-BV1wDs36NEM4",
     "title": "【直播回放】【影之刃零】初见 日V橘猫~武侠之旅～　10【中日英字幕】 2026年11月14日11点场",
-    "cover": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
-    "pic": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg",
+    "platform": "Bilibili",
+    "tag": "game",
+    "publishedAt": "2026-11-14T09:38:12.000Z",
     "url": "https://www.bilibili.com/video/BV1wDs36NEM4",
+<<<<<<< Updated upstream
     "date": "2026-11-14",
     "created": 1794649092,
     "pubdate": 1794649092,
@@ -418,5 +405,8 @@
     "length": "358:03",
     "play": 960,
     "description": ""
+=======
+    "thumbnail": "https://i1.hdslb.com/bfs/archive/f7940fa465b48be4532fdbb841f86b3c29f89e1f.jpg"
+>>>>>>> Stashed changes
   }
 ]

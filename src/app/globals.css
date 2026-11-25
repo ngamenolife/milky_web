@@ -156,3 +156,60 @@ main section > div > div[class*="rounded"] {
 @media (prefers-reduced-motion: reduce) {
   .milky-mascot-pop { animation: none !important; }
 }
+
+/* === MILKY DARK MODE === */
+html.dark {
+  color-scheme: dark;
+  background-color: #0e1117;
+  color: #e6edf3;
+}
+html.dark body {
+  background: radial-gradient(circle at 15% 10%, rgba(249, 115, 22, 0.12), transparent 38%),
+              radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.10), transparent 36%),
+              #0e1117 !important;
+  color: #e6edf3;
+}
+html.dark .bg-white,
+html.dark .bg-white\/90,
+html.dark .bg-white\/85,
+html.dark .bg-white\/80 {
+  background-color: rgba(22, 27, 34, 0.92) !important;
+}
+html.dark .bg-stone-50,
+html.dark .bg-stone-100,
+html.dark .bg-orange-50,
+html.dark .bg-amber-50 {
+  background-color: rgba(33, 38, 45, 0.85) !important;
+}
+html.dark .text-stone-900,
+html.dark .text-stone-800,
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f0f6fc !important;
+}
+html.dark .text-stone-700,
+html.dark .text-stone-600,
+html.dark .text-slate-700 {
+  color: #c9d1d9 !important;
+}
+html.dark .text-stone-500,
+html.dark .text-stone-400 {
+  color: #8b949e !important;
+}
+html.dark .border-stone-100,
+html.dark .border-stone-200,
+html.dark .border-orange-100,
+html.dark .border-orange-200 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+html.dark .ring-orange-100,
+html.dark .ring-stone-200 {
+  --tw-ring-color: rgba(255, 255, 255, 0.1) !important;
+}
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #0d1117 !important;
+  color: #f0f6fc !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}

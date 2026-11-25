@@ -44,6 +44,7 @@ function clampPos(x: number, y: number, w: number, h: number) {
 export default function Live2DMascot() {
   const [visible, setVisible] = useState(false);
   const [muted, setMuted] = useState(false);
+  const [dark, setDark] = useState(false);
   const [mood, setMood] = useState<Mood>("cheer");
   const [popKey, setPopKey] = useState(0);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
@@ -74,6 +75,10 @@ export default function Live2DMascot() {
       else if (saved === "on") setVisible(true);
       else setVisible(window.innerWidth >= 768);
       setMuted(localStorage.getItem("milky-mascot-muted") === "1");
+      const savedTheme = localStorage.getItem("milky_theme");
+      const isDark = savedTheme ? savedTheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDark(isDark);
+      document.documentElement.classList.toggle("dark", isDark);
 
       const rawPos = localStorage.getItem("milky-mascot-pos");
       if (rawPos) {
@@ -320,6 +325,13 @@ export default function Live2DMascot() {
     if (next) triggerMood("cheer", { durationMs: 3600 });
   };
 
+  const toggleDark = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    try { localStorage.setItem("milky_theme", next ? "dark" : "light"); } catch {}
+  };
+
   const toggleMute = () => {
     const next = !muted;
     setMuted(next);
@@ -335,6 +347,14 @@ export default function Live2DMascot() {
     <>
       {/* 左下角极简纯图标开关（无文字） */}
       <div className="fixed bottom-4 left-4 z-40 flex items-center gap-1.5">
+        <button
+          type="button"
+          onClick={toggleDark}
+          aria-label="Toggle dark mode"
+          className="cursor-pointer rounded-full border border-orange-300/60 bg-white/85 px-2.5 py-1.5 text-sm shadow-md backdrop-blur-md transition hover:-translate-y-0.5 active:scale-95 dark:bg-slate-900/85"
+        >
+          {dark ? "☀️" : "🌙"}
+        </button>
         <button
           type="button"
           onClick={toggleVisible}
