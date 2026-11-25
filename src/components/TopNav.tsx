@@ -7,11 +7,12 @@ import { useLocale } from "@/components/LocaleProvider";
 
 export default function TopNav() {
   const pathname = usePathname();
-  const { t, toggleLocale } = useLocale();
+  const { locale, t, toggleLocale } = useLocale();
 
   const links = [
     { href: "/", label: t.navHome },
     { href: "/schedule", label: t.navSchedule },
+    { href: "/feed", label: locale === "ja" ? "タイムライン" : "动态墙" },
     { href: "/about", label: t.navAbout },
   ];
 
