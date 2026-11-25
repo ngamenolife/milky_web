@@ -426,6 +426,10 @@ async function parsePendingSchedules() {
       const prompt = `你是 VTuber MilkyTube (みるきぃ) 的日程提取助手。
 发布时间(UTC): ${post.published_at}
 来源平台: ${post.platform}
+默认时区规则（极重要）：
+- 若来源平台是 twitter，正文未特别注明时区的时间一律按【日本时间 JST (UTC+9)】解析，输出 ISO 时间必须带 +09:00；
+- 若来源平台是 bilibili，正文未特别注明时区的时间一律按【北京时间 CST (UTC+8)】解析，输出 ISO 时间必须带 +08:00；
+- 若正文明确写出了“北京时间”或“JST/日本时间”，以正文写明的时区为准。
 正文:
 ${post.text}
 

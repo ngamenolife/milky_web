@@ -26,6 +26,32 @@ export default function PortalApp({
 }: Props) {
   const { locale, t, toggleLocale } = useLocale();
   const [schedule, setSchedule] = useState<ScheduleItem[]>(initialSchedule);
+  const [nowMs, setNowMs] = useState<number>(0);
+
+  useEffect(() => {
+    setNowMs(Date.now());
+    const timer = setInterval(() => setNowMs(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextUpcoming = nowMs
+    ? [...schedule]
+        .filter((s) => new Date(s.startIso).getTime() > nowMs)
+        .sort((a, b) => new Date(a.startIso).getTime() - new Date(b.startIso).getTime())[0]
+    : undefined;
+
+  const countdownText = (() => {
+    if (!nextUpcoming || !nowMs) return "";
+    const diffSec = Math.max(0, Math.floor((new Date(nextUpcoming.startIso).getTime() - nowMs) / 1000));
+    const d = Math.floor(diffSec / 86400);
+    const h = Math.floor((diffSec % 86400) / 3600);
+    const m = Math.floor((diffSec % 3600) / 60);
+    const s = diffSec % 60;
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const hms = `${pad(h)}:${pad(m)}:${pad(s)}`;
+    if (d > 0) return locale === "ja" ? `${d}日 ${hms}` : `${d}天 ${hms}`;
+    return hms;
+  })();
   const [category, setCategory] = useState<"all" | ScheduleCategory>("all");
   const [platform, setPlatform] = useState<"all" | "Bilibili" | "YouTube">("all");
   const [query, setQuery] = useState("");
@@ -189,6 +215,14 @@ export default function PortalApp({
             >
               <Radio className="h-3.5 w-3.5" />
               {t.liveOffline}
+              {countdownText && (
+                <span
+                  title={nextUpcoming?.title}
+                  className="ml-1 rounded-full bg-orange-500/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-orange-700"
+                >
+                  {locale === "ja" ? `次回まで ${countdownText}` : `距开播 ${countdownText}`}
+                </span>
+              )}
             </a>
           )}
 
