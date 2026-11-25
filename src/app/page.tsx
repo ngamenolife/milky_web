@@ -21,6 +21,8 @@ export default async function HomePage() {
 
   return (
     <>
+      <Anniversary8thBanner />
+      
       <LivePreviewStrip />
       <PortalApp
       initialSchedule={initialSchedule}
