@@ -296,7 +296,7 @@ async function callGeminiJson(prompt, temperature = 0.2) {
     }
   }
   if (!GEMINI_API_KEY) return null;
-  const models = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.6-flash", "gemini-3.8-flash"];
+  const models = ["gemini-3.6-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"];
   for (const model of models) {
     try {
       const res = await fetch(
@@ -448,7 +448,6 @@ ${post.text}
             start_time: dt.toISOString(),
             platform: ["三台同播", "Bilibili", "YouTube", "Twitch"].includes(ev.platform) ? ev.platform : "三台同播",
             category: ["game", "watchalong", "singing", "bilibili", "collab"].includes(ev.category) ? ev.category : "game",
-            notes: String(ev.notes || "").slice(0, 200),
             source_url: post.url,
           };
           await sbFetch("schedules?on_conflict=id", {
