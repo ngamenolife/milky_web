@@ -116,19 +116,29 @@ export default function Live2DMascot() {
   const playVoice = useCallback(
     (targetMood: Mood) => {
       if (muted) return;
+      const fallback = "/mascot/voice/pet.mp3";
       const clips = VOICE_MAP[targetMood];
-      if (!clips || clips.length === 0) return;
-      const src = pick(clips);
-      try {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-        }
-        const audio = new Audio(src);
-        audio.volume = 0.75;
-        audioRef.current = audio;
-        audio.play().catch(() => {});
-      } catch {}
+      const primary = clips && clips.length > 0 ? pick(clips) : fallback;
+
+      const tryPlay = (src: string, canFallback: boolean) => {
+        try {
+          if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+          }
+          const audio = new Audio(src);
+          audio.volume = 0.8;
+          audioRef.current = audio;
+          if (canFallback && src !== fallback) {
+            audio.onerror = () => tryPlay(fallback, false);
+          }
+          audio.play().catch(() => {
+            if (canFallback && src !== fallback) tryPlay(fallback, false);
+          });
+        } catch {}
+      };
+
+      tryPlay(primary, true);
     },
     [muted]
   );
