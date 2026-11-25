@@ -62,8 +62,8 @@ export default function Live2DMascot() {
     startY: 0,
     origX: 0,
     origY: 0,
-    w: 112,
-    h: 112,
+    w: 160,
+    h: 160,
   });
 
   // 初始化显示状态、记忆位置 & 静默预加载全部 9 张 GIF
@@ -79,7 +79,7 @@ export default function Live2DMascot() {
       if (rawPos) {
         const parsed = JSON.parse(rawPos) as { x?: number; y?: number };
         if (typeof parsed.x === "number" && typeof parsed.y === "number") {
-          setPos(clampPos(parsed.x, parsed.y, 112, 112));
+          setPos(clampPos(parsed.x, parsed.y, 160, 160));
         }
       }
     } catch {
@@ -106,7 +106,7 @@ export default function Live2DMascot() {
       setPos((cur) => {
         if (!cur) return cur;
         const rect = mascotBoxRef.current?.getBoundingClientRect();
-        return clampPos(cur.x, cur.y, rect?.width || 112, rect?.height || 112);
+        return clampPos(cur.x, cur.y, rect?.width || 160, rect?.height || 160);
       });
     };
     window.addEventListener("resize", onResize);
@@ -383,7 +383,7 @@ export default function Live2DMascot() {
               src={GIF_MAP[mood]}
               alt="Milky pixel mascot"
               draggable={false}
-              className="milky-pixel milky-mascot-pop pointer-events-none h-24 w-24 object-contain drop-shadow-[0_6px_12px_rgba(251,146,60,0.35)] sm:h-28 sm:w-28"
+              className="milky-mascot-pop pointer-events-none h-32 w-32 object-contain drop-shadow-[0_8px_16px_rgba(251,146,60,0.35)] sm:h-40 sm:w-40"
             />
           </div>
         </div>
