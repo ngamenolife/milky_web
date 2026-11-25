@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "@/components/LocaleProvider";
 
 type LivePlatform = {
   platform: "bilibili" | "twitch" | "youtube";
@@ -28,18 +29,10 @@ export default function LivePreviewStrip() {
   const [liveList, setLiveList] = useState<LivePlatform[]>([]);
   const [activeEmbed, setActiveEmbed] = useState<string | null>(null);
   const [tick, setTick] = useState<number>(() => Date.now());
-  const [isJa, setIsJa] = useState(false);
+  const { locale } = useLocale();
+  const isJa = locale === "ja";
 
-  useEffect(() => {
-    const syncLocale = () => {
-      setIsJa(window.localStorage.getItem("milky-locale") === "ja");
-    };
-    syncLocale();
-    const timer = window.setInterval(syncLocale, 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
+useEffect(() => {
     if (!SUPABASE_URL) return;
     let cancelled = false;
 

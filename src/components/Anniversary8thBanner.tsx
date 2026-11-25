@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLocale } from "@/components/LocaleProvider";
 
 // 8 周年活动结束后，改为 false 即可一键恢复日常版
 export const ANNIVERSARY_8TH_ENABLED = true;
@@ -22,27 +23,13 @@ const COLORS = ["#fb923c", "#f472b6", "#facc15", "#38bdf8", "#c084fc", "#ffffff"
 export default function Anniversary8thBanner() {
   const [imgOk, setImgOk] = useState(true);
   const [cheers, setCheers] = useState(0);
-  const [isJa, setIsJa] = useState(false);
+  const { locale } = useLocale();
+  const isJa = locale === "ja";
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
 
-  useEffect(() => {
-    const detectLang = () => {
-      try {
-        const stored = localStorage.getItem("milky-locale") || localStorage.getItem("locale") || "";
-        const docLang = document.documentElement.lang || "";
-        setIsJa(stored.startsWith("ja") || docLang.startsWith("ja"));
-      } catch {
-        setIsJa(false);
-      }
-    };
-    detectLang();
-    const timer = window.setInterval(detectLang, 1200);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const fireConfetti = () => {
+const fireConfetti = () => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const canvas = canvasRef.current;

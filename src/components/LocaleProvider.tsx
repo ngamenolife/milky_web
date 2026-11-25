@@ -26,6 +26,10 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = locale === "ja" ? "ja" : "zh-CN";
+  }, [locale]);
+
   const toggleLocale = () => {
     setLocale((prev) => {
       const next: Locale = prev === "zh" ? "ja" : "zh";
