@@ -6,3 +6,6 @@ _api_backup/
 .env
 playwright-report/
 test-results/
+
+repo-context.txt
+tsconfig.tsbuildinfo
