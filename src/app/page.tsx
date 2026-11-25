@@ -1,3 +1,4 @@
+import Anniversary8thBanner from "@/components/Anniversary8thBanner";
 import LivePreviewStrip from "@/components/LivePreviewStrip";
 import PortalApp from "@/components/PortalApp";
 import { fetchBilibiliVideos } from "@/lib/bilibili";

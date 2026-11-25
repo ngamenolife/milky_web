@@ -1,3 +1,5 @@
+import ModernUiEnhancer from "@/components/ModernUiEnhancer";
+import Live2DMascot from "@/components/Live2DMascot";
 import type { Metadata } from "next";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import "./globals.css";
@@ -11,7 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN">
       <body className="min-h-screen antialiased">
+        <ModernUiEnhancer />
         <LocaleProvider>{children}</LocaleProvider>
+              <Live2DMascot />
       </body>
     </html>
   );
