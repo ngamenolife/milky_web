@@ -9,7 +9,7 @@ if (!SUPABASE_URL || !SERVICE_KEY) {
   process.exit(1);
 }
 
-const TABLES = ["songs", "schedules", "games", "featured_videos", "social_posts"];
+const TABLES = ["songs", "schedules", "games", "featured_videos", "social_posts", "site_counters"];
 const outDir = path.resolve(process.cwd(), "backups");
 fs.mkdirSync(outDir, { recursive: true });
 

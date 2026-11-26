@@ -23,6 +23,52 @@ const COLORS = ["#fb923c", "#f472b6", "#facc15", "#38bdf8", "#c084fc", "#ffffff"
 export default function Anniversary8thBanner() {
   const [imgOk, setImgOk] = useState(true);
   const [cheers, setCheers] = useState(0);
+  const counterKeyRef = useRef<string>("anniversary_8th_cheers");
+
+  useEffect(() => {
+    const sbUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || "").replace(/\/$/, "");
+    const sbKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+    if (!sbUrl || !sbKey) return;
+    fetch(`${sbUrl}/rest/v1/site_counters?select=key,count`, {
+      headers: { apikey: sbKey, Authorization: `Bearer ${sbKey}` },
+    })
+      .then((r) => (r.ok ? r.json() : []))
+      .then((rows: Array<{ key: string; count: number }>) => {
+        if (!Array.isArray(rows) || rows.length === 0) return;
+        const hit =
+          rows.find((x) => x.key === "anniversary_8th_cheers") ||
+          rows.find((x) => x.key === "anniversary_8th_confetti") ||
+          rows.at(0);
+        if (hit) {
+          counterKeyRef.current = hit.key;
+          setCheers((prev) => Math.max(prev, Number(hit.count) || 0));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const bumpCloudCheer = () => {
+    setCheers((prev) => prev + 1);
+    const sbUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || "").replace(/\/$/, "");
+    const sbKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+    if (!sbUrl || !sbKey) return;
+    const key = counterKeyRef.current;
+    const rpc = key === "anniversary_8th_confetti" ? "increment_site_counter" : "increment_counter";
+    fetch(`${sbUrl}/rest/v1/rpc/${rpc}`, {
+      method: "POST",
+      headers: {
+        apikey: sbKey,
+        Authorization: `Bearer ${sbKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_key: key }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((val) => {
+        if (typeof val === "number") setCheers((prev) => Math.max(prev, val));
+      })
+      .catch(() => {});
+  };
   const { locale } = useLocale();
   const isJa = locale === "ja";
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -153,7 +199,7 @@ const fireConfetti = () => {
             <button
               type="button"
               onClick={() => {
-                setCheers((c) => c + 1);
+                bumpCloudCheer();
                 fireConfetti();
               }}
               className="shrink-0 cursor-pointer rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
