@@ -104,11 +104,38 @@ export function signWbiParams(
 
 function readLocalCache(): VideoItem[] {
   try {
-    const raw = fs.readFileSync(CACHE_PATH, "utf8");
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) return parsed;
-    if (Array.isArray(parsed?.items)) return parsed.items;
-    return [];
+    if (!fs.existsSync(CACHE_PATH)) return [];
+    const raw = JSON.parse(fs.readFileSync(CACHE_PATH, "utf8"));
+    const arr = Array.isArray(raw) ? raw : Array.isArray(raw?.items) ? raw.items : [];
+    const out: VideoItem[] = [];
+    for (let i = 0; i < arr.length; i++) {
+      const x = arr.at(i);
+      if (!x || typeof x !== "object") continue;
+      const bvid = String(x.bvid || x.id || "").trim();
+      const title = String(x.title || "").trim();
+      if (!bvid && !title) continue;
+      const id = String(x.id || bvid || "bili-" + i);
+      const url = String(x.url || (bvid ? "https://www.bilibili.com/video/" + bvid : ""));
+      const thumb = normalizeImageUrl(String(x.thumbnail || x.cover || x.pic || ""));
+      let publishedAt = String(x.publishedAt || "");
+      if (!publishedAt) {
+        const ts = Number(x.pubdate || x.created || 0);
+        publishedAt = ts > 0 ? new Date(ts * 1000).toISOString() : new Date().toISOString();
+      }
+      const tag = (x.tag === "singing" || x.tag === "clip" || x.tag === "game")
+        ? x.tag
+        : classifyTag(title);
+      out.push({
+        id,
+        title,
+        platform: "Bilibili",
+        url,
+        thumbnail: thumb,
+        publishedAt,
+        tag,
+      });
+    }
+    return out;
   } catch {
     return [];
   }
