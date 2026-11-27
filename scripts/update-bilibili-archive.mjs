@@ -182,7 +182,10 @@ async function main() {
   }
 
   const output = isArray ? finalList : { ...raw, [listKey]: finalList, updatedAt: new Date().toISOString() };
-  fs.writeFileSync(CACHE_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
+  // SAFE_GUARD_MIN_ITEMS
+const __list = Array.isArray(output) ? output : (output?.items || []);
+if (__list.length < 3) { console.log("⚠️ 抓取条数不足 3 条，跳过写入以保护现有归档"); process.exit(0); }
+fs.writeFileSync(CACHE_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
 }
 
 main();

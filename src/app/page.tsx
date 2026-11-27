@@ -1,4 +1,6 @@
 import Anniversary8thBanner from "@/components/Anniversary8thBanner";
+import AnniversaryCountdownCard from "@/components/AnniversaryCountdownCard";
+import MilkyStatsStrip from "@/components/MilkyStatsStrip";
 import LivePreviewStrip from "@/components/LivePreviewStrip";
 import PortalApp from "@/components/PortalApp";
 import { fetchBilibiliVideos } from "@/lib/bilibili";
@@ -22,6 +24,8 @@ export default async function HomePage() {
   return (
     <>
       <Anniversary8thBanner />
+      <AnniversaryCountdownCard />
+      <MilkyStatsStrip />
       
       <LivePreviewStrip />
       <PortalApp
